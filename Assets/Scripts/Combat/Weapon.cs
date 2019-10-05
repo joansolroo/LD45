@@ -44,9 +44,12 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time-lastFire > 2)
+        if (currentCooldown > 0) currentCooldown -= Time.deltaTime;
+        if (currentCooldown < 0) currentCooldown = 0;
+
+        if (Time.time - lastFire > 2)
         {
-            if(load < capacity)
+            if (load < capacity)
             {
                 Reload();
             }
@@ -77,7 +80,7 @@ public class Weapon : MonoBehaviour
     {
         if (load > 0)
         {
-            StartCoroutine(DoFire());
+            DoFire();
             lastFire = Time.time;
         }
         else
@@ -89,11 +92,12 @@ public class Weapon : MonoBehaviour
         }
     }
     public bool firing = false;
-    IEnumerator DoFire()
+    float currentCooldown = 0;
+    void DoFire()
     {
-        if (!firing)
+        if (currentCooldown == 0 && !firing)
         {
-
+            Debug.Log("do fire");
             firing = true;
             if (reloading && reloadInterruptSupported)
             {
@@ -103,21 +107,20 @@ public class Weapon : MonoBehaviour
             {
                 for (int c = 0; c < bulletsPerShot; ++c)
                 {
-                   
+
                     Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
                     b.tag = owner.tag;
                     b.gameObject.SetActive(true);
-                    yield return new WaitForEndOfFrame();
                     b.transform.position = nossle.position;
                     b.transform.rotation = nossle.rotation;
                     b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
-                   
+
                     b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
                     Debug.DrawRay(b.transform.position, b.rb.velocity);
                 }
                 --load;
                 PlaySound(clipFire);
-                
+                currentCooldown = cooldown;
                 float t = 0;
                 float r = 0;
                 /*while (t < cooldown / 2)
@@ -137,7 +140,6 @@ public class Weapon : MonoBehaviour
                 }
                 this.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
                 */
-                yield return new WaitForSeconds(cooldown);
                 if (load == 0)
                 {
                     Reload();
@@ -148,42 +150,42 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public void Reload()
+public void Reload()
+{
+    StartCoroutine(DoReload());
+}
+void CancelReload()
+{
+    StopCoroutine(DoReload());
+    reloading = false;
+}
+public bool reloading = false;
+
+IEnumerator DoReload()
+{
+    if (!reloading)
     {
-        StartCoroutine(DoReload());
-    }
-    void CancelReload()
-    {
-        StopCoroutine(DoReload());
+        reloading = true;
+        while (load < capacity && reloading)
+        {
+            //yield return new WaitForSeconds(loadTime/2);
+            if (reloading)
+            {
+                PlaySound(clipReload);
+                //sprite.color = new Color(1,0,0,0.5f);
+                load++;
+                yield return new WaitForSeconds(loadTime);
+            }
+        }
         reloading = false;
     }
-    public bool reloading = false;
+}
 
-    IEnumerator DoReload()
+void PlaySound(AudioClip clip)
+{
+    if (audioSource)
     {
-        if (!reloading)
-        {
-            reloading = true;
-            while (load < capacity && reloading)
-            {
-                //yield return new WaitForSeconds(loadTime/2);
-                if (reloading)
-                {
-                    PlaySound(clipReload);
-                    //sprite.color = new Color(1,0,0,0.5f);
-                    load++;
-                    yield return new WaitForSeconds(loadTime);
-                }
-            }
-            reloading = false;
-        }
+        audioSource.PlayOneShot(clip);
     }
-
-    void PlaySound(AudioClip clip)
-    {
-        if(audioSource)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
+}
 }

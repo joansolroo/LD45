@@ -64,6 +64,7 @@ public class Controller : MonoBehaviour, IDamageable
     {
         if (equipement.weapon != null)
         {
+            Debug.Log("fire");
             equipement.weapon.Fire();
         }
     }

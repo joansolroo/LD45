@@ -26,13 +26,15 @@ public class EnemyController : MonoBehaviour
             if (distance < aimRange)
             {
                 controller.AimAt(target.position);
-                if (controller.speed >0 && distance < shootRange)
+                if (distance < shootRange)
                 {
-                    if (Random.value < aggressivity) controller.Fire1();
-                    if (Random.value < aggressivity) controller.Fire2();
+                    if (Random.value < aggressivity) 
+                        controller.Fire1();
+                    if (Random.value < aggressivity)
+                        controller.Fire2();
                     controller.Move(new Vector2(0, 0));
                 }
-                else
+                else if(controller.speed >0)
                 {
                     controller.Move(new Vector2((target.position.x - this.transform.position.x)* chaseSpeed, 0));
                 }

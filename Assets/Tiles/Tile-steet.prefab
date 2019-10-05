@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3168224620837002676}
   - component: {fileID: 301337039406104874}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tile-steet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3963217489295507594}
   - component: {fileID: 3963217489295507595}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tile-art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6826021435687884105}
   - component: {fileID: 8013786314502040460}
   - component: {fileID: 4343215132403135354}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2372837781125582199}
   - component: {fileID: 2389971624751248639}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tile-sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
