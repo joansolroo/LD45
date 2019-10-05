@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour, IDamageable
+public class Controller : MonoBehaviour, IDamageable, IPerceptible
 {
     [Header("links")]
     public CharacterController characterController;
@@ -25,6 +25,7 @@ public class Controller : MonoBehaviour, IDamageable
     [SerializeField] Vector3 aimDirection = Vector3.zero;
     public Component hoveredObject = null;
     public bool grounded;
+    public bool alive = true;
 
     void Start()
     {
@@ -80,7 +81,6 @@ public class Controller : MonoBehaviour, IDamageable
     {
         if (equipement.weapon != null)
         {
-            Debug.Log("fire");
             equipement.weapon.Fire();
         }
     }
@@ -101,8 +101,8 @@ public class Controller : MonoBehaviour, IDamageable
 
     void Die()
     {
-        Debug.Log("die");
-        Destroy(this.gameObject);
+        alive = false;
+        this.gameObject.SetActive(false);
     }
     public void Push(Vector3 force)
     {

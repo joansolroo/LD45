@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour {
     public int damage = 1;
     public float ttl = 10;
     public LayerMask target;
+    public LayerMask ignore;
     public void Start()
     {
         ttl *= Random.Range(0.95f, 1.05f);
@@ -25,7 +26,7 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject: other.gameObject;
-        if(this.tag != go.tag && target.Contains(go.layer))
+        if(!ignore.Contains(other.gameObject.layer) && this.tag != go.tag && target.Contains(go.layer))
         {
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
             if(damageable != null)

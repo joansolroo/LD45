@@ -9,20 +9,18 @@ public class Sense : MonoBehaviour
     public int perceivedCount;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody)
+        GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
+        if (layer.Contains(go.layer))
         {
-            GameObject go = other.attachedRigidbody.gameObject;
-            if (layer.Contains(go.layer))
-            {
-                Debug.Log("sensed " + other.name);
-                pereceived[go] = go.GetComponent<IPerceptible>();
-                ++perceivedCount;
-            }
+            Debug.Log("sensed " + other.name);
+            pereceived[go] = go.GetComponent<IPerceptible>();
+            perceivedCount = pereceived.Count;
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
-        GameObject go;
+        GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
         if (other.attachedRigidbody)
         {
             go = other.attachedRigidbody.gameObject;
@@ -31,11 +29,19 @@ public class Sense : MonoBehaviour
         {
             go = other.gameObject;
         }
-        
+
         if (layer.Contains(go.layer))
         {
             pereceived.Remove(go);
-            --perceivedCount;
+            perceivedCount = pereceived.Count;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach(GameObject p in pereceived.Keys)
+        {
+            Gizmos.DrawLine(this.transform.position, p.transform.position);
         }
     }
 }

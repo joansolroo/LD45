@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Controller))]
 [DefaultExecutionOrder(-200)]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IIndividual
 {
     [SerializeField] Controller controller;
 
@@ -17,25 +17,54 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float chaseSpeed = 1f;
 
     float t;
+
+    Vector3 lastKnownPosition;
+    Vector3 currentPosition;
+    Vector3 direction;
+    float distance;
+
     private void Update()
     {
+        Sense();
+        Think();
+        Act();
+    }
+
+    public void Sense()
+    {
+
+        currentPosition = target.position;
+        direction = currentPosition - this.transform.position;
+        distance = direction.magnitude;
+        if (distance < aimRange)
+        {
+            lastKnownPosition = currentPosition;
+        }
+    }
+
+    public void Think()
+    {
+       
+    }
+
+    public void Act()
+    {
+
         controller.Move(Vector3.zero);
         bool fighting = false;
         if (target)
         {
-            Vector3 direction = target.position- this.transform.position;
-            float distance = direction.magnitude;
             if (distance < aimRange)
             {
-                controller.AimAt(target.position);
+                controller.AimAt(lastKnownPosition);
                 if (distance < shootRange)
                 {
-                    if (Random.value < aggressivity) 
+                    if (Random.value < aggressivity)
                         controller.Fire1();
                     if (Random.value < aggressivity)
                         controller.Fire2();
                 }
-                else if(controller.speed >0)
+                else if (controller.speed > 0)
                 {
                     controller.Move(direction.normalized);
                 }
@@ -48,7 +77,22 @@ public class EnemyController : MonoBehaviour
         {
             t += Time.deltaTime;
             //controller.Move(new Vector2(Mathf.Sin(t * patrolSpeed) * patrolRange, 0));
-             controller.AimAt(transform.right);
+            controller.AimAt(transform.right);
         }
+    }
+
+    public void Display()
+    {
+        
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public bool Alive()
+    {
+        return controller.alive;
     }
 }
