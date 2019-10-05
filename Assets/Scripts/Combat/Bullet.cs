@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
     public float ttl = 10;
     public LayerMask target;
     public LayerMask ignore;
+
     public void Start()
     {
         ttl *= Random.Range(0.95f, 1.05f);

@@ -73,8 +73,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     }
     public void AimAt(Vector3 position)
     {
-        position.y = this.transform.position.y;
         aimDirection = position-this.transform.position;
+        aimDirection.y = 0;
     }
 
     public void Fire1()

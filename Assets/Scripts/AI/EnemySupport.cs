@@ -44,8 +44,10 @@ public class EnemySupport : MonoBehaviour, IIndividual
 
         if (player)
         {
+            
+            Vector3 currentPlayerPosition = player.position;
+            playerDirection = currentPlayerPosition - this.transform.position;
             distance = playerDirection.magnitude;
-            Vector3 currentPlayerPosition = player.position; 
             if (distance < seeDistance)
             {
                 lastKnownPlayerPosition = currentPlayerPosition;
@@ -57,7 +59,13 @@ public class EnemySupport : MonoBehaviour, IIndividual
         {
             if (senseFriends.perceived.Count > 0)
             {
-                friend = senseFriends.GetRandom().transform;
+                try
+                {
+                    friend = senseFriends.GetClosest(this.transform.position).transform;
+                }
+                catch(System.Exception)
+                { friend = null;
+                }
             }
             else
             {
@@ -73,10 +81,15 @@ public class EnemySupport : MonoBehaviour, IIndividual
 
     public void Act()
     {
-
+        
         controller.Move(Vector3.zero);
         bool fighting = false;
-        if (player)
+        if (friend)
+        {
+            controller.Move(friend.transform.position-this.transform.position);
+            controller.AimAt(friend.transform.position);
+        }
+        else if (player)
         {
             if (distance < fleeDistance)
             {
@@ -90,11 +103,7 @@ public class EnemySupport : MonoBehaviour, IIndividual
             }
 
         }
-        if (friend)
-        {
-            controller.Move(friend.transform.position);
-            controller.AimAt(friend.transform.position);
-        }
+        
     }
 
     public void Display()

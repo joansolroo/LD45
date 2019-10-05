@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Sense : MonoBehaviour
 {
+    public GameObject owner;
+
     public LayerMask layer;
     public Dictionary<GameObject, IPerceptible> perceived = new Dictionary<GameObject, IPerceptible>();
     public int perceivedCount;
@@ -32,7 +34,8 @@ public class Sense : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
-        if (layer.Contains(go.layer))
+
+        if (go!=owner && layer.Contains(go.layer))
         {
             Debug.Log("sensed " + other.name);
             perceived[go] = go.GetComponent<IPerceptible>();
@@ -43,25 +46,43 @@ public class Sense : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
-        if (other.attachedRigidbody)
+        if (go != owner)
         {
-            go = other.attachedRigidbody.gameObject;
-        }
-        else
-        {
-            go = other.gameObject;
-        }
+            if (other.attachedRigidbody)
+            {
+                go = other.attachedRigidbody.gameObject;
+            }
+            else
+            {
+                go = other.gameObject;
+            }
 
-        if (layer.Contains(go.layer))
-        {
-            perceived.Remove(go);
-            perceivedCount = perceived.Count;
+            if (layer.Contains(go.layer))
+            {
+                perceived.Remove(go);
+                perceivedCount = perceived.Count;
+            }
         }
     }
     Random rand = new Random();
     public GameObject GetRandom()
     {
         return RandomKeys(perceived).First();
+    }
+    public GameObject GetClosest(Vector3 position)
+    {
+        GameObject go  = null;
+        float distance = float.MaxValue;
+        foreach(GameObject option in perceived.Keys)
+        {
+            float newDistance = (position - option.transform.position).sqrMagnitude;
+            if (newDistance < distance)
+            {
+                go = option;
+                distance = newDistance;
+            }
+        }
+        return go;
     }
     public bool IsVisible(GameObject go)
     {
