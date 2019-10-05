@@ -14,7 +14,13 @@ public class HUD : MonoBehaviour
     [SerializeField] public UIBar ammoBar;
     [SerializeField] public Image shieldIcon;
 
-    // Update is called once per frame
+    [SerializeField] public GameObject alignmentPanel;
+    [SerializeField] public UIBar currentAlignment;
+    [SerializeField] public UIBar futurAlignment;
+
+    private int maxAlignment = 10;
+
+    
     void Update()
     {
         // update player components
@@ -34,5 +40,14 @@ public class HUD : MonoBehaviour
             ammoBar.foreground.gameObject.SetActive(false);
         }
         shieldIcon.gameObject.SetActive(playerController.equipement.shield != null);
+
+        // algnment
+        if (playerController.hoveredObject != null)
+        {
+            alignmentPanel.SetActive(true);
+            currentAlignment.value = (float)playerController.equipement.GetAlignment() / maxAlignment;
+            futurAlignment.value = (float)(playerController.equipement.GetAlignment() + playerController.equipement.GetAlignmentChange(playerController.hoveredObject)) / maxAlignment;
+        }
+        else alignmentPanel.SetActive(false);
     }
 }

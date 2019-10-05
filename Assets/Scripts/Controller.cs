@@ -118,7 +118,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         }
         else
         {
-            hoveredObject = canPick;
+            hoveredObject = canPick.toPick;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (canPick.toPick.GetType() == typeof(Weapon))
