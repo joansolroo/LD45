@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
+    [SerializeField] Cursor cursor;
     void Start()
     {
         m_Plane = new Plane(Vector3.up, Vector3.zero);
@@ -46,7 +47,12 @@ public class PlayerController : MonoBehaviour
             {
                 controller.Fire1();
             }
+            if (Input.GetMouseButtonDown(1))
+            {
+                controller.Fire2();
+            }
         }
+        cursor.targetPosition = hitPoint;
         
     }
 

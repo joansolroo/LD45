@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickableObject : MonoBehaviour {
+public class PickableObject : MonoBehaviour
+{
 
     [SerializeField] public Component toPick;
 
@@ -16,7 +17,7 @@ public class PickableObject : MonoBehaviour {
     }
     void LateUpdate()
     {
-        this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6+ randomStartWiggling) *0.01f, 0);
+        this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.01f, 0);
         triggered = false;
     }
 
@@ -46,17 +47,20 @@ public class PickableObject : MonoBehaviour {
                 Controller controller = other.gameObject.GetComponent<Controller>();
                 if (controller != null)
                 {
-                    bool success = controller.OnPickObject(this,end);
-
+                    bool success = controller.OnPickObject(this, end);
                     if (success)
-                    {
-                        Destroy();
-                    }
+                        GotPicked();
                 }
             }
         }
     }
+    public void GotPicked()
+    {
+        triggered = true;
 
+        Destroy();
+
+    }
     void Destroy()
     {
         Destroy(this.gameObject);

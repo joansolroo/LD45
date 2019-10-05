@@ -24,12 +24,13 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public int energy;
     [SerializeField] Vector3 moveDirection = Vector3.zero;
     [SerializeField] Vector3 aimDirection = Vector3.zero;
-    public Component hoveredObject = null;
+    public PickableObject hoveredObject = null;
     public bool grounded;
     public bool alive = true;
 
     void Start()
     {
+        equipement.SetWeapon(Weapon.Type.None);
         characterController = GetComponent<CharacterController>();
         Reset();
     }
@@ -65,6 +66,18 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                 turret.transform.LookAt(this.transform.position+ aimDirection);
             }
         }
+        if (hoveredObject && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (hoveredObject.toPick.GetType() == typeof(Weapon))
+            {
+                equipement.SetWeapon(((Weapon)hoveredObject.toPick).type);
+            }else if (hoveredObject.toPick.GetType() == typeof(SecondaryWeapon))
+            {
+                equipement.SetSecondaryWeapon(((SecondaryWeapon)hoveredObject.toPick).type);
+            }
+
+            hoveredObject.GotPicked();
+        }
     }
 
     public void Move(Vector3 direction)
@@ -81,12 +94,19 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     {
         if (equipement.weapon != null)
         {
+            Debug.Log("Fire 1");
             equipement.weapon.Fire();
         }
     }
 
     public void Fire2()
-    { }
+    {
+        if (equipement.secondaryWeapon != null)
+        {
+            Debug.Log("Fire 2");
+            equipement.secondaryWeapon.Fire();
+        }
+    }
 
     public void Damage(int amount)
     {
@@ -124,15 +144,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         }
         else
         {
-            hoveredObject = canPick.toPick;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (canPick.toPick.GetType() == typeof(Weapon))
-                {
-                    equipement.SetWeapon(((Weapon)canPick.toPick).type);
-                }
-                return true;
-            }
+            hoveredObject = canPick;
+            
             return false;
         }
     }

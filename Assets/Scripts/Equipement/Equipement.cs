@@ -20,18 +20,6 @@ public class Equipement : MonoBehaviour
     public Passive[] passiveList;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Set specific equipement
     public void SetWeapon(Weapon.Type type)
     {

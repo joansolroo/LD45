@@ -68,7 +68,6 @@ public class EnemyTurret : MonoBehaviour, IIndividual
     {
 
         //controller.Move(Vector3.zero);
-        bool fighting = false;
         if (target)
         {
             if (distance < aimRange)
@@ -81,8 +80,6 @@ public class EnemyTurret : MonoBehaviour, IIndividual
                     if (Random.value < aggressivity)
                         controller.Fire2();
                 }
-                fighting = true;
-
             }
 
         }

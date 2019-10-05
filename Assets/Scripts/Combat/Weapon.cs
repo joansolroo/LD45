@@ -6,10 +6,12 @@ public class Weapon : MonoBehaviour
 {
     public enum Type
     {
+        None,
         Gun,
         Minigun,
         Laser,
-        Plasma
+        Plasma,
+        Granade
     };
 
     // Attributes
@@ -40,6 +42,7 @@ public class Weapon : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+       
     }
 
     // Update is called once per frame
@@ -116,7 +119,7 @@ public class Weapon : MonoBehaviour
                     b.transform.position = nossle.position;
                     b.transform.rotation = nossle.rotation;
                     b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
-
+                   
                     b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
                     Debug.DrawRay(b.transform.position, b.rb.velocity);
                 }
