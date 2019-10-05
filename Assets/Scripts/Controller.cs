@@ -84,7 +84,7 @@ public class Controller : MonoBehaviour, IDamageable
 
     void Die()
     {
-        Debug.Log(die);
+        Debug.Log("die");
     }
     public void Push(Vector3 force)
     {
