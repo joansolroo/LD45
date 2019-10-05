@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public enum Type
+    {
+        Gun,
+        Minigun,
+        Laser,
+        Plasma
+    };
+
     [Header("Weapon")]
     [SerializeField] public int capacity;
     [SerializeField] public int load;

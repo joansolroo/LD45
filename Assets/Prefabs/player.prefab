@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1237787986605878856}
   - component: {fileID: 1237787986605878857}
   - component: {fileID: 1237787986605878862}
+  - component: {fileID: 3464219113826485257}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -80,6 +81,28 @@ MonoBehaviour:
   speed: 6
   jumpSpeed: 8
   gravity: 20
+--- !u!114 &3464219113826485257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237787986605878863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3521bf221643074e8c8c7dfaeb1d8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  secondaryWeapon: {fileID: 0}
+  shield: {fileID: 0}
+  scan: {fileID: 0}
+  passive: {fileID: 0}
+  weaponList: []
+  secondaryWeaponList: []
+  shieldList: []
+  scanList: []
+  passiveList: []
 --- !u!1001 &1237787987587746703
 PrefabInstance:
   m_ObjectHideFlags: 0
