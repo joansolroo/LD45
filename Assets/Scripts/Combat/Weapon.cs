@@ -103,20 +103,24 @@ public class Weapon : MonoBehaviour
             {
                 for (int c = 0; c < bulletsPerShot; ++c)
                 {
+                   
                     Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
                     b.tag = owner.tag;
                     b.gameObject.SetActive(true);
+                    yield return new WaitForEndOfFrame();
                     b.transform.position = nossle.position;
                     b.transform.rotation = nossle.rotation;
-                    b.transform.RotateAround(nossle.position, Vector3.forward, Random.Range(-spread, spread));
-                    b.rb.velocity = b.transform.forward * b.velocity * Random.Range(0.8f, 1.2f);
+                    b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
+                   
+                    b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
+                    Debug.DrawRay(b.transform.position, b.rb.velocity);
                 }
                 --load;
                 PlaySound(clipFire);
                 
                 float t = 0;
                 float r = 0;
-                while (t < cooldown / 2)
+                /*while (t < cooldown / 2)
                 {
                     r = Mathf.MoveTowards(r, 30, 30 * cooldown / 2);
                     this.transform.parent.localEulerAngles = new Vector3(0, 0, r);
@@ -132,7 +136,9 @@ public class Weapon : MonoBehaviour
 
                 }
                 this.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
-                if(load == 0)
+                */
+                yield return new WaitForSeconds(cooldown);
+                if (load == 0)
                 {
                     Reload();
                 }

@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(target.Contains(collision.gameObject.layer))
+        if(this.tag != collision.gameObject.tag && target.Contains(collision.gameObject.layer))
         {
             IDamageable damageable =  collision.gameObject.GetComponent<IDamageable>();
             if(damageable != null)
