@@ -19,6 +19,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public float gravity = 20.0f;
 
     [Header("Debug values")]
+    public bool invincible = false;
     public int hp;
     public int energy;
     [SerializeField] Vector3 moveDirection = Vector3.zero;
@@ -30,8 +31,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        hp = maxHp;
-        energy = maxEnergy;
+        Reset();
     }
     
     void Update()
@@ -102,11 +102,17 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     void Die()
     {
         alive = false;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
     public void Push(Vector3 force)
     {
         Debug.Log("push");
+    }
+    public void Reset()
+    {
+        hp = maxHp;
+        energy = maxEnergy;
+        alive = true;
     }
 
     public bool OnPickObject(PickableObject canPick, bool end)
