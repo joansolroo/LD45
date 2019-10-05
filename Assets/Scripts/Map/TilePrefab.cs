@@ -15,13 +15,16 @@ public class TilePrefab : Tile
         ScriptableObjectUtility.CreateAsset<TilePrefab>();
     }
 
+    
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
     {
-        bool result =  base.StartUp(position, tilemap, go);
-        if (result)
+        bool result = base.StartUp(position, tilemap, go);
+        if (go)
         {
             go.transform.localEulerAngles = new Vector3(0, 0, 0);
+            Debug.Log("tilemap:" + go.transform.parent.name);
+            go.transform.localScale = Vector3.one;
         }
-        return result;
+        return true;
     }
 }
