@@ -14,7 +14,7 @@ public class DropManager : MonoBehaviour {
     {
         instance = this;
     }
-    public static PickableObject DropAt(PickableObject.PickableType type, Vector3 pos)
+    /*public static PickableObject DropAt(PickableObject.PickableType type, Vector3 pos)
     {
         PickableObject template = null;
         if(type == PickableObject.PickableType.booze)
@@ -48,6 +48,6 @@ public class DropManager : MonoBehaviour {
         {
             return null;
         }
-    }
+    }*/
     
 }

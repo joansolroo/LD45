@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestructableObject : MonoBehaviour,IDamageable {
-
-    [SerializeField] Color color;
-    [SerializeField] SpriteRenderer sprite;
+    
     [SerializeField] int hp;
     [SerializeField] PickableObject drop;
 
     void Start()
     {
-        sprite.color = color;
+        
     }
     void LateUpdate()
     {
@@ -44,7 +42,7 @@ public class DestructableObject : MonoBehaviour,IDamageable {
             hp -= amount;
             if (hp > 0)
             {
-                StartCoroutine(Blink());
+                
             }
             else
             {
@@ -69,23 +67,5 @@ public class DestructableObject : MonoBehaviour,IDamageable {
             newDrop.transform.localScale = drop.transform.localScale;
         }
         Destroy(this.gameObject);
-    }
-    IEnumerator Blink()
-    {
-        float t = 0;
-        while (t < 1)
-        {
-            sprite.color = Color.Lerp(color, Color.red, t );
-            yield return new WaitForEndOfFrame();
-            t += Time.deltaTime*10;
-        }
-        t = 0;
-        while (t < 1)
-        {
-            sprite.color = Color.Lerp(Color.red, color, t * 4);
-            yield return new WaitForEndOfFrame();
-            t += Time.deltaTime*5;
-        }
-        sprite.color = color;
     }
 }

@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour, IDamageable
     private Plane m_Plane;
     private Vector3 hitPoint;
 
-    public Weapon weapon;
+    public Equipement equipement;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -29,11 +29,6 @@ public class Controller : MonoBehaviour, IDamageable
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection *= speed;
-
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-            }
         }
         moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
@@ -49,7 +44,10 @@ public class Controller : MonoBehaviour, IDamageable
             {
                 hitPoint = ray.GetPoint(enter);
             }
-            weapon.Fire();
+            if(equipement.weapon != null)
+            {
+                equipement.weapon.Fire();
+            }
         }
     }
 
@@ -71,7 +69,14 @@ public class Controller : MonoBehaviour, IDamageable
 
     public bool OnPickObject(PickableObject picked)
     {
-        Debug.Log("pick "+ picked.name);
-        return true;
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(picked.toPick.GetType() == typeof(Weapon))
+            {
+                equipement.SetWeapon(((Weapon)picked.toPick).type);
+            }
+            return true;
+        }
+        return false;
     }
 }

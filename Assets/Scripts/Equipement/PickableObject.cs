@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class PickableObject : MonoBehaviour {
 
-    public enum PickableType
-    {
-        pistol, shotgun, rifle, booze, horse
-
-    }
-    [SerializeField] PickableType objectType;
+    [SerializeField] public Component toPick;
 
     Vector3 position;
     float randomStartWiggling;
@@ -24,8 +19,9 @@ public class PickableObject : MonoBehaviour {
         this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6+ randomStartWiggling) *0.01f, 0);
         triggered = false;
     }
+
     bool triggered = false;
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (!triggered)
         {
