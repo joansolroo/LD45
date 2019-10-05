@@ -22,11 +22,12 @@ public class Bullet : MonoBehaviour {
             DestroyBullet();
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(this.tag != collision.gameObject.tag && target.Contains(collision.gameObject.layer))
+        GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject: other.gameObject;
+        if(this.tag != go.tag && target.Contains(go.layer))
         {
-            IDamageable damageable =  collision.gameObject.GetComponent<IDamageable>();
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
             if(damageable != null)
             {
                 damageable.Damage(damage);

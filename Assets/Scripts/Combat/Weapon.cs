@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Links")]
     [SerializeField] Bullet bulletPefab;
-    [SerializeField] Transform nossle;
+    [SerializeField] Transform[] nossles;
     [SerializeField] GameObject owner;
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -111,6 +111,7 @@ public class Weapon : MonoBehaviour
                     Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
                     b.tag = owner.tag;
                     b.gameObject.SetActive(true);
+                    Transform nossle = nossles[Random.Range(0, nossles.Length)];
                     b.transform.position = nossle.position;
                     b.transform.rotation = nossle.rotation;
                     b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));

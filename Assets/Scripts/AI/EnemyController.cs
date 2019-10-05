@@ -17,8 +17,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float chaseSpeed = 1f;
 
     float t;
-    private void LateUpdate()
+    private void Update()
     {
+        controller.Move(Vector3.zero);
         bool fighting = false;
         if (target)
         {
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour
             float distance = direction.magnitude;
             if (distance < aimRange)
             {
-                //controller.AimAt(target.position);
+                controller.AimAt(target.position);
                 if (distance < shootRange)
                 {
                     if (Random.value < aggressivity) 
@@ -46,8 +47,8 @@ public class EnemyController : MonoBehaviour
         if (!fighting && patrolRange > 0 && patrolSpeed > 0)
         {
             t += Time.deltaTime;
-            controller.Move(new Vector2(Mathf.Sin(t * patrolSpeed) * patrolRange, 0));
-            controller.AimAt(transform.right);
+            //controller.Move(new Vector2(Mathf.Sin(t * patrolSpeed) * patrolRange, 0));
+             controller.AimAt(transform.right);
         }
     }
 }

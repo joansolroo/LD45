@@ -26,7 +26,11 @@ public class PlayerController : MonoBehaviour
             //if (moveDirection.sqrMagnitude > 1) moveDirection.Normalize();
             controller.Move(moveDirection);
         }
-
+        else
+        {
+            controller.Move(Vector3.zero);
+        }
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         {
             controller.AimAt(hitPoint);

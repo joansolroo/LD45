@@ -24,6 +24,7 @@ public class Controller : MonoBehaviour, IDamageable
     [SerializeField] Vector3 moveDirection = Vector3.zero;
     [SerializeField] Vector3 aimDirection = Vector3.zero;
     public Component hoveredObject = null;
+    public bool grounded;
 
     void Start()
     {
@@ -34,8 +35,9 @@ public class Controller : MonoBehaviour, IDamageable
     
     void Update()
     {
+        grounded = characterController.isGrounded;
         // movement
-        if (speed >0 ||!characterController.isGrounded)
+        if (speed >0 ||!grounded)
         {
             
             if (moveDirection.sqrMagnitude > 0.1f)
@@ -47,7 +49,14 @@ public class Controller : MonoBehaviour, IDamageable
                 this.transform.LookAt(this.transform.position + this.transform.forward);
             }*/
             moveDirection *= speed;
-            moveDirection.y -= gravity * Time.deltaTime;
+            if (!grounded)
+            {
+                moveDirection.y -= gravity * Time.deltaTime;
+            }
+            else
+            {
+                moveDirection.y = 0;
+            }
             characterController.Move(moveDirection * Time.deltaTime);
 
             if (aimDirection != Vector3.zero)
