@@ -24,7 +24,7 @@ public class EnemyTurret : MonoBehaviour, IIndividual
 
     private void Start()
     {
-        sight.transform.localScale = Vector3.one * aimRange;
+        sight.transform.localScale = Vector3.one * aimRange/2;
     }
     private void Update()
     {
@@ -67,7 +67,7 @@ public class EnemyTurret : MonoBehaviour, IIndividual
     public void Act()
     {
 
-        controller.Move(Vector3.zero);
+        //controller.Move(Vector3.zero);
         bool fighting = false;
         if (target)
         {
@@ -86,12 +86,12 @@ public class EnemyTurret : MonoBehaviour, IIndividual
             }
 
         }
-        if (!fighting)
+        else
         {
             t += Time.deltaTime;
             //controller.Move(new Vector2(Mathf.Sin(t * patrolSpeed) * patrolRange, 0));
             float a = Time.time;
-            controller.AimAt(new Vector3(Mathf.Sin(a),0,Mathf.Cos(a)));
+            controller.AimAt(this.transform.position+new Vector3(Mathf.Sin(a),0,Mathf.Cos(a)));
         }
     }
 
