@@ -22,21 +22,21 @@ public class EnemyController : MonoBehaviour
         bool fighting = false;
         if (target)
         {
-            float distance = Vector3.Distance(target.position, this.transform.position);
+            Vector3 direction = target.position- this.transform.position;
+            float distance = direction.magnitude;
             if (distance < aimRange)
             {
-                controller.AimAt(target.position);
+                //controller.AimAt(target.position);
                 if (distance < shootRange)
                 {
                     if (Random.value < aggressivity) 
                         controller.Fire1();
                     if (Random.value < aggressivity)
                         controller.Fire2();
-                    controller.Move(new Vector2(0, 0));
                 }
                 else if(controller.speed >0)
                 {
-                    controller.Move(new Vector2((target.position.x - this.transform.position.x)* chaseSpeed, 0));
+                    controller.Move(direction.normalized);
                 }
                 fighting = true;
 

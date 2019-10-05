@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour, IDamageable
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     private Vector3 moveDirection = Vector3.zero;
-    private Vector3 aimPosition = Vector3.zero;
+    private Vector3 aimDirection = Vector3.zero;
 
     void Start()
     {
@@ -32,8 +32,9 @@ public class Controller : MonoBehaviour, IDamageable
     void Update()
     {
         // movement
-        //if (moveDirection.sqrMagnitude > 0)
+        if (speed >0 ||!characterController.isGrounded)
         {
+            
             if (moveDirection.sqrMagnitude > 0.1f)
             {
                 this.transform.forward = Vector3.MoveTowards(this.transform.forward,moveDirection.normalized,Time.deltaTime*360);
@@ -45,9 +46,13 @@ public class Controller : MonoBehaviour, IDamageable
             moveDirection *= speed;
             moveDirection.y -= gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
-           
+
+            if (aimDirection != Vector3.zero)
+            {
+                turret.transform.LookAt(this.transform.position+ aimDirection);
+            }
         }
-        turret.transform.LookAt(aimPosition);
+       
     }
 
     public void Move(Vector3 direction)
@@ -57,7 +62,7 @@ public class Controller : MonoBehaviour, IDamageable
     public void AimAt(Vector3 position)
     {
         position.y = this.transform.position.y;
-        aimPosition = position;
+        aimDirection = position-this.transform.position;
     }
 
     public void Fire1()
@@ -86,6 +91,7 @@ public class Controller : MonoBehaviour, IDamageable
     void Die()
     {
         Debug.Log("die");
+        Destroy(this.gameObject);
     }
     public void Push(Vector3 force)
     {
