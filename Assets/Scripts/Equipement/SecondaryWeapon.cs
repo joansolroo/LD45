@@ -11,4 +11,8 @@ public class SecondaryWeapon : MonoBehaviour
         GuidedRocket,
         OrbitalLaser
     };
+
+    // Attributes
+    [Header("SecondaryWeapon")]
+    [SerializeField] public Type type;
 }

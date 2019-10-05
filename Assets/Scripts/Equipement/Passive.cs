@@ -9,4 +9,8 @@ public class Passive : MonoBehaviour
         HUD,
         FuturHUD
     }
+
+    // Attributes
+    [Header("Passive")]
+    [SerializeField] public Type type;
 }

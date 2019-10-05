@@ -9,4 +9,8 @@ public class Scan : MonoBehaviour
         Radar,
         Radio
     };
+
+    // Attributes
+    [Header("Scan")]
+    [SerializeField] public Type type;
 }

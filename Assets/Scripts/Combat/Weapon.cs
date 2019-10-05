@@ -12,11 +12,14 @@ public class Weapon : MonoBehaviour
         Plasma
     };
 
+    // Attributes
     [Header("Weapon")]
     [SerializeField] public int capacity;
     [SerializeField] public int load;
     [SerializeField] public float loadTime;
     [SerializeField] public bool reloadInterruptSupported = false;
+    [SerializeField] public Type type;
+
     [Header("Shooting")]
     [SerializeField] public int bulletsPerShot = 1;
     [SerializeField] public float spread = 0;

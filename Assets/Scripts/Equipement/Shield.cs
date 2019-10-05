@@ -10,4 +10,8 @@ public class Shield : MonoBehaviour
         SteelPlate,
         Magnetic
     };
+
+    // Attributes
+    [Header("Shield")]
+    [SerializeField] public Type type;
 }
