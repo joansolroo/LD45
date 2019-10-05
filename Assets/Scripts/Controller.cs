@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour, IDamageable
     private Plane m_Plane;
     private Vector3 hitPoint;
 
+    public Weapon weapon;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -48,6 +49,7 @@ public class Controller : MonoBehaviour, IDamageable
             {
                 hitPoint = ray.GetPoint(enter);
             }
+            weapon.Fire();
         }
     }
 
@@ -60,7 +62,7 @@ public class Controller : MonoBehaviour, IDamageable
 
     public void Damage(int amount)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Damaged");
     }
     public void Push(Vector3 force)
     {

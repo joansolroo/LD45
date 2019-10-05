@@ -5,7 +5,6 @@ using UnityEngine;
 public class DamagingObject : MonoBehaviour
 {
     [SerializeField] int damage = 1;
-    [SerializeField] bool isGhost = false;
 
     Vector3 position;
     float randomStartWiggling;
@@ -20,9 +19,11 @@ public class DamagingObject : MonoBehaviour
         this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.05f, 0);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != this.gameObject.tag)
+        Debug.Log("collision");
+        if (collision.gameObject.tag == "Player")
         {
             Controller controller = collision.gameObject.GetComponent<Controller>();
             if (controller != null)

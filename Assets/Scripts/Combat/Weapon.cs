@@ -25,11 +25,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] AudioClip clipReload;
 
     [SerializeField] int hand;
-    [SerializeField] SpriteRenderer sprite;
     // Use this for initialization
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -73,16 +71,10 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            // if (failShot)
             {
                 Reload();
                 //   failShot = false;
-            }/*
-            else
-            {
-                failShot = true;
-                audioSource.PlayOneShot(clipEmpty);
-            }*/
+            }
         }
     }
     public bool firing = false;
@@ -106,10 +98,10 @@ public class Weapon : MonoBehaviour
                     b.transform.position = nossle.position;
                     b.transform.rotation = nossle.rotation;
                     b.transform.RotateAround(nossle.position, Vector3.forward, Random.Range(-spread, spread));
-                    b.rb.velocity = b.transform.right * b.velocity * Random.Range(0.8f, 1.2f);
+                    b.rb.velocity = b.transform.forward * b.velocity * Random.Range(0.8f, 1.2f);
                 }
                 --load;
-                audioSource.PlayOneShot(clipFire);
+                PlaySound(clipFire);
                 
                 float t = 0;
                 float r = 0;
@@ -160,13 +152,21 @@ public class Weapon : MonoBehaviour
                 //yield return new WaitForSeconds(loadTime/2);
                 if (reloading)
                 {
-                    audioSource.PlayOneShot(clipReload);
-                    sprite.color = new Color(1,0,0,0.5f);
+                    PlaySound(clipReload);
+                    //sprite.color = new Color(1,0,0,0.5f);
                     load++;
                     yield return new WaitForSeconds(loadTime);
                 }
             }
             reloading = false;
+        }
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        if(audioSource)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 }
