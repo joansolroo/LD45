@@ -14,7 +14,14 @@ public class HUD : MonoBehaviour
     [SerializeField] public UIBar ammoBar;
     [SerializeField] public Image shieldIcon;
 
-    // Update is called once per frame
+    [SerializeField] public GameObject alignmentPanel;
+    [SerializeField] public UIBar currentAlignment;
+    [SerializeField] public UIBar futurAlignment;
+    [SerializeField] public Image direction;
+
+    private int maxAlignment = 10;
+
+    
     void Update()
     {
         // update player components
@@ -34,5 +41,18 @@ public class HUD : MonoBehaviour
             ammoBar.foreground.gameObject.SetActive(false);
         }
         shieldIcon.gameObject.SetActive(playerController.equipement.shield != null);
+
+        // algnment
+        if (playerController.hoveredObject != null)
+        {
+            int a = playerController.equipement.GetAlignment();
+            int da = playerController.equipement.GetAlignmentChange(playerController.hoveredObject);
+            alignmentPanel.SetActive(true);
+            currentAlignment.value = (float)a / maxAlignment;
+            futurAlignment.value = (float)(a+da) / maxAlignment;
+            if (da > 0) direction.rectTransform.localEulerAngles = new Vector3(0, 0, 0);
+            else direction.rectTransform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+        else alignmentPanel.SetActive(false);
     }
 }
