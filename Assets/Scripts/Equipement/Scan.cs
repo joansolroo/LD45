@@ -13,4 +13,5 @@ public class Scan : MonoBehaviour
     // Attributes
     [Header("Scan")]
     [SerializeField] public Type type;
+    [SerializeField] public int alignment;
 }

@@ -15,4 +15,5 @@ public class SecondaryWeapon : MonoBehaviour
     // Attributes
     [Header("SecondaryWeapon")]
     [SerializeField] public Type type;
+    [SerializeField] public int alignment;
 }

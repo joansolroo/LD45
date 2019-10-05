@@ -14,4 +14,5 @@ public class Shield : MonoBehaviour
     // Attributes
     [Header("Shield")]
     [SerializeField] public Type type;
+    [SerializeField] public int alignment;
 }
