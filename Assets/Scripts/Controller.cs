@@ -7,6 +7,8 @@ public class Controller : MonoBehaviour, IDamageable
     [Header("links")]
     public CharacterController characterController;
     public Equipement equipement;
+    public Transform turret;
+
     [Header("Status")]
     public int hp;
     public int maxHp;
@@ -18,6 +20,7 @@ public class Controller : MonoBehaviour, IDamageable
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     private Vector3 moveDirection = Vector3.zero;
+    private Vector3 aimPosition = Vector3.zero;
 
     void Start()
     {
@@ -29,9 +32,22 @@ public class Controller : MonoBehaviour, IDamageable
     void Update()
     {
         // movement
-        moveDirection *= speed;
-        moveDirection.y -= gravity * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
+        //if (moveDirection.sqrMagnitude > 0)
+        {
+            if (moveDirection.sqrMagnitude > 0.1f)
+            {
+                this.transform.forward = Vector3.MoveTowards(this.transform.forward,moveDirection.normalized,Time.deltaTime*360);
+            }
+            /*else
+            {
+                this.transform.LookAt(this.transform.position + this.transform.forward);
+            }*/
+            moveDirection *= speed;
+            moveDirection.y -= gravity * Time.deltaTime;
+            characterController.Move(moveDirection * Time.deltaTime);
+           
+        }
+        turret.transform.LookAt(aimPosition);
     }
 
     public void Move(Vector3 direction)
@@ -41,7 +57,7 @@ public class Controller : MonoBehaviour, IDamageable
     public void AimAt(Vector3 position)
     {
         position.y = this.transform.position.y;
-        this.transform.LookAt(position);
+        aimPosition = position;
     }
 
     public void Fire1()
@@ -57,7 +73,18 @@ public class Controller : MonoBehaviour, IDamageable
 
     public void Damage(int amount)
     {
+        this.hp -= amount;
+        if(this.hp<=0)
+        {
+            this.hp = 0;
+            Die();
+        }
         Debug.Log("Damaged");
+    }
+
+    void Die()
+    {
+        Debug.Log(die);
     }
     public void Push(Vector3 force)
     {
