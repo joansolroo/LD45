@@ -13,14 +13,16 @@ public class Game : MonoBehaviour
     private GameObject instanciatedScene;
     private GameObject instanciatedPlayer;
 
-    public bool end;
+    public bool initialized = false;
+    public bool death;
 
     protected virtual void Start()
     {
-        if(introduction != null)
+        death = false;
+        if (introduction != null)
             introduction.SetActive(true);
         resetables.SetActive(false);
-        playerController.gameObject.SetActive(false);
+        playerController.gameObject.SetActive(true);
     }
 
     protected virtual void LateUpdate()
@@ -34,7 +36,7 @@ public class Game : MonoBehaviour
                 Initialize();
             }
         }
-        else if(introduction == null)
+        else if(!initialized && introduction == null)
         {
             Initialize();
         }
@@ -42,8 +44,9 @@ public class Game : MonoBehaviour
         // standard game update
         if (introduction == null || !introduction.activeSelf)
         {
-            if (playerController.hp <= 0 && !playerController.invincible)
+            if (!death && !playerController.alive && !playerController.invincible)
             {
+                Debug.Log("toto");
                 StartCoroutine(Die());
             }
         }
@@ -53,11 +56,12 @@ public class Game : MonoBehaviour
     {
         instanciatedScene = Instantiate(resetables);
         instanciatedScene.SetActive(true);
+        initialized = true;
     }
 
     protected IEnumerator Die()
     {
-        end = true;
+        death = true;
         yield return new WaitForSeconds(gameOverDuration);
         
         DestroyImmediate(instanciatedScene);
@@ -66,6 +70,6 @@ public class Game : MonoBehaviour
         playerController.transform.position = respawn.transform.position;
         playerController.Reset();
 
-        end = false;
+        death = false;
     }
 }
