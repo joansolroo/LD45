@@ -4,59 +4,56 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour, IDamageable
 {
-    CharacterController characterController;
+    [Header("links")]
+    public CharacterController characterController;
+    public Equipement equipement;
+    [Header("Status")]
+    public int hp;
+    public int maxHp;
+    public int energy;
+    public int maxEnergy;
 
+    [Header("Movement")]
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-
     private Vector3 moveDirection = Vector3.zero;
-    private Plane m_Plane;
-    private Vector3 hitPoint;
 
-    public Equipement equipement;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        m_Plane = new Plane(Vector3.up, Vector3.zero);
-        hitPoint = transform.position + transform.forward;
+        hp = maxHp;
+        energy = maxEnergy;
     }
     
     void Update()
     {
         // movement
-        if (characterController.isGrounded)
-        {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection *= speed;
-        }
+        moveDirection *= speed;
         moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
-        transform.LookAt(hitPoint);
+    }
 
-        // fire
-        if (Input.GetMouseButton(0))
+    public void Move(Vector3 direction)
+    {
+        moveDirection = direction;
+    }
+    public void AimAt(Vector3 position)
+    {
+        position.y = this.transform.position.y;
+        this.transform.LookAt(position);
+    }
+
+    public void Fire1()
+    {
+        if (equipement.weapon != null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float enter = 0.0f;
-
-            if (m_Plane.Raycast(ray, out enter))
-            {
-                hitPoint = ray.GetPoint(enter);
-            }
-            if(equipement.weapon != null)
-            {
-                equipement.weapon.Fire();
-            }
+            equipement.weapon.Fire();
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Vector3 delta = new Vector3(0,0.5f,0);
-        Gizmos.DrawLine(transform.position + delta, hitPoint + delta);
-    }
+    public void Fire2()
+    { }
 
     public void Damage(int amount)
     {
