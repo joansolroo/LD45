@@ -114,5 +114,36 @@ public class Equipement : MonoBehaviour
         }
     }
 
-
+    // Get
+    public int GetAlignment()
+    {
+        int alignment = 0;
+        if(weapon != null)
+        {
+            alignment += weapon.alignment;
+        }
+        if (secondaryWeapon != null)
+        {
+            alignment += secondaryWeapon.alignment;
+        }
+        if (shield != null)
+        {
+            alignment += shield.alignment;
+        }
+        if (scan != null)
+        {
+            alignment += scan.alignment;
+        }
+        if (passive != null)
+        {
+            alignment += passive.alignment;
+        }
+        return alignment;
+    }
+    public int GetAlignmentChange(Component change)
+    {
+        int alignment = 0;
+        //switch(change)
+        return 0;
+    }
 }

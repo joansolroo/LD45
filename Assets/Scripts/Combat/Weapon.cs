@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public float loadTime;
     [SerializeField] public bool reloadInterruptSupported = false;
     [SerializeField] public Type type;
+    [SerializeField] public int alignment;
 
     [Header("Shooting")]
     [SerializeField] public int bulletsPerShot = 1;

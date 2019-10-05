@@ -13,4 +13,5 @@ public class Passive : MonoBehaviour
     // Attributes
     [Header("Passive")]
     [SerializeField] public Type type;
+    [SerializeField] public int alignment;
 }
