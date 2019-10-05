@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class Controller : MonoBehaviour, IDamageable
 {
     CharacterController characterController;
 
@@ -56,5 +56,20 @@ public class Controller : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 delta = new Vector3(0,0.5f,0);
         Gizmos.DrawLine(transform.position + delta, hitPoint + delta);
+    }
+
+    public void Damage(int amount)
+    {
+        throw new System.NotImplementedException();
+    }
+    public void Push(Vector3 force)
+    {
+        Debug.Log("push");
+    }
+
+    public bool OnPickObject(PickableObject picked)
+    {
+        Debug.Log("pick "+ picked.name);
+        return true;
     }
 }
