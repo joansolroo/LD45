@@ -19,7 +19,7 @@ TagManager:
   - Enemy-Particles
   - Terrain
   - Perception
-  - 
+  - Terrain-nonwalkable
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 3292254771
+    locked: 0
+  - name: New Layer
+    uniqueID: 368618843
+    locked: 0
+  - name: UI
+    uniqueID: 917840021
     locked: 0
