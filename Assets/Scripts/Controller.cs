@@ -10,17 +10,20 @@ public class Controller : MonoBehaviour, IDamageable
     public Transform turret;
 
     [Header("Status")]
-    public int hp;
     public int maxHp;
-    public int energy;
     public int maxEnergy;
 
     [Header("Movement")]
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    private Vector3 moveDirection = Vector3.zero;
-    private Vector3 aimDirection = Vector3.zero;
+
+    [Header("Debug values")]
+    public int hp;
+    public int energy;
+    [SerializeField] Vector3 moveDirection = Vector3.zero;
+    [SerializeField] Vector3 aimDirection = Vector3.zero;
+    public Component hoveredObject = null;
 
     void Start()
     {
@@ -52,7 +55,6 @@ public class Controller : MonoBehaviour, IDamageable
                 turret.transform.LookAt(this.transform.position+ aimDirection);
             }
         }
-       
     }
 
     public void Move(Vector3 direction)
@@ -98,16 +100,25 @@ public class Controller : MonoBehaviour, IDamageable
         Debug.Log("push");
     }
 
-    public bool OnPickObject(PickableObject picked)
+    public bool OnPickObject(PickableObject canPick, bool end)
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (end)
         {
-            if(picked.toPick.GetType() == typeof(Weapon))
-            {
-                equipement.SetWeapon(((Weapon)picked.toPick).type);
-            }
-            return true;
+            hoveredObject = null;
+            return false;
         }
-        return false;
+        else
+        {
+            hoveredObject = canPick;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (canPick.toPick.GetType() == typeof(Weapon))
+                {
+                    equipement.SetWeapon(((Weapon)canPick.toPick).type);
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

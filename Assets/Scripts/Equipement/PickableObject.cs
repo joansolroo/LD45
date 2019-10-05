@@ -21,17 +21,33 @@ public class PickableObject : MonoBehaviour {
     }
 
     bool triggered = false;
-    private void OnTriggerStay(Collider collision)
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleTrigger(other, false);
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        HandleTrigger(other, false);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        HandleTrigger(other, true);
+    }
+
+    private void HandleTrigger(Collider other, bool end)
     {
         if (!triggered)
         {
             triggered = true;
-            if (collision.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player")
             {
-                Controller controller = collision.gameObject.GetComponent<Controller>();
+                Controller controller = other.gameObject.GetComponent<Controller>();
                 if (controller != null)
                 {
-                    bool success = controller.OnPickObject(this);
+                    bool success = controller.OnPickObject(this,end);
+
                     if (success)
                     {
                         Destroy();
@@ -40,6 +56,7 @@ public class PickableObject : MonoBehaviour {
             }
         }
     }
+
     void Destroy()
     {
         Destroy(this.gameObject);
