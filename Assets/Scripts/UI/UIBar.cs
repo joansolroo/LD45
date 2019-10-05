@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIBar : MonoBehaviour
 {
-    [SerializeField] Text label;
-    [SerializeField] Image background;
-    [SerializeField] Image shadow;
-    [SerializeField] Image foreground;
+    [SerializeField] public Text label;
+    [SerializeField] public Image background;
+    [SerializeField] public Image shadow;
+    [SerializeField] public Image foreground;
 
     [SerializeField] float backDelay = 1;
     [SerializeField] public float value;
