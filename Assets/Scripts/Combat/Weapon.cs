@@ -27,11 +27,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] public int bulletsPerShot = 1;
     [SerializeField] public float spread = 0;
     [SerializeField] public float cooldown = 0;
+    [SerializeField] public bool firing;
+    public int lastFireFrame;
 
     [Header("Links")]
     [SerializeField] Bullet bulletPefab;
     [SerializeField] Transform[] nossles;
     [SerializeField] GameObject owner;
+
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip clipFire;
@@ -42,7 +45,8 @@ public class Weapon : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       
+        firing = false;
+        lastFireFrame = 0;
     }
 
     // Update is called once per frame
@@ -59,12 +63,18 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+    private void LateUpdate()
+    {
+        if(currentCooldown<=0 && lastFireFrame != Time.frameCount)
+        {
+            firing = false;
+        }
+    }
 
     public void SetActive(bool active)
     {
         if (active == false)
         {
-            firing = false;
             reloading = false;
             this.gameObject.SetActive(false);
         }
@@ -78,8 +88,9 @@ public class Weapon : MonoBehaviour
     {
         return gameObject.activeSelf;
     }
-    bool failShot = false;
-    float lastFire = 0;
+
+    private bool failShot = false;
+    private float lastFire = 0;
     public void Fire()
     {
         if (load > 0)
@@ -95,14 +106,16 @@ public class Weapon : MonoBehaviour
             }
         }
     }
-    public bool firing = false;
-    float currentCooldown = 0;
+
+    private float currentCooldown = 0;
     void DoFire()
     {
-        if (currentCooldown == 0 && !firing)
+        if (currentCooldown == 0)
         {
-            Debug.Log("do fire");
             firing = true;
+            lastFireFrame = Time.frameCount;
+
+            Debug.Log("do fire");
             if (reloading && reloadInterruptSupported)
             {
                 CancelReload();
@@ -126,31 +139,11 @@ public class Weapon : MonoBehaviour
                 --load;
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
-                float t = 0;
-                float r = 0;
-                /*while (t < cooldown / 2)
-                {
-                    r = Mathf.MoveTowards(r, 30, 30 * cooldown / 2);
-                    this.transform.parent.localEulerAngles = new Vector3(0, 0, r);
-                    yield return new WaitForEndOfFrame();
-                    t += Time.deltaTime;
-
-                } while (t < cooldown)
-                {
-                    r = Mathf.MoveTowards(r, 0, 30 * cooldown / 2);
-                    this.transform.parent.localEulerAngles = new Vector3(0, 0, r);
-                    yield return new WaitForEndOfFrame();
-                    t += Time.deltaTime;
-
-                }
-                this.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
-                */
                 if (load == 0)
                 {
                     Reload();
                 }
             }
-            firing = false;
         }
     }
 
