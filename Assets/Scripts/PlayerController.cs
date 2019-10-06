@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDamage(int dmg)
     {
-        CameraEffects.main.Flash(0.25f, Mathf.Min(1, dmg / 2f));
+        CameraEffects.main.Flash(0.1f, Mathf.Min(0.3f, dmg / 2f));
     }
 
     void OnDrawGizmosSelected()

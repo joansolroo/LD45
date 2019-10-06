@@ -22,7 +22,7 @@ public class DamagingObject : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision");
+       //Debug.Log("collision");
         if (other.gameObject.tag == "Player")
         {
             Controller controller = other.gameObject.GetComponent<Controller>();

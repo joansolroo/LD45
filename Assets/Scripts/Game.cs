@@ -46,7 +46,6 @@ public class Game : MonoBehaviour
         {
             if (!death && !playerController.alive && !playerController.invincible)
             {
-                Debug.Log("toto");
                 StartCoroutine(Die());
             }
         }

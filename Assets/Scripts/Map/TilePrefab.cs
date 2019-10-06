@@ -31,7 +31,6 @@ public class TilePrefab : Tile
                 tile3D.spriteRenderer.sprite = this.sprite;
             }
             go.transform.localEulerAngles = new Vector3(0, 0, 0);
-            Debug.Log("tilemap:" + go.transform.parent.name);
             go.transform.localScale = Vector3.one;
         }
         return true;

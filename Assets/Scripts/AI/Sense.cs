@@ -37,7 +37,7 @@ public class Sense : MonoBehaviour
 
         if (go!=owner && layer.Contains(go.layer))
         {
-            Debug.Log("sensed " + other.name);
+            //Debug.Log("sensed " + other.name);
             perceived[go] = go.GetComponent<IPerceptible>();
             perceivedCount = perceived.Count;
         }
