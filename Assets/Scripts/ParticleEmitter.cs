@@ -13,7 +13,7 @@ public class ParticleEmitter : MonoBehaviour
 
     int currentCount = 0;
     int current = -1;
-    float t = 0;
+    float t;
     Vector3 prevPosition;
     Vector3 initScale;
     [SerializeField] Gradient color;
@@ -24,10 +24,12 @@ public class ParticleEmitter : MonoBehaviour
     [SerializeField] float rateDistance = 1;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 velocityNoise;
+    [SerializeField] [Range(0.1f, 0.9f)] public float durationDeviation;
     // Start is called before the first frame update
     void Start()
     {
         prevPosition = this.transform.position;
+        t = Random.Range(0, 1.0f);
         
         if (local)
         {
@@ -117,7 +119,7 @@ public class ParticleEmitter : MonoBehaviour
 
         particlePos[current] = local ? Vector3.zero : this.transform.position;
         particle.SetActive(true);
-        particleTTL[current] = duration;
+        particleTTL[current] = duration * Random.Range(1 - durationDeviation, 1 + durationDeviation);
         particle.transform.position = this.transform.position;
 
         if (currentCount < count)
