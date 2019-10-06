@@ -19,7 +19,7 @@ public class DestructableObject : MonoBehaviour,IDamageable {
     private void OnCollisionEnter(Collision collision)
     {
         
-        Debug.Log("hitted by " + collision.collider.name+"::"+ collision.gameObject.layer);
+        //Debug.Log("hitted by " + collision.collider.name+"::"+ collision.gameObject.layer);
         if (collision.gameObject.layer == 10 && collision.gameObject.tag != this.tag)
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();

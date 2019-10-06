@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if(currentCooldown<=0 && lastFireFrame != Time.frameCount)
+        if (currentCooldown <= 0 && lastFireFrame != Time.frameCount)
         {
             firing = false;
         }
@@ -107,7 +107,7 @@ public class Weapon : MonoBehaviour
             }
         }
     }
-
+    int currentNossle = 0;
     private float currentCooldown = 0;
     void DoFire()
     {
@@ -116,30 +116,30 @@ public class Weapon : MonoBehaviour
             firing = true;
             lastFireFrame = Time.frameCount;
 
-            Debug.Log("do fire");
+            //Debug.Log("do fire");
             if (reloading && reloadInterruptSupported)
             {
                 CancelReload();
             }
             if (!reloading)
             {
-                foreach (Transform nossle in nossles)
+
+                for (int c = 0; c < bulletsPerShot; ++c)
                 {
-                    for (int c = 0; c < bulletsPerShot; ++c)
-                    {
 
-                        Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
-                        b.tag = owner.tag;
-                        b.gameObject.SetActive(true);
-                        //Transform nossle = nossles[Random.Range(0, nossles.Length)];
-                        b.transform.position = nossle.position;
-                        b.transform.rotation = nossle.rotation;
-                        b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
+                    Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
+                    b.tag = owner.tag;
+                    b.gameObject.SetActive(true);
+                    Transform nossle = nossles[currentNossle];
+                    b.transform.position = nossle.position;
+                    b.transform.rotation = nossle.rotation;
+                    b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
 
-                        b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
-                        Debug.DrawRay(b.transform.position, b.rb.velocity);
-                    }
+                    b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
+                    Debug.DrawRay(b.transform.position, b.rb.velocity);
+                    currentNossle = (currentNossle + 1) % nossles.Length;
                 }
+
                 --load;
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
@@ -152,42 +152,42 @@ public class Weapon : MonoBehaviour
     }
 
 
-public void Reload()
-{
-    StartCoroutine(DoReload());
-}
-void CancelReload()
-{
-    StopCoroutine(DoReload());
-    reloading = false;
-}
-public bool reloading = false;
-
-IEnumerator DoReload()
-{
-    if (!reloading)
+    public void Reload()
     {
-        reloading = true;
-        while (load < capacity && reloading)
-        {
-            //yield return new WaitForSeconds(loadTime/2);
-            if (reloading)
-            {
-                PlaySound(clipReload);
-                //sprite.color = new Color(1,0,0,0.5f);
-                load++;
-                yield return new WaitForSeconds(loadTime);
-            }
-        }
+        StartCoroutine(DoReload());
+    }
+    void CancelReload()
+    {
+        StopCoroutine(DoReload());
         reloading = false;
     }
-}
+    public bool reloading = false;
 
-void PlaySound(AudioClip clip)
-{
-    if (audioSource)
+    IEnumerator DoReload()
     {
-        audioSource.PlayOneShot(clip);
+        if (!reloading)
+        {
+            reloading = true;
+            while (load < capacity && reloading)
+            {
+                //yield return new WaitForSeconds(loadTime/2);
+                if (reloading)
+                {
+                    PlaySound(clipReload);
+                    //sprite.color = new Color(1,0,0,0.5f);
+                    load++;
+                    yield return new WaitForSeconds(loadTime);
+                }
+            }
+            reloading = false;
+        }
     }
-}
+
+    void PlaySound(AudioClip clip)
+    {
+        if (audioSource)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
 }

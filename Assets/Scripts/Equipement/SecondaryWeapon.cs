@@ -103,7 +103,7 @@ public class SecondaryWeapon : MonoBehaviour
     {
         if (currentCooldown == 0 && !firing)
         {
-            Debug.Log("do fire");
+            //Debug.Log("do fire");
             firing = true;
             if (reloading && reloadInterruptSupported)
             {

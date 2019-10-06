@@ -114,7 +114,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     {
         if (equipement.weapon != null)
         {
-            Debug.Log("Fire 1");
+            //Debug.Log("Fire 1");
             equipement.weapon.Fire();
         }
     }
@@ -123,7 +123,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     {
         if (equipement.secondaryWeapon != null)
         {
-            Debug.Log("Fire 2");
+            //Debug.Log("Fire 2");
             equipement.secondaryWeapon.Fire();
         }
     }
@@ -141,7 +141,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             this.hp = 0;
             Die();
         }
-        Debug.Log("Damaged");
+        //Debug.Log("Damaged");
     }
 
     void Die()
