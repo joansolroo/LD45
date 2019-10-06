@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Follower : MonoBehaviour
 {
     public Transform target;
@@ -10,6 +11,11 @@ public class Follower : MonoBehaviour
     public float rotationDeadZone = 1;
     public float rotationMax = 1;
     public float rotationSpeed;
+
+    private void Update()
+    {
+        LateUpdate();
+    }
     void LateUpdate()
     {
         transform.position = target.position;
