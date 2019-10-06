@@ -12,6 +12,10 @@ public class PickableObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Init();
+    }
+    public void Init()
+    {
         position = transform.localPosition;
         randomStartWiggling = Random.value * 10;
     }

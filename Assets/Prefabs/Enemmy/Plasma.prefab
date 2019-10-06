@@ -53,6 +53,8 @@ MonoBehaviour:
   reloadInterruptSupported: 0
   type: 4
   alignment: 3
+  iconPrefab: {fileID: 4632237054629721483, guid: 9ed58d29bf807c340a77b5460148ab10,
+    type: 3}
   bulletsPerShot: 1
   spread: 3
   cooldown: 0.5
@@ -86,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3851446006005825620
 Transform:
   m_ObjectHideFlags: 0

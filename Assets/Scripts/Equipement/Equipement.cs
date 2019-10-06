@@ -19,11 +19,17 @@ public class Equipement : MonoBehaviour
     public Scan[] scanList;
     public Passive[] passiveList;
 
+    [Header("Equipement change")]
+    public GameObject pickablePrefab;
+    public GameObject pickablePrefabSW;
+    [Range(0.0f, 10f)] public float pushAmplitude;
 
     // Set specific equipement
     public void SetWeapon(Weapon.Type type)
     {
+        DropWeapon(weapon);
         weapon = null;
+
         foreach (Weapon w in weaponList)
         {
             if (w.type == type)
@@ -39,6 +45,7 @@ public class Equipement : MonoBehaviour
     }
     public void SetSecondaryWeapon(SecondaryWeapon.Type type)
     {
+        DropSecondaryWeapon(secondaryWeapon);
         secondaryWeapon = null;
         foreach (SecondaryWeapon sw in secondaryWeaponList)
         {
@@ -145,5 +152,59 @@ public class Equipement : MonoBehaviour
                 alignment = ((Passive)change).alignment - (passive != null ? passive.alignment : 0);
         }
         return alignment;
+    }
+
+    // private
+    private void DropWeapon(Weapon w)
+    {
+        if (w == null) return;
+
+        GameObject drop = GameObject.Instantiate(pickablePrefab);
+        drop.transform.position = transform.position + 3 * Vector3.up;
+        drop.SetActive(true);
+        Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
+        drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
+
+        GameObject PickableEmpty = drop.transform.Find("PickableEmpty").gameObject;
+        Weapon targetWeapon = PickableEmpty.GetComponent<Weapon>();
+        targetWeapon.type = w.type;
+        targetWeapon.alignment = w.alignment;
+
+        if (w.iconPrefab != null)
+        {
+            GameObject icon = Instantiate(w.iconPrefab);
+            icon.transform.parent = PickableEmpty.transform.Find("Slot");
+            icon.transform.localPosition = new Vector3(0, 0, 0);
+            icon.transform.localRotation = Quaternion.identity;
+            icon.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+    private void DropSecondaryWeapon(SecondaryWeapon w)
+    {
+        if (w == null)
+        {
+            Debug.LogWarning("w is null");
+            return;
+
+        }
+        GameObject drop = GameObject.Instantiate(pickablePrefabSW);
+        drop.transform.position = transform.position + 3 * Vector3.up;
+        drop.SetActive(true);
+        Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
+        drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
+
+        GameObject PickableEmptySW = drop.transform.Find("PickableEmptySW").gameObject;
+        SecondaryWeapon targetWeapon = PickableEmptySW.GetComponent<SecondaryWeapon>();
+        targetWeapon.type = w.type;
+        targetWeapon.alignment = w.alignment;
+
+        if (w.iconPrefab != null)
+        {
+            GameObject icon = Instantiate(w.iconPrefab);
+            icon.transform.parent = PickableEmptySW.transform.Find("Slot");
+            icon.transform.localPosition = new Vector3(0, 0, 0);
+            icon.transform.localRotation = Quaternion.identity;
+            icon.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

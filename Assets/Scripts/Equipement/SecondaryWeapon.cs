@@ -16,7 +16,7 @@ public class SecondaryWeapon : MonoBehaviour
     [Header("SecondaryWeapon")]
     [SerializeField] public Type type;
     [SerializeField] public int alignment;
-
+    [SerializeField] public GameObject iconPrefab;
 
 
     // Attributes

@@ -12,12 +12,13 @@ public class GuidingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bullet.targetPosition = targetPos;
+        if (bullet)
+            bullet.targetPosition = targetPos;
         targetDisplay.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if (target)
+        if (target && bullet)
         {
             targetPos = target.position;
             bullet.targetPosition = targetPos;
