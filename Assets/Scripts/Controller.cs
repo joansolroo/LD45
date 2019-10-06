@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public CharacterController characterController;
     public Equipement equipement;
     public Transform turret;
+    public Transform body;
 
     [Header("Status")]
     public int maxHp;
@@ -30,6 +31,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     void Start()
     {
+        if(!body)
+        {
+            body = this.transform;
+        }
         equipement.SetWeapon(Weapon.Type.None);
         characterController = GetComponent<CharacterController>();
         Reset();
@@ -44,7 +49,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             
             if (moveDirection.sqrMagnitude > 0.1f)
             {
-                this.transform.forward = Vector3.MoveTowards(this.transform.forward,moveDirection.normalized,Time.deltaTime*360);
+                
+                body.transform.rotation =Quaternion.RotateTowards(body.transform.rotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up),Time.deltaTime*360*2);
             }
             /*else
             {
@@ -63,7 +69,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
             if (aimDirection != Vector3.zero)
             {
-                turret.transform.LookAt(this.transform.position+ aimDirection);
+                turret.transform.LookAt(turret.transform.position+ aimDirection);
             }
         }
         if (hoveredObject && Input.GetKeyDown(KeyCode.Space))
@@ -84,9 +90,18 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     {
         moveDirection = direction;
     }
+    public void MoveSubjetive(Vector3 localDirection)
+    {
+        moveDirection = turret.TransformDirection(localDirection);
+    }
     public void AimAt(Vector3 position)
     {
         aimDirection = position-this.transform.position;
+        aimDirection.y = 0;
+    }
+    public void AimRotate(Vector3 angle)
+    {
+        aimDirection = Quaternion.Euler(angle) * turret.forward;
         aimDirection.y = 0;
     }
 

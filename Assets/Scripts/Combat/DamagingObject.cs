@@ -6,17 +6,17 @@ public class DamagingObject : MonoBehaviour
 {
     [SerializeField] int damage = 1;
 
-    Vector3 position;
-    float randomStartWiggling;
+    //Vector3 position;
+    //float randomStartWiggling;
     // Use this for initialization
     void Start()
     {
-        position = transform.localPosition;
-        randomStartWiggling = Random.value * 10;
+       // position = transform.localPosition;
+      //  randomStartWiggling = Random.value * 10;
     }
     void LateUpdate()
     {
-        this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.05f, 0);
+      //  this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.05f, 0);
     }
 
     

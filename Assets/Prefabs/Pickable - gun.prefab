@@ -416,11 +416,13 @@ MonoBehaviour:
   load: 0
   loadTime: 0
   reloadInterruptSupported: 0
-  type: 1
+  type: 2
   alignment: 0
   bulletsPerShot: 1
   spread: 0
   cooldown: 0
+  firing: 0
+  lastFireFrame: 0
   bulletPefab: {fileID: 0}
   nossles: []
   owner: {fileID: 0}
@@ -429,7 +431,6 @@ MonoBehaviour:
   clipEmpty: {fileID: 0}
   clipReload: {fileID: 0}
   hand: 0
-  firing: 0
   reloading: 0
 --- !u!65 &9052493598054820960
 BoxCollider:
@@ -646,6 +647,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4947044053139919256, guid: a817a53e77e9aa94e8e0394b53c816e2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947044053139919260, guid: a817a53e77e9aa94e8e0394b53c816e2,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4947044053139919263, guid: a817a53e77e9aa94e8e0394b53c816e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -699,16 +710,6 @@ PrefabInstance:
     - target: {fileID: 4947044053139919263, guid: a817a53e77e9aa94e8e0394b53c816e2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947044053139919260, guid: a817a53e77e9aa94e8e0394b53c816e2,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947044053139919256, guid: a817a53e77e9aa94e8e0394b53c816e2,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

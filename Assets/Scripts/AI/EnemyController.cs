@@ -23,6 +23,10 @@ public class EnemyController : MonoBehaviour, IIndividual
     Vector3 direction;
     float distance;
 
+    void Start ()
+    {
+        target = PlayerController.main.transform;
+    }
     private void Update()
     {
         Sense();

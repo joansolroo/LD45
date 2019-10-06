@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ece0e5c6f542c43b76cca3a3d1dc83, type: 3}
   m_Name: tile-street
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -283430332756346738, guid: 5edb024ffc270734694d0072c8afe427,
+  m_Sprite: {fileID: -9168224450592513952, guid: 5edb024ffc270734694d0072c8afe427,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:

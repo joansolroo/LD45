@@ -122,19 +122,22 @@ public class Weapon : MonoBehaviour
             }
             if (!reloading)
             {
-                for (int c = 0; c < bulletsPerShot; ++c)
+                foreach (Transform nossle in nossles)
                 {
+                    for (int c = 0; c < bulletsPerShot; ++c)
+                    {
 
-                    Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
-                    b.tag = owner.tag;
-                    b.gameObject.SetActive(true);
-                    Transform nossle = nossles[Random.Range(0, nossles.Length)];
-                    b.transform.position = nossle.position;
-                    b.transform.rotation = nossle.rotation;
-                    b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
-                   
-                    b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
-                    Debug.DrawRay(b.transform.position, b.rb.velocity);
+                        Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
+                        b.tag = owner.tag;
+                        b.gameObject.SetActive(true);
+                        //Transform nossle = nossles[Random.Range(0, nossles.Length)];
+                        b.transform.position = nossle.position;
+                        b.transform.rotation = nossle.rotation;
+                        b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
+
+                        b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
+                        Debug.DrawRay(b.transform.position, b.rb.velocity);
+                    }
                 }
                 --load;
                 PlaySound(clipFire);
