@@ -1359,6 +1359,11 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 6479776258919175225}
+    - target: {fileID: 6291744842530037586, guid: ba116a84b66a85b429d1e2f3617358ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8638812806207163935, guid: ba116a84b66a85b429d1e2f3617358ab,
         type: 3}
       propertyPath: owner
@@ -1378,6 +1383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861417349550696508, guid: ba116a84b66a85b429d1e2f3617358ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba116a84b66a85b429d1e2f3617358ab, type: 3}

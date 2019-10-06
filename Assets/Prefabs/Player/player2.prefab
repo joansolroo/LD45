@@ -306,8 +306,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.98, y: 0.7, z: 1.05}
-  m_Center: {x: 0, y: 0.35, z: -0.1}
+  m_Size: {x: 0.98, y: 0.5, z: 1.05}
+  m_Center: {x: 0, y: 0.25, z: -0.1}
 --- !u!143 &5271712359392772030
 CharacterController:
   m_ObjectHideFlags: 0
@@ -857,6 +857,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minigun
       objectReference: {fileID: 0}
+    - target: {fileID: 3136733630974915141, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
+        type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 5271712359392772024}
     - target: {fileID: 7618353482499255217, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -912,11 +917,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3136733630974915141, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
-        type: 3}
-      propertyPath: owner
-      value: 
-      objectReference: {fileID: 5271712359392772024}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f, type: 3}
 --- !u!4 &8896505453612540953 stripped
@@ -1489,6 +1489,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5262541853032616028, guid: 88b996614a7c452439a2650fae216bd0,
+        type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 5271712359392772024}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b996614a7c452439a2650fae216bd0, type: 3}
 --- !u!4 &3512066982129508206 stripped

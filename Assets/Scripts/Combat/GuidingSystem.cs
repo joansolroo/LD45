@@ -12,7 +12,6 @@ public class GuidingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         bullet.targetPosition = targetPos;
         targetDisplay.gameObject.SetActive(false);
     }
