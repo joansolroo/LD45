@@ -29,6 +29,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public bool grounded;
     public bool alive = true;
 
+    public delegate void ControllerEventInt(int num);
+    public delegate void ControllerEventt();
+    public ControllerEventInt OnDamage;
+
     void Start()
     {
         if(!body)
@@ -125,8 +129,13 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public void Damage(int amount)
     {
+
         this.hp -= amount;
-        if(this.hp<=0)
+        if (OnDamage != null)
+        {
+            OnDamage(amount);
+        }
+        if (this.hp<=0)
         {
             this.hp = 0;
             Die();

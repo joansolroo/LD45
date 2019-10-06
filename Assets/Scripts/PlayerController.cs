@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         m_Plane = new Plane(Vector3.up, Vector3.zero);
         hitPoint = transform.position + transform.forward;
+
+        controller.OnDamage+=OnDamage;
     }
 
     // Update is called once per frame
@@ -88,6 +90,11 @@ public class PlayerController : MonoBehaviour
         }
        
 
+    }
+
+    public void OnDamage(int dmg)
+    {
+        CameraEffects.main.Flash(0.25f, Mathf.Min(1, dmg / 2f));
     }
 
     void OnDrawGizmosSelected()

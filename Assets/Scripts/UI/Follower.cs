@@ -13,10 +13,13 @@ public class Follower : MonoBehaviour
     void LateUpdate()
     {
         transform.position = target.position;
-        float currentAngle = Quaternion.Angle(transform.rotation, targetOrientation.rotation);
-        if (currentAngle > rotationDeadZone)
+        if (targetOrientation)
         {
-            transform.rotation =Quaternion.RotateTowards(transform.rotation, targetOrientation.rotation, Mathf.Pow(Mathf.Clamp01(((currentAngle-rotationDeadZone)/ (rotationMax - rotationDeadZone))),2)*( rotationSpeed) *Time.deltaTime);
+            float currentAngle = Quaternion.Angle(transform.rotation, targetOrientation.rotation);
+            if (currentAngle > rotationDeadZone)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetOrientation.rotation, Mathf.Pow(Mathf.Clamp01(((currentAngle - rotationDeadZone) / (rotationMax - rotationDeadZone))), 2) * (rotationSpeed) * Time.deltaTime);
+            }
         }
     }
 }

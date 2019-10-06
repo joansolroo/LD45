@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 5511186917469261694}
   - component: {fileID: 5511186917469261695}
   - component: {fileID: 5511186917469261692}
+  - component: {fileID: 4562318910924635121}
+  - component: {fileID: 5456965094758514665}
   - component: {fileID: 5511186917469261689}
+  - component: {fileID: 767444174339346036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -27,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5511186917469261693}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 1, z: -1}
+  m_LocalPosition: {x: 0, y: 1, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5511186918058857878}
@@ -43,7 +46,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.43921572, g: 0.6784314, b: 0.2784314, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -84,6 +87,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5511186917469261693}
   m_Enabled: 1
+--- !u!114 &4562318910924635121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5511186917469261693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3a070408aa941ab83ae10be1708848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 0
+  _shader: {fileID: 4800000, guid: ba40dc630e1d9417cb9ea22586ece1e1, type: 3}
+--- !u!114 &5456965094758514665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5511186917469261693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870b9a8f0f82f4f56800cc427bcd1025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scanLineJitter: 0
+  _verticalJump: 0
+  _horizontalShake: 0
+  _colorDrift: 0
+  _shader: {fileID: 4800000, guid: da33272284ea24f208f36998880990be, type: 3}
 --- !u!114 &5511186917469261689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,12 +125,68 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5511186917469261693}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 17769ea3d5e262e4ca120b17e4931bab, type: 2}
+--- !u!114 &767444174339346036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5511186917469261693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878d803a0095b074897884375750dfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  analog: {fileID: 5456965094758514665}
+  digital: {fileID: 4562318910924635121}
+  flashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.13167202
+      value: 0.889938
+      inSlope: 8.31752
+      outSlope: 0.003316614
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.24053723
+      outWeight: 0.23703945
+    - serializedVersion: 3
+      time: 0.33074215
+      value: 0.8821126
+      inSlope: 0.015795978
+      outSlope: -1.456164
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.5143875
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.2498037
+      outSlope: -1.2498037
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.22073072
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5511186918058857879
 GameObject:
   m_ObjectHideFlags: 0
