@@ -7,6 +7,8 @@ public class Cursor : MonoBehaviour
     public Vector3 targetPosition;
     public Vector3 orientation;
     public static Cursor main;
+
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -15,8 +17,9 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+       
         this.transform.position = targetPosition;
-        this.transform.eulerAngles = orientation;
+        this.transform.up = orientation;
         /*
         float cursorSpeedFactor = 10;
         float stretchiness = 0.1f;

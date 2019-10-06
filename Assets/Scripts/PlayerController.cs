@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
 
     [SerializeField] Cursor cursor;
+    public LayerMask pointLayer;
     public static PlayerController main;
 
     private void Awake()
@@ -41,13 +42,23 @@ public class PlayerController : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         {
-            
-            //RaycastHit hit;
-            //if (Physics.Raycast(ray, out hit))
+            hitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10);
+            controller.AimAt(hitPoint);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000,pointLayer))
             {
-                hitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition+Vector3.forward*10);
-                controller.AimAt(hitPoint);
-               
+                if(hit.point.y>0.5f)
+                {
+                    cursor.targetPosition = hit.point;
+                    cursor.targetPosition.y = 0.5f;
+                }
+                else
+                {
+                    cursor.targetPosition = hit.point;
+                }
+                
+                cursor.orientation = hit.normal;
             }
 
            /* hitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 5);
