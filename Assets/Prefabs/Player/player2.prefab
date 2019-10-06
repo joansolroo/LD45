@@ -455,7 +455,7 @@ MonoBehaviour:
   body: {fileID: 8750293032062435891}
   maxHp: 50
   maxEnergy: 10
-  speed: 10
+  speed: 7.09
   jumpSpeed: 8
   gravity: 20
   invincible: 0
@@ -694,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128892, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128890, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -749,6 +749,11 @@ PrefabInstance:
     - target: {fileID: 4449982073472128890, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
@@ -879,7 +884,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: duration
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -889,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: rateDistance
-      value: 40.78
+      value: 12.34
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -919,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: durationDeviation
-      value: 0.462
+      value: 0.019
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -946,6 +951,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3136733630974915141, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
+        type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 5271712359392772024}
     - target: {fileID: 7618353482499255217, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1001,11 +1011,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3136733630974915141, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
-        type: 3}
-      propertyPath: owner
-      value: 
-      objectReference: {fileID: 5271712359392772024}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f, type: 3}
 --- !u!114 &4127692191023447533 stripped
@@ -1206,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128892, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128890, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -1391,7 +1396,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: duration
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -1401,7 +1406,7 @@ PrefabInstance:
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: rateDistance
-      value: 43.55
+      value: 12.34
       objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
@@ -1427,6 +1432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocityNoise.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: durationDeviation
+      value: 0.019
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}

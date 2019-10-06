@@ -24,7 +24,7 @@ public class ParticleEmitter : MonoBehaviour
     [SerializeField] float rateDistance = 1;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 velocityNoise;
-    [SerializeField] [Range(0.1f, 0.9f)] public float durationDeviation;
+    [SerializeField] [Range(0.0f, 0.9f)] public float durationDeviation;
     // Start is called before the first frame update
     void Start()
     {
