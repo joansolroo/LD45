@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour, IIndividual
     Vector3 lastKnownPosition;
     Vector3 currentPosition;
     Vector3 direction;
+    Vector3 currentDirection;
     float distance;
 
     void Start ()
@@ -38,11 +39,21 @@ public class EnemyController : MonoBehaviour, IIndividual
     {
 
         currentPosition = target.position;
-        direction = currentPosition - this.transform.position;
-        distance = direction.magnitude;
+        Vector3 newDirection = currentPosition - this.transform.position;
+        distance = newDirection.magnitude;
         if (distance < aimRange)
         {
             lastKnownPosition = currentPosition;
+            direction = newDirection.normalized;
+        }else
+        {
+            if(Random.value < 0.05f)
+            {
+                float a = Random.Range(0,Mathf.Deg2Rad*360);
+                
+                direction = new Vector3(Mathf.Sin(a), 0, Mathf.Cos(a));
+                lastKnownPosition = this.transform.position + direction;
+            }
         }
     }
 
@@ -53,7 +64,7 @@ public class EnemyController : MonoBehaviour, IIndividual
 
     public void Act()
     {
-
+        currentDirection = Vector3.MoveTowards(currentDirection, direction, Time.deltaTime);
         controller.Move(Vector3.zero);
         bool fighting = false;
         if (target)
@@ -67,10 +78,15 @@ public class EnemyController : MonoBehaviour, IIndividual
                         controller.Fire1();
                     if (Random.value < aggressivity)
                         controller.Fire2();
+
+                    if(distance> shootRange/2)
+                    {
+                        controller.Move(currentDirection);
+                    }
                 }
                 else if (controller.speed > 0)
                 {
-                    controller.Move(direction.normalized);
+                    controller.Move(currentDirection);
                 }
                 fighting = true;
 
@@ -80,8 +96,7 @@ public class EnemyController : MonoBehaviour, IIndividual
         if (!fighting && patrolRange > 0 && patrolSpeed > 0)
         {
             t += Time.deltaTime;
-            //controller.Move(new Vector2(Mathf.Sin(t * patrolSpeed) * patrolRange, 0));
-            controller.AimAt(transform.right);
+            controller.Move(currentDirection);
         }
     }
 

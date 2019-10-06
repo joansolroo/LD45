@@ -746,6 +746,9 @@ MonoBehaviour:
   shieldList: []
   scanList: []
   passiveList: []
+  pickablePrefab: {fileID: 0}
+  pickablePrefabSW: {fileID: 0}
+  pushAmplitude: 0
 --- !u!114 &275760603516775353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +766,7 @@ MonoBehaviour:
   aggressivity: 0.1
   aimRange: 16
   shootRange: 4
-  patrolRange: 0
+  patrolRange: 3
   patrolSpeed: 1
   chaseSpeed: 1
 --- !u!54 &6102275748897562419
