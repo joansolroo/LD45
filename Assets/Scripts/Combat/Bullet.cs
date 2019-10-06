@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         ttl -= Time.deltaTime;
         this.transform.forward = rb.velocity.normalized;
-        if(guided)
+        if (guided)
         {
             Vector3 v = (targetPosition - this.transform.position) * Time.deltaTime;
             v.y *= 4;
@@ -90,16 +90,17 @@ public class Bullet : MonoBehaviour
         float t = 1;
         float startWidth = trail.startWidth;
         float endWidth = trail.endWidth;
-        WaitForEndOfFrame wait =  new WaitForEndOfFrame();
-        while (t >= 0)
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        while (t >= 0 && trail != null)
         {
-            t -= Time.deltaTime*5;
+            t -= Time.deltaTime * 1;
             trail.startWidth = startWidth * t;
             trail.endWidth = endWidth * t;
-            trail.time = (5*t);
+            trail.time = (5 * t);
             yield return wait;
+
         }
-        
+
         Destroy(this.gameObject);
     }
     private void OnDrawGizmos()
