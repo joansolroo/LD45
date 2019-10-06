@@ -81,7 +81,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             if (hoveredObject.toPick.GetType() == typeof(Weapon))
             {
                 equipement.SetWeapon(((Weapon)hoveredObject.toPick).type);
-            }else if (hoveredObject.toPick.GetType() == typeof(SecondaryWeapon))
+            }
+            else if (hoveredObject.toPick.GetType() == typeof(SecondaryWeapon))
             {
                 equipement.SetSecondaryWeapon(((SecondaryWeapon)hoveredObject.toPick).type);
             }

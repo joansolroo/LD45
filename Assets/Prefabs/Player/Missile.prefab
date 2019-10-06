@@ -360,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   alignment: 3
+  iconPrefab: {fileID: 8283277758809707810, guid: 5b307b40c23ea2b41836b16ed3fb0c1c,
+    type: 3}
   capacity: 100
   load: 100
   loadTime: 0.1

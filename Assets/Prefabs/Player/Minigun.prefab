@@ -363,6 +363,8 @@ MonoBehaviour:
   reloadInterruptSupported: 0
   type: 2
   alignment: -3
+  iconPrefab: {fileID: 8870219351395095898, guid: 1c3c9f38dbb10624d92c2fb1a9999e19,
+    type: 3}
   bulletsPerShot: 1
   spread: 7
   cooldown: 0.1
