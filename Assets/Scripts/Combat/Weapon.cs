@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public float spread = 0;
     [SerializeField] public float cooldown = 0;
     [SerializeField] public bool firing;
-    public int lastFireFrame;
+    private int lastFireFrame;
 
     [Header("Links")]
     [SerializeField] Bullet bulletPefab;
