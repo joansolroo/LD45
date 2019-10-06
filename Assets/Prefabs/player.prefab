@@ -788,7 +788,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7064586156664860387}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -968,6 +968,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c7cf0013e5d0db14b8ad41bbe8b0fd27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2534866581884222612, guid: c7cf0013e5d0db14b8ad41bbe8b0fd27,
         type: 3}
       propertyPath: m_Layer
@@ -1068,6 +1073,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 18def2efc97f56647823db59c36e1ffd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2534866581884222612, guid: 18def2efc97f56647823db59c36e1ffd,
         type: 3}
       propertyPath: m_Layer
@@ -1148,6 +1158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 4947044053139919260, guid: a817a53e77e9aa94e8e0394b53c816e2,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4947044053139919263, guid: a817a53e77e9aa94e8e0394b53c816e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1202,11 +1217,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947044053139919260, guid: a817a53e77e9aa94e8e0394b53c816e2,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a817a53e77e9aa94e8e0394b53c816e2, type: 3}
@@ -1336,6 +1346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3cdb670aae0dc28449cfb890c59b085e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2534866581884222612, guid: 3cdb670aae0dc28449cfb890c59b085e,
         type: 3}
