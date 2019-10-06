@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         {
             body = this.transform;
         }
-        equipement.SetWeapon(Weapon.Type.None);
+        //equipement.SetWeapon(Weapon.Type.None);
         characterController = GetComponent<CharacterController>();
         Reset();
     }

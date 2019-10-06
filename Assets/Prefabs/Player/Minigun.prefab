@@ -366,6 +366,7 @@ MonoBehaviour:
   bulletsPerShot: 1
   spread: 7
   cooldown: 0.1
+  firing: 0
   bulletPefab: {fileID: 8668716727377122327}
   nossles:
   - {fileID: 709636060601551814}
@@ -376,7 +377,6 @@ MonoBehaviour:
   clipEmpty: {fileID: 0}
   clipReload: {fileID: 0}
   hand: 0
-  firing: 0
   reloading: 0
 --- !u!114 &6051140436194850945
 MonoBehaviour:
@@ -393,7 +393,7 @@ MonoBehaviour:
   weapon: {fileID: 3136733630974915141}
   pivot1: {fileID: 2162429834032704877}
   pivot2: {fileID: 6024799393902773693}
-  speed: 100
+  speed: 870
 --- !u!1 &8668716727377122321
 GameObject:
   m_ObjectHideFlags: 0
