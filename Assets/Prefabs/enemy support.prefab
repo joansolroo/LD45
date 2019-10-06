@@ -599,6 +599,8 @@ MonoBehaviour:
   bulletsPerShot: 1
   spread: 0
   cooldown: 0.1
+  firing: 0
+  lastFireFrame: 0
   bulletPefab: {fileID: 3850329411201638443}
   nossles:
   - {fileID: 3850329412330198954}
@@ -609,7 +611,6 @@ MonoBehaviour:
   clipEmpty: {fileID: 0}
   clipReload: {fileID: 0}
   hand: 0
-  firing: 0
   reloading: 0
 --- !u!1 &3850329411201638445
 GameObject:
@@ -672,6 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff6428ae95b82a4c88176a2a8fdaacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trail: {fileID: 0}
+  mesh: {fileID: 0}
   rb: {fileID: 3850329411201638447}
   velocity: 10
   damage: 1
@@ -683,6 +686,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   radius: 0
+  guided: 0
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &3850329412330198955
 GameObject:
   m_ObjectHideFlags: 0
