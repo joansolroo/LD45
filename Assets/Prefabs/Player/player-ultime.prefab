@@ -1317,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: 7045833770700493984, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7618353482499255217, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
         type: 3}
@@ -2293,6 +2293,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8283277758809707810, guid: 5b307b40c23ea2b41836b16ed3fb0c1c,
         type: 3}
+    - target: {fileID: 5262541853032616028, guid: 88b996614a7c452439a2650fae216bd0,
+        type: 3}
+      propertyPath: alignment
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 7401138790228935068, guid: 88b996614a7c452439a2650fae216bd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2352,6 +2357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046955119104631062, guid: 88b996614a7c452439a2650fae216bd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4054203053558653184, guid: 88b996614a7c452439a2650fae216bd0,
         type: 3}

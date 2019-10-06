@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 6928807620827064471}
   - component: {fileID: 8729746077265387771}
   m_Layer: 0
-  m_Name: Pickable - Nuke
+  m_Name: PickableMissiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  alignment: 3
+  alignment: -3
+  iconPrefab: {fileID: 0}
   capacity: 100
   load: 100
   loadTime: 1
@@ -635,31 +636,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6928807621533147452}
     m_Modifications:
-    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_Name
-      value: Nuke
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988683, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 618979295304988682, guid: ebf1b508f12d9ed42a88d638393ad1b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -730,6 +706,36 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.37893578
       objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Nuke
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988724, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988683, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104754394190996099, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4669430705584254058, guid: ebf1b508f12d9ed42a88d638393ad1b3,
         type: 3}
       propertyPath: m_IsActive
@@ -748,11 +754,6 @@ PrefabInstance:
     - target: {fileID: 5528530812022785067, guid: ebf1b508f12d9ed42a88d638393ad1b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104754394190996099, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5104754394866771646, guid: ebf1b508f12d9ed42a88d638393ad1b3,

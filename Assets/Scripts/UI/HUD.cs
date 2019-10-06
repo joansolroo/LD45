@@ -40,7 +40,20 @@ public class HUD : MonoBehaviour
 
             // update player components
             lifeBar.value = Mathf.Clamp((float)playerController.hp / playerController.maxHp, 0.0f, 1.0f);
-            energyBar.value = Mathf.Clamp((float)playerController.energy / playerController.maxEnergy, 0.0f, 1.0f);
+
+            // energy bar
+            if (playerController.equipement.secondaryWeapon != null)
+            {
+                energyBar.label.gameObject.SetActive(false);
+                energyBar.value = (float)playerController.equipement.secondaryWeapon.load / playerController.equipement.secondaryWeapon.capacity;
+            }
+            else
+            {
+                energyBar.value = 1.0f;
+                energyBar.label.gameObject.SetActive(true);
+            }
+
+            //  standard ammo bar
             if (playerController.equipement.weapon != null)
             {
                 ammoBar.label.gameObject.SetActive(false);
@@ -60,12 +73,14 @@ public class HUD : MonoBehaviour
             if (playerController.hoveredObject != null)
             {
                 int a = playerController.equipement.GetAlignment();
-                int da = playerController.equipement.GetAlignmentChange(playerController.hoveredObject);
+                int da = playerController.equipement.GetAlignmentChange(playerController.hoveredObject.toPick);
                 alignmentPanel.SetActive(true);
                 currentAlignment.value = (float)a / maxAlignment;
-                futurAlignment.value = (float)(a + da) / maxAlignment;
+                futurAlignment.value = (float) (a+da) / maxAlignment;
                 if (da > 0) direction.rectTransform.localEulerAngles = new Vector3(0, 0, 0);
                 else direction.rectTransform.localEulerAngles = new Vector3(0, 180, 0);
+
+                Debug.Log(a + " " + da);
             }
             else alignmentPanel.SetActive(false);
         }

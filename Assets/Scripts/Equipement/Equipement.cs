@@ -137,21 +137,20 @@ public class Equipement : MonoBehaviour
     }
     public int GetAlignmentChange(Component change)
     {
-        int alignment = 0;
         if (change != null)
         {
             if (change.GetType() == typeof(Weapon))
-                alignment = ((Weapon)change).alignment - (weapon != null ? weapon.alignment : 0);
+                return ((Weapon)change).alignment - (weapon != null ? weapon.alignment : 0);
             else if (change.GetType() == typeof(SecondaryWeapon))
-                alignment = ((SecondaryWeapon)change).alignment - (secondaryWeapon != null ? secondaryWeapon.alignment : 0);
+                return ((SecondaryWeapon)change).alignment - (secondaryWeapon != null ? secondaryWeapon.alignment : 0);
             else if (change.GetType() == typeof(Shield))
-                alignment = ((Shield)change).alignment - (shield != null ? shield.alignment : 0);
+                return ((Shield)change).alignment - (shield != null ? shield.alignment : 0);
             else if (change.GetType() == typeof(Scan))
-                alignment = ((Scan)change).alignment - (scan != null ? scan.alignment : 0);
+                return ((Scan)change).alignment - (scan != null ? scan.alignment : 0);
             else if (change.GetType() == typeof(Passive))
-                alignment = ((Passive)change).alignment - (passive != null ? passive.alignment : 0);
+                return ((Passive)change).alignment - (passive != null ? passive.alignment : 0);
         }
-        return alignment;
+        return 0;
     }
 
     // private
