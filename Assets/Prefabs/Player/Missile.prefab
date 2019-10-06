@@ -359,9 +359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  alignment: 3
-  iconPrefab: {fileID: 8283277758809707810, guid: 5b307b40c23ea2b41836b16ed3fb0c1c,
-    type: 3}
+  alignment: -3
+  iconPrefab: {fileID: 0}
   capacity: 100
   load: 100
   loadTime: 0.1
@@ -548,16 +547,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7401138790228935068}
     m_Modifications:
-    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_Name
-      value: Nuke
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 618979295304988682, guid: ebf1b508f12d9ed42a88d638393ad1b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -627,6 +616,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.114971176
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Nuke
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf1b508f12d9ed42a88d638393ad1b3, type: 3}
