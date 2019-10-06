@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     void Start()
     {
-        if(!body)
+        if (!body)
         {
             body = this.transform;
         }
@@ -43,18 +43,18 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         characterController = GetComponent<CharacterController>();
         Reset();
     }
-    
+
     void Update()
     {
         grounded = characterController.isGrounded;
         // movement
-        if (speed >0 ||!grounded)
+        if (speed > 0 || !grounded)
         {
-            
+
             if (moveDirection.sqrMagnitude > 0.1f)
             {
-                
-                body.transform.rotation =Quaternion.RotateTowards(body.transform.rotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up),Time.deltaTime*360*2);
+
+                body.transform.rotation = Quaternion.RotateTowards(body.transform.rotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime * 360 * 2);
             }
             /*else
             {
@@ -73,7 +73,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
             if (aimDirection != Vector3.zero)
             {
-                turret.transform.LookAt(turret.transform.position+ aimDirection);
+                turret.transform.LookAt(turret.transform.position + aimDirection);
             }
         }
         if (hoveredObject && Input.GetKeyDown(KeyCode.Space))
@@ -101,7 +101,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     }
     public void AimAt(Vector3 position)
     {
-        aimDirection = position-this.transform.position;
+        aimDirection = position - this.transform.position;
         aimDirection.y = 0;
     }
     public void AimRotate(Vector3 angle)
@@ -136,7 +136,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         {
             OnDamage(amount);
         }
-        if (this.hp<=0)
+        if (this.hp <= 0)
         {
             this.hp = 0;
             Die();
@@ -147,7 +147,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     void Die()
     {
         alive = false;
-        //this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
     public void Push(Vector3 force)
     {
@@ -162,16 +162,55 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public bool OnPickObject(PickableObject canPick, bool end)
     {
-        if (end)
+        if (!canPick.instant)
         {
-            hoveredObject = null;
-            return false;
+            if (end)
+            {
+                hoveredObject = null;
+                return false;
+            }
+            else
+            {
+
+                hoveredObject = canPick;
+                return false;
+            }
         }
-        else
+        else if (!end)
         {
-            hoveredObject = canPick;
-            
-            return false;
+            PickableRestore restore = (PickableRestore)canPick.toPick;
+            if (restore)
+            {
+                if (restore.pickableType == PickableRestore.Type.Ammo)
+                {
+                    if (equipement.weapon != null)
+                    {
+                        if (equipement.weapon.load < equipement.weapon.capacity)
+                        {
+                            equipement.weapon.load = equipement.weapon.capacity;
+                            return true;
+                        }
+                    }
+                }
+                else if (restore.pickableType == PickableRestore.Type.HP)
+                {
+                    if (hp < maxHp)
+                    {
+                        hp = maxHp;
+                        return true;
+                    }
+
+                }
+                else if (restore.pickableType == PickableRestore.Type.Energy)
+                {
+                    if (energy < maxEnergy)
+                    {
+                        energy = maxEnergy;
+                        return true;
+                    }
+                }
+            }
         }
+        return false;
     }
 }

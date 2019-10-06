@@ -6,7 +6,7 @@ public class PickableObject : MonoBehaviour
 {
 
     [SerializeField] public Component toPick;
-
+    [SerializeField] public bool instant = false;
     Vector3 position;
     float randomStartWiggling;
     // Use this for initialization
@@ -28,10 +28,6 @@ public class PickableObject : MonoBehaviour
     bool triggered = false;
 
     private void OnTriggerEnter(Collider other)
-    {
-        HandleTrigger(other, false);
-    }
-    private void OnTriggerStay(Collider other)
     {
         HandleTrigger(other, false);
     }
