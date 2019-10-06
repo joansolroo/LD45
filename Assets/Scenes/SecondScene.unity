@@ -1505,6 +1505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5532660131426034084, guid: 54c26273b3247e049853d13791953aaf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5532660131426034080, guid: 54c26273b3247e049853d13791953aaf,
         type: 3}
       propertyPath: m_LocalPosition.x
