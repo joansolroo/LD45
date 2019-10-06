@@ -68,6 +68,7 @@ public class Game : MonoBehaviour
         Initialize();
         playerController.transform.position = respawn.transform.position;
         playerController.Reset();
+        playerController.gameObject.SetActive(true);
 
         death = false;
     }

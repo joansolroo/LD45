@@ -4135,6 +4135,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 45.899902
       objectReference: {fileID: 0}
+    - target: {fileID: 7577321745119897810, guid: 54c26273b3247e049853d13791953aaf,
+        type: 3}
+      propertyPath: value
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 6003129752001510739, guid: 54c26273b3247e049853d13791953aaf,
         type: 3}
       propertyPath: m_Color.r
@@ -4189,6 +4194,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942510416806453994, guid: 54c26273b3247e049853d13791953aaf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577321745537616767, guid: 54c26273b3247e049853d13791953aaf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54c26273b3247e049853d13791953aaf, type: 3}
@@ -5804,6 +5819,10 @@ PrefabInstance:
       propertyPath: targetOrientation
       value: 
       objectReference: {fileID: 834875730586180511}
+    - target: {fileID: 1822284506, guid: 84024c8cadd917e4588b55ed20180021, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84024c8cadd917e4588b55ed20180021, type: 3}
 --- !u!1001 &1721114835
@@ -7368,6 +7387,11 @@ PrefabInstance:
       propertyPath: targetDisplay
       value: 
       objectReference: {fileID: 1572432371}
+    - target: {fileID: 4652473800768544051, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 964246220487924402, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
         type: 3}
       propertyPath: weapon

@@ -317,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7401138790228935068
 Transform:
   m_ObjectHideFlags: 0
@@ -360,13 +360,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   alignment: -3
-  iconPrefab: {fileID: 0}
+  iconPrefab: {fileID: 8283277758809707810, guid: 5b307b40c23ea2b41836b16ed3fb0c1c,
+    type: 3}
   capacity: 100
   load: 100
   loadTime: 0.1
   reloadInterruptSupported: 0
   guiding: {fileID: 4054203053558653184}
   cooldown: 3
+  cost: 30
+  firing: 0
   bulletPefab: {fileID: 9103846486353908849}
   nossles:
   - {fileID: 712886973209153898}
@@ -387,7 +390,6 @@ MonoBehaviour:
   clipEmpty: {fileID: 0}
   clipReload: {fileID: 0}
   hand: 0
-  firing: 0
   reloading: 0
 --- !u!114 &4054203053558653184
 MonoBehaviour:
@@ -401,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f0240e6aeeeff409c61e38eae32bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 9103846486353908849}
   targetDisplay: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}

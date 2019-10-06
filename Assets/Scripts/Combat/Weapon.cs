@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public int bulletsPerShot = 1;
     [SerializeField] public float spread = 0;
     [SerializeField] public float cooldown = 0;
+    [SerializeField] public int cost = 1;
     [SerializeField] public bool firing;
     private int lastFireFrame;
 
@@ -101,10 +102,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            {
-                Reload();
-                //   failShot = false;
-            }
+            Reload();
         }
     }
     int currentNossle = 0;
@@ -115,8 +113,7 @@ public class Weapon : MonoBehaviour
         {
             firing = true;
             lastFireFrame = Time.frameCount;
-
-            //Debug.Log("do fire");
+            
             if (reloading && reloadInterruptSupported)
             {
                 CancelReload();
@@ -135,12 +132,12 @@ public class Weapon : MonoBehaviour
                     b.transform.rotation = nossle.rotation;
                     b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
 
-                    b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
+                    b.rb.velocity = b.transform.forward * b.velocity;
                     Debug.DrawRay(b.transform.position, b.rb.velocity);
                     currentNossle = (currentNossle + 1) % nossles.Length;
                 }
 
-                --load;
+                load -= cost;
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
                 if (load == 0)
@@ -170,11 +167,9 @@ public class Weapon : MonoBehaviour
             reloading = true;
             while (load < capacity && reloading)
             {
-                //yield return new WaitForSeconds(loadTime/2);
                 if (reloading)
                 {
                     PlaySound(clipReload);
-                    //sprite.color = new Color(1,0,0,0.5f);
                     load++;
                     yield return new WaitForSeconds(loadTime);
                 }

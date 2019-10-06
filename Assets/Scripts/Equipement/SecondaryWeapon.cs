@@ -17,9 +17,7 @@ public class SecondaryWeapon : MonoBehaviour
     [SerializeField] public Type type;
     [SerializeField] public int alignment;
     [SerializeField] public GameObject iconPrefab;
-
-
-    // Attributes
+    
     [Header("Weapon")]
     [SerializeField] public int capacity;
     [SerializeField] public int load;
@@ -29,11 +27,15 @@ public class SecondaryWeapon : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] public float cooldown = 0;
+    [SerializeField] public int cost = 1;
+    [SerializeField] public bool firing;
+    private int lastFireFrame;
 
     [Header("Links")]
     [SerializeField] Bullet bulletPefab;
     [SerializeField] Transform[] nossles;
     [SerializeField] GameObject owner;
+
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip clipFire;
@@ -41,7 +43,8 @@ public class SecondaryWeapon : MonoBehaviour
     [SerializeField] AudioClip clipReload;
 
     [SerializeField] int hand;
-    // Use this for initialization
+
+
     void Start()
     {
 
@@ -59,6 +62,13 @@ public class SecondaryWeapon : MonoBehaviour
             {
                 Reload();
             }
+        }
+    }
+    private void LateUpdate()
+    {
+        if (currentCooldown <= 0 && lastFireFrame != Time.frameCount)
+        {
+            firing = false;
         }
     }
 
@@ -91,29 +101,24 @@ public class SecondaryWeapon : MonoBehaviour
         }
         else
         {
-            {
-                Reload();
-                //   failShot = false;
-            }
+            Reload();
         }
     }
-    public bool firing = false;
+
     float currentCooldown = 0;
     void DoFire()
     {
-        if (currentCooldown == 0 && !firing)
+        if (currentCooldown == 0)
         {
-            //Debug.Log("do fire");
             firing = true;
+            lastFireFrame = Time.frameCount;
+
             if (reloading && reloadInterruptSupported)
             {
                 CancelReload();
             }
             if (!reloading)
             {
-                //for (int c = 0; c < bulletsPerShot; ++c)
-                //{
-
                 Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
                 b.tag = owner.tag;
                 b.gameObject.SetActive(true);
@@ -127,39 +132,18 @@ public class SecondaryWeapon : MonoBehaviour
                 Transform nossle = nossles[Random.Range(0, nossles.Length)];
                 b.transform.position = nossle.position;
                 b.transform.rotation = nossle.rotation;
-                // b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
-
-                b.rb.velocity = b.transform.forward * b.velocity /** Random.Range(0.8f, 1.2f)*/;
+                b.rb.velocity = b.transform.forward * b.velocity;
                 Debug.DrawRay(b.transform.position, b.rb.velocity);
-                //}
-                --load;
+                
+                load -= cost;
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
-                float t = 0;
-                float r = 0;
-                /*while (t < cooldown / 2)
-                {
-                    r = Mathf.MoveTowards(r, 30, 30 * cooldown / 2);
-                    this.transform.parent.localEulerAngles = new Vector3(0, 0, r);
-                    yield return new WaitForEndOfFrame();
-                    t += Time.deltaTime;
 
-                } while (t < cooldown)
-                {
-                    r = Mathf.MoveTowards(r, 0, 30 * cooldown / 2);
-                    this.transform.parent.localEulerAngles = new Vector3(0, 0, r);
-                    yield return new WaitForEndOfFrame();
-                    t += Time.deltaTime;
-
-                }
-                this.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
-                */
                 if (load == 0)
                 {
                     Reload();
                 }
             }
-            firing = false;
         }
     }
 
@@ -182,11 +166,9 @@ public class SecondaryWeapon : MonoBehaviour
             reloading = true;
             while (load < capacity && reloading)
             {
-                //yield return new WaitForSeconds(loadTime/2);
                 if (reloading)
                 {
                     PlaySound(clipReload);
-                    //sprite.color = new Color(1,0,0,0.5f);
                     load++;
                     yield return new WaitForSeconds(loadTime);
                 }
