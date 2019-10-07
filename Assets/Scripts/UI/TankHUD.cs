@@ -21,6 +21,10 @@ public class TankHUD : MonoBehaviour
 
     [SerializeField] Counter bonus;
     [SerializeField] Counter alignment;
+
+    [SerializeField] GameObject alignmentChangeUp;
+    [SerializeField] GameObject alignmentChangeDown;
+
     // Update is called once per frame
     void Update()
     {
@@ -78,9 +82,23 @@ public class TankHUD : MonoBehaviour
                 bonus.Count = playerController.points;
             }
 
+            
+            int alignmentChange = 0;
+            if (playerController.hoveredObject != null)
+            {
+                alignmentChange = playerController.equipement.GetAlignmentChange(playerController.hoveredObject.toPick);
+                alignmentChangeUp.SetActive(alignmentChange > 0);
+                alignmentChangeDown.SetActive(alignmentChange < 0);
+            
+            }
+            else
+            {
+                alignmentChangeUp.SetActive(false);
+                alignmentChangeDown.SetActive(false);
+            }
             int alignmentValue = playerController.equipement.GetAlignment();
             alignment.gameObject.SetActive(alignmentValue > 0);
-            if (alignmentValue > 0)
+            if (alignmentChange!= 0 || alignmentValue > 0)
             {
                 alignment.Count = alignmentValue;
             }

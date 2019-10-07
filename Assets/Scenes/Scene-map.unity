@@ -7840,12 +7840,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69242a9ea3c319647a4c9e631b4b6c95, type: 3}
---- !u!212 &1572432371 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1661677725209356101, guid: 3cc5aafe92d44c742888861a657e933b,
-    type: 3}
-  m_PrefabInstance: {fileID: 944987593}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1592313623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6479776258919175219, guid: 69242a9ea3c319647a4c9e631b4b6c95,
@@ -10375,11 +10369,11 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 638003251}
-    - target: {fileID: 6730435874865452654, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
+    - target: {fileID: 5005404048963275003, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
         type: 3}
-      propertyPath: targetDisplay
+      propertyPath: game
       value: 
-      objectReference: {fileID: 1572432371}
+      objectReference: {fileID: 1372642981}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79bb651db7c1e4c45bef8a0a75a1185e, type: 3}
 --- !u!1001 &4717304929083460122

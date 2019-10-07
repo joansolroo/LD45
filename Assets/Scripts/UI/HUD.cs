@@ -69,7 +69,7 @@ public class HUD : MonoBehaviour
             }
 
             // algnment
-            if (playerController.hoveredObject != null)
+           /* if (playerController.hoveredObject != null)
             {
                 int a = playerController.equipement.GetAlignment();
                 int da = playerController.equipement.GetAlignmentChange(playerController.hoveredObject.toPick);
@@ -81,7 +81,7 @@ public class HUD : MonoBehaviour
 
                 Debug.Log(a + " " + da);
             }
-            else alignmentPanel.SetActive(false);
+            else alignmentPanel.SetActive(false);*/
         }
     }
 }
