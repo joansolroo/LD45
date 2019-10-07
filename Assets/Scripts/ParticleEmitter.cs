@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleEmitter : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
-    [SerializeField] int count;
+    [SerializeField] int count=0;
     GameObject[] particleGOs;
     Material[] particleMats;
     Vector3[] particlePos;

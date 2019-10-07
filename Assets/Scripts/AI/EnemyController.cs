@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour, IIndividual
     [SerializeField] float shootRange = 4f;
     [SerializeField] float patrolRange = 0f;
     [SerializeField] float patrolSpeed = 1f;
-    [SerializeField] float chaseSpeed = 1f;
 
     float t;
 

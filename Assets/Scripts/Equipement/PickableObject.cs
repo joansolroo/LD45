@@ -23,10 +23,7 @@ public class PickableObject : MonoBehaviour
     {
         this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.01f, 0);
         this.transform.Rotate(0, 60 * Time.deltaTime, 0);
-        triggered = false;
     }
-
-    bool triggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,9 +37,7 @@ public class PickableObject : MonoBehaviour
 
     private void HandleTrigger(Collider other, bool end)
     {
-        //if (!triggered)
         {
-            triggered = true;
             if (other.gameObject.tag == "Player")
             {
                 Controller controller = other.gameObject.GetComponent<Controller>();
@@ -57,7 +52,6 @@ public class PickableObject : MonoBehaviour
     }
     public void GotPicked()
     {
-        triggered = true;
 
         Destroy();
 

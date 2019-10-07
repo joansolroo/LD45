@@ -9,11 +9,11 @@ public class PickableRestore : MonoBehaviour
         None, HP, Energy, Ammo, Data
     }
     public Type pickableType;
-    public GameObject renderer;
+    public GameObject render;
     public AudioClip audioclip;
 
     private void Update()
     {
-        renderer.transform.Rotate(0, 60 * Time.deltaTime, 0,Space.World);
+        render.transform.Rotate(0, 60 * Time.deltaTime, 0,Space.World);
     }
 }

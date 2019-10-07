@@ -1358,7 +1358,7 @@ MonoBehaviour:
   reloadInterruptSupported: 1
   type: 2
   alignment: -3
-  iconPrefab: {fileID: 8870219351395095898, guid: 1c3c9f38dbb10624d92c2fb1a9999e19,
+  iconPrefab: {fileID: 5492906933380522959, guid: f52c660bcbaedd74c802c9d06839578a,
     type: 3}
   bulletsPerShot: 1
   spread: 7
@@ -2338,6 +2338,8 @@ MonoBehaviour:
   radius: 0
   guided: 0
   targetPosition: {x: 0, y: 0, z: 0}
+  nuke: 0
+  explosion: {fileID: 0}
 --- !u!136 &1005749611154923755
 CapsuleCollider:
   m_ObjectHideFlags: 0

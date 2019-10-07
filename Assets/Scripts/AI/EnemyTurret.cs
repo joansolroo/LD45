@@ -55,7 +55,9 @@ public class EnemyTurret : MonoBehaviour, IIndividual
                 }
                 else
                 {
-                    target = sight.GetRandom().transform;
+                    GameObject go = sight.GetRandom();
+                    if(go)
+                        target = go.transform;
                 }
             }
             else

@@ -21,8 +21,6 @@ public class HUD : MonoBehaviour
     [SerializeField] public Image direction;
     [SerializeField] public Image death;
 
-    private int maxAlignment = 10;
-
     void Start()
     {
         death.gameObject.SetActive(false);

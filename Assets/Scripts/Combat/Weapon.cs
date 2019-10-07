@@ -105,7 +105,6 @@ public class Weapon : MonoBehaviour
         return gameObject.activeSelf;
     }
 
-    private bool failShot = false;
     private float lastFire = 0;
     public void Fire()
     {

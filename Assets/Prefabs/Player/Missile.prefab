@@ -664,7 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   alignment: -3
-  iconPrefab: {fileID: 8283277758809707810, guid: 5b307b40c23ea2b41836b16ed3fb0c1c,
+  iconPrefab: {fileID: 7241330146156997766, guid: 312441f011e5cc046bcf794e2a777950,
     type: 3}
   capacity: 100
   load: 100

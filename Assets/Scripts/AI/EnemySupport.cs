@@ -12,7 +12,6 @@ public class EnemySupport : MonoBehaviour, IIndividual
 
     [SerializeField] float seeDistance = 3f;
     [SerializeField] float fleeDistance = 2f;
-    [SerializeField] float friendDistance = 5f;
 
 
     [Header("debug")]
@@ -81,9 +80,7 @@ public class EnemySupport : MonoBehaviour, IIndividual
 
     public void Act()
     {
-        
         controller.Move(Vector3.zero);
-        bool fighting = false;
         if (friend)
         {
             controller.Move(friend.transform.position-this.transform.position);
@@ -99,7 +96,6 @@ public class EnemySupport : MonoBehaviour, IIndividual
                     playerDirection.y = 0;
                     controller.Move(-playerDirection.normalized);
                 }
-                fighting = true;
             }
 
         }

@@ -147,8 +147,8 @@ public class Bullet : MonoBehaviour
         if(mesh)mesh.SetActive(false);
        
         float t = 1;
-        float startWidth = trail.startWidth;
-        float endWidth = trail.endWidth;
+        float startWidth = trail ? trail.startWidth : 0;
+        float endWidth = trail ? trail.endWidth : 0;
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
         
         while (t >= 0 && trail != null)

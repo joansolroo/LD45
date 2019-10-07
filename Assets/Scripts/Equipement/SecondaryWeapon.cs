@@ -97,7 +97,6 @@ public class SecondaryWeapon : MonoBehaviour
         return gameObject.activeSelf;
     }
 
-    bool failShot = false;
     float lastFire = 0;
     public void Fire()
     {

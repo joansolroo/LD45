@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickableType: 2
-  renderer: {fileID: 5835361234307571990}
+  render: {fileID: 5835361234307571990}
   audioclip: {fileID: 8300000, guid: 1dd940c1560bc1d449fa2441d71f72db, type: 3}
 --- !u!1 &5835361234307571990
 GameObject:
@@ -332,11 +332,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8094150476815009873}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a976a5f561d65ae4394ba2d33b9a615f,
-        type: 3}
-      propertyPath: m_Name
-      value: pick-energy
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a976a5f561d65ae4394ba2d33b9a615f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,6 +401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.49751
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a976a5f561d65ae4394ba2d33b9a615f,
+        type: 3}
+      propertyPath: m_Name
+      value: pick-energy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976a5f561d65ae4394ba2d33b9a615f, type: 3}

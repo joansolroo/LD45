@@ -539,6 +539,16 @@ PrefabInstance:
       propertyPath: explode
       value: 
       objectReference: {fileID: 8300000, guid: 4cc208800aa64fd40b25da0cc098d94c, type: 3}
+    - target: {fileID: 953211059204184416, guid: cbb5e6d716a9f2047aab8d26becc35a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 91.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 953211059204184416, guid: cbb5e6d716a9f2047aab8d26becc35a3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8549531762499321355, guid: cbb5e6d716a9f2047aab8d26becc35a3,
         type: 3}
       propertyPath: secondaryWeapon

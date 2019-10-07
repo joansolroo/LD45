@@ -168,7 +168,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     }
     public void Push(Vector3 force)
     {
-        Debug.Log("push");
+        
     }
     public void Reset()
     {
@@ -225,9 +225,9 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                 }
                 else if (restore.pickableType == PickableRestore.Type.Energy)
                 {
-                    if (energy < maxEnergy)
+                    if (equipement.secondaryWeapon.load < equipement.secondaryWeapon.capacity)
                     {
-                        energy = maxEnergy;
+                        equipement.secondaryWeapon.load = equipement.secondaryWeapon.capacity;
                         result = true;
                     }
                 }

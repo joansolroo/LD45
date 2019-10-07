@@ -93,11 +93,11 @@ public class Sense : MonoBehaviour
         return perceived.ContainsKey(go);
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         foreach (GameObject p in perceived.Keys)
         {
             Gizmos.DrawLine(this.transform.position, p.transform.position);
         }
-    }
+    }*/
 }
