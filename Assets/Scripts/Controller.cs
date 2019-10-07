@@ -209,6 +209,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                         return true;
                     }
                 }
+                else if (restore.pickableType == PickableRestore.Type.Data)
+                {
+                    Debug.LogWarning("Picked Data");
+                }
             }
         }
         return false;

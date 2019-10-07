@@ -6,7 +6,7 @@ public class PickableRestore : MonoBehaviour
 {
     public enum Type
     {
-        None, HP, Energy, Ammo
+        None, HP, Energy, Ammo, Data
     }
     public Type pickableType;
     public GameObject renderer;
