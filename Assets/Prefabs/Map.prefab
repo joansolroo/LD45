@@ -25067,6 +25067,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8973587841209193828, guid: e69dd6340e292a94887743f4ed429869,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e69dd6340e292a94887743f4ed429869, type: 3}
 --- !u!4 &8877031251021580748 stripped
@@ -28568,17 +28573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
-        type: 3}
-      propertyPath: patrolSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
-        type: 3}
-      propertyPath: chaseSpeed
+      propertyPath: shootRange
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
@@ -28588,7 +28583,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
         type: 3}
-      propertyPath: shootRange
+      propertyPath: patrolSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717304927263177728, guid: 15e30084fbfeb244e898d202fd0afdc5,
+        type: 3}
+      propertyPath: chaseSpeed
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4717304927263177729, guid: 15e30084fbfeb244e898d202fd0afdc5,
