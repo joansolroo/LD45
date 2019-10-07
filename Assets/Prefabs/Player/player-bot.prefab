@@ -185,7 +185,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   invincible: 0
-  canPickObj: 1
+  canPickObj: 0
   hp: 0
   energy: 0
   points: 0
