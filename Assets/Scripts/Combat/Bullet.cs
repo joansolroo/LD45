@@ -79,6 +79,7 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
+        EffectManager.main.Hit(this.transform.position);
         StartCoroutine(DoDie());
     }
 

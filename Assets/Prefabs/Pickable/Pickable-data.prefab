@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickableType: 4
   renderer: {fileID: 7768074049414505691}
-  audioclip: {fileID: 8300000, guid: 863edf95ab3996f4a8913b31efdd9d79, type: 3}
+  audioclip: {fileID: 8300000, guid: 4ffa92a47af79f04b81b73866f460aec, type: 3}
 --- !u!1 &7768074049414505691
 GameObject:
   m_ObjectHideFlags: 0
