@@ -144,7 +144,7 @@ public class Bullet : MonoBehaviour
 
         rb.isKinematic = true;
         this.enabled = false;
-        mesh.SetActive(false);
+        if(mesh)mesh.SetActive(false);
        
         float t = 1;
         float startWidth = trail.startWidth;

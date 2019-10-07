@@ -4,7 +4,7 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public GameObject introduction;
-
+    public float introductionDuration = 16;
     public float gameOverDuration;
     public GameObject respawn;
     public Controller playerController;
@@ -26,18 +26,25 @@ public class Game : MonoBehaviour
         death = false;
         conversion = false;
         won = false;
-        if (introduction != null)
-            introduction.SetActive(true);
+        StartCoroutine(RunIntroduction());
         resetables.SetActive(false);
         playerController.gameObject.SetActive(true);
     }
-
+    IEnumerator RunIntroduction()
+    {
+        if (introduction != null)
+        {
+            introduction.SetActive(true);
+            yield return new WaitForSeconds(introductionDuration);
+            introduction.SetActive(false);
+        }
+    }
     protected virtual void LateUpdate()
     {
         // keep intro running if we have an intro, launch game if not or key pressed
         if (introduction != null && introduction.activeSelf)
         {
-            if (Input.anyKey)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 introduction.SetActive(false);
                 Initialize();

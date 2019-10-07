@@ -77,7 +77,6 @@ public class Sense : MonoBehaviour
         {
             if (option == null)
             {
-                perceived.Remove(option);
                 continue;
             }
             float newDistance = (position - option.transform.position).sqrMagnitude;
