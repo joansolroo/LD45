@@ -22,6 +22,7 @@ public class PickableObject : MonoBehaviour
     void LateUpdate()
     {
         this.transform.localPosition = position + new Vector3(0, Mathf.Sin(Time.time * 6 + randomStartWiggling) * 0.01f, 0);
+        this.transform.Rotate(0, 60 * Time.deltaTime, 0);
         triggered = false;
     }
 
