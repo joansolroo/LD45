@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 715477231083921600}
   - component: {fileID: 715477231083921613}
   - component: {fileID: 715477231083921611}
-  - component: {fileID: 1155815983852640824}
   - component: {fileID: 9118642743428115548}
   - component: {fileID: 2871940832431514640}
   - component: {fileID: 1202419243954217967}
@@ -174,12 +173,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8352e308014e9c9458018467b0e5f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   characterController: {fileID: 958256652}
   equipement: {fileID: 9118642743428115548}
   turret: {fileID: 5427703657517961449}
   body: {fileID: 4155214502460071233}
   maxHp: 50
   maxEnergy: 10
+  verticalAim: 0
   speed: 2
   jumpSpeed: 8
   gravity: 20
@@ -194,24 +195,8 @@ MonoBehaviour:
   grounded: 0
   alive: 1
   moving: 0
---- !u!114 &1155815983852640824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715477231083921610}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153f63a75a3e21c44900e94a48f364d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookSpeed: 5
-  controller: {fileID: 715477231083921611}
-  cursor: {fileID: 0}
-  pointLayer:
-    serializedVersion: 2
-    m_Bits: 5120
+  firedLeft: 0
+  firedRight: 0
 --- !u!114 &9118642743428115548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,6 +1335,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8049259658172277439}
     m_Modifications:
+    - target: {fileID: 2762467061490564528, guid: 7cab218adbb54784ebc46dbaeee4479c,
+        type: 3}
+      propertyPath: m_Name
+      value: PickableEmptyPassive
+      objectReference: {fileID: 0}
     - target: {fileID: 2762467061490564541, guid: 7cab218adbb54784ebc46dbaeee4479c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1404,11 +1394,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762467061490564528, guid: 7cab218adbb54784ebc46dbaeee4479c,
-        type: 3}
-      propertyPath: m_Name
-      value: PickableEmptyPassive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cab218adbb54784ebc46dbaeee4479c, type: 3}

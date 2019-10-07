@@ -24,12 +24,16 @@ public class AutoGun : MonoBehaviour
     public float time, nextTime;
     private float u, v, w;
 
+    private AudioSource audioSource;
+    public AudioClip clipAudio;
+
     void Start()
     {
         time = 0;
         nextTime = 1;
         weapon = GetComponent<Weapon>();
         sight = GetComponent<Sense>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -72,6 +76,8 @@ public class AutoGun : MonoBehaviour
                 nextTime = Random.Range(0, idleTime) + 3;
                 u = Random.Range(0, 360);
                 v = Random.Range(0, 30);
+                if (Random.Range(0, 1.0f) < 0.3f)
+                    audioSource.PlayOneShot(clipAudio);
             }
             pivot.localRotation = Quaternion.RotateTowards(pivot.localRotation, Quaternion.Euler(new Vector3(-v, u, 0)), speed * Time.deltaTime);
         }

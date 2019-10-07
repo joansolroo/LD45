@@ -20,7 +20,8 @@ public class BoltAnim : MonoBehaviour
     void Update()
     {
         life -= Time.deltaTime;
-        render.material.color = color.Evaluate(1 - life / lifeTime);
+        if(render != null)
+            render.material.color = color.Evaluate(1 - life / lifeTime);
         if (life <= 0)
             Destroy(gameObject);
     }
