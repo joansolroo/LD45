@@ -9,17 +9,22 @@ public class Game : MonoBehaviour
     public GameObject respawn;
     public Controller playerController;
     public GameObject resetables;
+    public Controller boss;
+    public BossTrigger bosstriger;
+    public GameObject bossLife;
+    public UIBar bossLifeBar;
 
     private GameObject instanciatedScene;
     private GameObject instanciatedPlayer;
 
     public bool initialized = false;
-    public bool death, conversion;
+    public bool death, conversion, won;
 
     protected virtual void Start()
     {
         death = false;
         conversion = false;
+        won = false;
         if (introduction != null)
             introduction.SetActive(true);
         resetables.SetActive(false);
@@ -49,6 +54,19 @@ public class Game : MonoBehaviour
             {
                 StartCoroutine(Die());
             }
+        }
+
+        if(!boss.alive)
+        {
+            won = true;
+            playerController.invincible = true;
+        }
+
+        bossLife.SetActive(false);
+        if (!won && bosstriger.trigger)
+        {
+            bossLife.SetActive(true);
+            bossLifeBar.value = (float)boss.hp / boss.maxHp;
         }
     }
 
