@@ -44,6 +44,8 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] int hand;
 
+    public delegate void WeaponEvent();
+    public WeaponEvent OnBulletShot;
     // Use this for initialization
     void Start()
     {
@@ -69,9 +71,10 @@ public class Weapon : MonoBehaviour
     }
     private void LateUpdate()
     {
-        flame = lastFireFrame != Time.frameCount;
+        flame = false;
         if (currentCooldown <= 0 && lastFireFrame != Time.frameCount)
         {
+            flame = lastFireFrame != Time.frameCount;
             firing = false;
         }
     }
@@ -151,6 +154,9 @@ public class Weapon : MonoBehaviour
                     b.rb.velocity = b.transform.forward * b.velocity;
                     Debug.DrawRay(b.transform.position, b.rb.velocity);
                     currentNossle = (currentNossle + 1) % nossles.Length;
+
+                    if (OnBulletShot != null)
+                        OnBulletShot();
                 }
 
                 load -= cost;                
