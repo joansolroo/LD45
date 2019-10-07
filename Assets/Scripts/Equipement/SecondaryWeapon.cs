@@ -38,8 +38,6 @@ public class SecondaryWeapon : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip clipFire;
-    [SerializeField] AudioClip clipEmpty;
-    [SerializeField] AudioClip clipReload;
 
     [SerializeField] int hand;
 
@@ -128,6 +126,8 @@ public class SecondaryWeapon : MonoBehaviour
             }
             if (!reloading)
             {
+                audioSource.PlayOneShot(clipFire);
+
                 Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
                 b.tag = owner.tag;
                 b.gameObject.SetActive(true);
@@ -135,8 +135,6 @@ public class SecondaryWeapon : MonoBehaviour
                 {
                     guiding.targetPos = Cursor.main.targetPosition;
                     guiding.Guide(b);
-                    
-
                 }
                 Transform nossle = nossles[Random.Range(0, nossles.Length)];
                 b.transform.position = nossle.position;
@@ -182,7 +180,6 @@ public class SecondaryWeapon : MonoBehaviour
             {
                 if (reloading)
                 {
-                    PlaySound(clipReload);
                     load++;
                     yield return new WaitForSeconds(loadTime);
                 }

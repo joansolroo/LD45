@@ -20,6 +20,10 @@ public class Bullet : MonoBehaviour
     public bool guided = false;
     public Vector3 targetPosition;
     public bool nuke = false;
+
+    [SerializeField] AudioSource audiosource;
+    [SerializeField] AudioClip clipExplode;
+
     public void Start()
     {
         //ttl *= Random.Range(0.95f, 1.05f);
@@ -130,6 +134,9 @@ public class Bullet : MonoBehaviour
 
     IEnumerator DoDie()
     {
+        if (audiosource != null && clipExplode != null)
+            audiosource.PlayOneShot(clipExplode);
+
         rb.isKinematic = true;
         this.enabled = false;
         mesh.SetActive(false);
@@ -146,7 +153,6 @@ public class Bullet : MonoBehaviour
             trail.endWidth = endWidth * t;
             trail.time = (5 * t);
             yield return wait;
-
         }
 
         Destroy(this.gameObject);
