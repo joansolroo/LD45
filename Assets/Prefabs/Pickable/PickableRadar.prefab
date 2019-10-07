@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 5176521663152691571}
   - component: {fileID: 6286434805389578005}
   m_Layer: 0
-  m_Name: PickablePassive
+  m_Name: PickableRadar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  alignment: 3
+  alignment: -3
   iconPrefab: {fileID: 165880567396598509}
 --- !u!1 &7387156486291555232
 GameObject:

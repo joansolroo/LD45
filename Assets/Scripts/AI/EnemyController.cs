@@ -37,22 +37,35 @@ public class EnemyController : MonoBehaviour, IIndividual
 
     public void Sense()
     {
-
-        currentPosition = target.position;
-        Vector3 newDirection = currentPosition - this.transform.position;
-        distance = newDirection.magnitude;
-        if (distance < aimRange)
+        if (target == null)
         {
-            lastKnownPosition = currentPosition;
-            direction = newDirection.normalized;
-        }else
-        {
-            if(Random.value < 0.05f)
+            if (Random.value < 0.05f)
             {
-                float a = Random.Range(0,Mathf.Deg2Rad*360);
-                
+                float a = Random.Range(0, Mathf.Deg2Rad * 360);
+
                 direction = new Vector3(Mathf.Sin(a), 0, Mathf.Cos(a));
                 lastKnownPosition = this.transform.position + direction;
+            }
+        }
+        else
+        {
+            currentPosition = target.position;
+            Vector3 newDirection = currentPosition - this.transform.position;
+            distance = newDirection.magnitude;
+            if (distance < aimRange)
+            {
+                lastKnownPosition = currentPosition;
+                direction = newDirection.normalized;
+            }
+            else
+            {
+                if (Random.value < 0.05f)
+                {
+                    float a = Random.Range(0, Mathf.Deg2Rad * 360);
+
+                    direction = new Vector3(Mathf.Sin(a), 0, Mathf.Cos(a));
+                    lastKnownPosition = this.transform.position + direction;
+                }
             }
         }
     }
@@ -67,7 +80,7 @@ public class EnemyController : MonoBehaviour, IIndividual
         currentDirection = Vector3.MoveTowards(currentDirection, direction, Time.deltaTime);
         controller.Move(Vector3.zero);
         bool fighting = false;
-        if (target)
+        if (target) // disable friendly aiming and fire
         {
             if (distance < aimRange)
             {
@@ -89,9 +102,9 @@ public class EnemyController : MonoBehaviour, IIndividual
                     controller.Move(currentDirection);
                 }
                 fighting = true;
-
             }
-
+            if (target.gameObject.layer == 10)
+                target = null;
         }
         if (!fighting && patrolRange > 0 && patrolSpeed > 0)
         {
