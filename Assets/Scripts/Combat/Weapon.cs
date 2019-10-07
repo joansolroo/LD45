@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public int cost = 1;
     [SerializeField] public bool overheat;
     [SerializeField] public bool firing;
+    [SerializeField] public bool flame;
     private int lastFireFrame;
 
     [Header("Links")]
@@ -46,6 +47,7 @@ public class Weapon : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        flame = false;
         firing = false;
         overheat = false;
         lastFireFrame = 0;
@@ -67,6 +69,7 @@ public class Weapon : MonoBehaviour
     }
     private void LateUpdate()
     {
+        flame = lastFireFrame != Time.frameCount;
         if (currentCooldown <= 0 && lastFireFrame != Time.frameCount)
         {
             firing = false;
