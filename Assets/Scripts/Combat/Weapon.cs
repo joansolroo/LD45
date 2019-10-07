@@ -6,12 +6,9 @@ public class Weapon : MonoBehaviour
 {
     public enum Type
     {
-        None,
-        Gun,
         Minigun,
-        Laser,
         Plasma,
-        Granade
+        Autogun
     };
 
     // Attributes
@@ -29,6 +26,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public float spread = 0;
     [SerializeField] public float cooldown = 0;
     [SerializeField] public int cost = 1;
+    [SerializeField] public bool overheat;
     [SerializeField] public bool firing;
     private int lastFireFrame;
 
@@ -44,10 +42,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] AudioClip clipReload;
 
     [SerializeField] int hand;
+
     // Use this for initialization
     void Start()
     {
         firing = false;
+        overheat = false;
         lastFireFrame = 0;
     }
 
@@ -73,6 +73,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public string GetLiteralType()
+    {
+        switch(type)
+        {
+            case Type.Minigun: return "minigun";
+            default: return "plasma";
+        }
+    }
     public void SetActive(bool active)
     {
         if (active == false)
@@ -138,6 +146,11 @@ public class Weapon : MonoBehaviour
                 }
 
                 load -= cost;
+                if (load < cost)
+                {
+                    overheat = true;
+                }
+
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
                 if (load == 0)
@@ -175,6 +188,7 @@ public class Weapon : MonoBehaviour
                 }
             }
             reloading = false;
+            overheat = false;
         }
     }
 

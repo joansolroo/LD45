@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class OrbitalAnim : MonoBehaviour
 {
-    [SerializeField] public Rigidbody owner;
+    [SerializeField] public Controller owner;
     [SerializeField] public Transform pivot;
-    [SerializeField] [Range(0, 10)] public float speed;
-    [SerializeField] [Range(0, 1)] public float amplitude;
+    [SerializeField] [Range(0, 100)] public float speed;
+    [SerializeField] [Range(0, 60)] public float amplitude;
 
     void Update()
     {
-        pivot.localEulerAngles = Vector3.MoveTowards(pivot.localEulerAngles, new Vector3(owner.velocity.magnitude * amplitude, 0, 0), speed * Time.deltaTime);
+        if (owner != null && pivot != null)
+            pivot.localEulerAngles = Vector3.MoveTowards(pivot.localEulerAngles, new Vector3(owner.moving ? amplitude : 0, 0, 0), speed * Time.deltaTime);
     }
 }

@@ -11,7 +11,7 @@ public class MinigunAnim : MonoBehaviour
     
     void Update()
     {
-        if(weapon.firing)
+        if(weapon.firing && !weapon.overheat && !weapon.reloading)
         {
             pivot1.localEulerAngles += new Vector3(0, 0,  speed * Time.deltaTime);
             pivot2.localEulerAngles += new Vector3(0, 0, -speed * Time.deltaTime);

@@ -317,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7401138790228935068
 Transform:
   m_ObjectHideFlags: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   guiding: {fileID: 4054203053558653184}
   cooldown: 3
   cost: 30
+  overheat: 0
   firing: 0
   bulletPefab: {fileID: 9103846486353908849}
   nossles:
@@ -549,6 +550,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7401138790228935068}
     m_Modifications:
+    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Nuke
+      objectReference: {fileID: 0}
+    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 618979295304988682, guid: ebf1b508f12d9ed42a88d638393ad1b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -618,16 +629,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.114971176
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_Name
-      value: Nuke
-      objectReference: {fileID: 0}
-    - target: {fileID: 618979295304988681, guid: ebf1b508f12d9ed42a88d638393ad1b3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf1b508f12d9ed42a88d638393ad1b3, type: 3}

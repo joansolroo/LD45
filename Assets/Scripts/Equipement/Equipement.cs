@@ -8,20 +8,17 @@ public class Equipement : MonoBehaviour
     [Header("Current equipement")]
     public Weapon weapon;
     public SecondaryWeapon secondaryWeapon;
-    public Shield shield;
-    public Scan scan;
     public Passive passive;
 
     [Header("Possible equipement")]
     public Weapon[] weaponList;
     public SecondaryWeapon[] secondaryWeaponList;
-    public Shield[] shieldList;
-    public Scan[] scanList;
     public Passive[] passiveList;
 
     [Header("Equipement change")]
     public GameObject pickablePrefab;
     public GameObject pickablePrefabSW;
+    public GameObject pickablePrefabPassive;
     [Range(0.0f, 10f)] public float pushAmplitude;
 
     // Set specific equipement
@@ -60,41 +57,11 @@ public class Equipement : MonoBehaviour
             }
         }
     }
-    public void SetShield(Shield.Type type)
-    {
-        shield = null;
-        foreach (Shield s in shieldList)
-        {
-            if (s.type == type)
-            {
-                s.gameObject.SetActive(true);
-                shield = s;
-            }
-            else
-            {
-                s.gameObject.SetActive(false);
-            }
-        }
-    }
-    public void SetScan(Scan.Type type)
-    {
-        scan = null;
-        foreach (Scan s in scanList)
-        {
-            if (s.type == type)
-            {
-                s.gameObject.SetActive(true);
-                scan = s;
-            }
-            else
-            {
-                s.gameObject.SetActive(false);
-            }
-        }
-    }
     public void SetPassive(Passive.Type type)
     {
+        DropPassive(passive);
         passive = null;
+
         foreach (Passive p in passiveList)
         {
             if (p.type == type)
@@ -121,14 +88,6 @@ public class Equipement : MonoBehaviour
         {
             alignment += secondaryWeapon.alignment;
         }
-        if (shield != null)
-        {
-            alignment += shield.alignment;
-        }
-        if (scan != null)
-        {
-            alignment += scan.alignment;
-        }
         if (passive != null)
         {
             alignment += passive.alignment;
@@ -143,10 +102,6 @@ public class Equipement : MonoBehaviour
                 return ((Weapon)change).alignment - (weapon != null ? weapon.alignment : 0);
             else if (change.GetType() == typeof(SecondaryWeapon))
                 return ((SecondaryWeapon)change).alignment - (secondaryWeapon != null ? secondaryWeapon.alignment : 0);
-            else if (change.GetType() == typeof(Shield))
-                return ((Shield)change).alignment - (shield != null ? shield.alignment : 0);
-            else if (change.GetType() == typeof(Scan))
-                return ((Scan)change).alignment - (scan != null ? scan.alignment : 0);
             else if (change.GetType() == typeof(Passive))
                 return ((Passive)change).alignment - (passive != null ? passive.alignment : 0);
         }
@@ -159,7 +114,7 @@ public class Equipement : MonoBehaviour
         if (w == null) return;
 
         GameObject drop = GameObject.Instantiate(pickablePrefab);
-        drop.transform.position = transform.position + 3 * Vector3.up;
+        drop.transform.position = transform.position + Vector3.up;
         drop.SetActive(true);
         Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
         drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
@@ -180,14 +135,10 @@ public class Equipement : MonoBehaviour
     }
     private void DropSecondaryWeapon(SecondaryWeapon w)
     {
-        if (w == null)
-        {
-            Debug.LogWarning("w is null");
-            return;
+        if (w == null) return;
 
-        }
         GameObject drop = GameObject.Instantiate(pickablePrefabSW);
-        drop.transform.position = transform.position + 3 * Vector3.up;
+        drop.transform.position = transform.position + Vector3.up;
         drop.SetActive(true);
         Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
         drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
@@ -201,6 +152,30 @@ public class Equipement : MonoBehaviour
         {
             GameObject icon = Instantiate(w.iconPrefab);
             icon.transform.parent = PickableEmptySW.transform.Find("Slot");
+            icon.transform.localPosition = new Vector3(0, 0, 0);
+            icon.transform.localRotation = Quaternion.identity;
+            icon.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+    private void DropPassive(Passive p)
+    {
+        if (p == null) return;
+
+        GameObject drop = GameObject.Instantiate(pickablePrefabPassive);
+        drop.transform.position = transform.position + Vector3.up;
+        drop.SetActive(true);
+        Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
+        drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
+
+        GameObject PickableEmptyPassive = drop.transform.Find("PickableEmptyPassive").gameObject;
+        Passive targetPassive = PickableEmptyPassive.GetComponent<Passive>();
+        targetPassive.type = p.type;
+        targetPassive.alignment = p.alignment;
+
+        if (p.iconPrefab != null)
+        {
+            GameObject icon = Instantiate(p.iconPrefab);
+            icon.transform.parent = PickableEmptyPassive.transform.Find("Slot");
             icon.transform.localPosition = new Vector3(0, 0, 0);
             icon.transform.localRotation = Quaternion.identity;
             icon.transform.localScale = new Vector3(1, 1, 1);

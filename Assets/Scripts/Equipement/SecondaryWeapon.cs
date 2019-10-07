@@ -7,8 +7,6 @@ public class SecondaryWeapon : MonoBehaviour
     public enum Type
     {
         Rockets,
-        Asteroid,
-        GuidedRocket,
         OrbitalLaser
     };
 
@@ -28,6 +26,7 @@ public class SecondaryWeapon : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] public float cooldown = 0;
     [SerializeField] public int cost = 1;
+    [SerializeField] public bool overheat;
     [SerializeField] public bool firing;
     private int lastFireFrame;
 
@@ -47,7 +46,8 @@ public class SecondaryWeapon : MonoBehaviour
 
     void Start()
     {
-
+        firing = false;
+        overheat = false;
     }
 
     // Update is called once per frame
@@ -72,6 +72,14 @@ public class SecondaryWeapon : MonoBehaviour
         }
     }
 
+    public string GetLiteralType()
+    {
+        switch (type)
+        {
+            case Type.Rockets: return "rockets";
+            default: return "orbital laser";
+        }
+    }
     public void SetActive(bool active)
     {
         if (active == false)
@@ -90,6 +98,7 @@ public class SecondaryWeapon : MonoBehaviour
     {
         return gameObject.activeSelf;
     }
+
     bool failShot = false;
     float lastFire = 0;
     public void Fire()
@@ -136,6 +145,11 @@ public class SecondaryWeapon : MonoBehaviour
                 Debug.DrawRay(b.transform.position, b.rb.velocity);
                 
                 load -= cost;
+                if (load < cost)
+                {
+                    overheat = true;
+                }
+
                 PlaySound(clipFire);
                 currentCooldown = cooldown;
 
@@ -174,6 +188,7 @@ public class SecondaryWeapon : MonoBehaviour
                 }
             }
             reloading = false;
+            overheat = false;
         }
     }
 

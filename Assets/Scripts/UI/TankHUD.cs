@@ -6,6 +6,7 @@ public class TankHUD : MonoBehaviour
 {
     [Header("Followed items")]
     [SerializeField] public Controller playerController;
+    [SerializeField] public Game game;
 
     [Header("Internal elements")]
     [SerializeField] public SpriteMask lifeBar;
@@ -13,33 +14,58 @@ public class TankHUD : MonoBehaviour
     [SerializeField] public SpriteMask ammoBar;
     [SerializeField] public SpriteRenderer crossedEnergyBar;
     [SerializeField] public SpriteRenderer crossedAmmoBar;
+    [SerializeField] public GameObject death;
+    [SerializeField] public GameObject conversion;
+
 
     // Update is called once per frame
     void Update()
     {
-        // update player components
-        lifeBar.alphaCutoff = 1.0f - Mathf.Clamp((float)playerController.hp / playerController.maxHp, 0.0f, 1.0f);
-
-        // energy bar
-        crossedEnergyBar.enabled = (playerController.equipement.secondaryWeapon == null);
-        if (playerController.equipement.secondaryWeapon != null)
+        if(game.death)
         {
-            energyBar.alphaCutoff = 1.0f - (float)playerController.equipement.secondaryWeapon.load / playerController.equipement.secondaryWeapon.capacity;
+            // hide all except death screen
+            energyBar.transform.parent.gameObject.SetActive(false);
+            ammoBar.transform.parent.gameObject.SetActive(false);
+            lifeBar.transform.parent.gameObject.SetActive(false);
+            death.SetActive(true);
+        }
+        else if (game.conversion)
+        {
+            // hide all except death screen
+            energyBar.transform.parent.gameObject.SetActive(false);
+            ammoBar.transform.parent.gameObject.SetActive(false);
+            lifeBar.transform.parent.gameObject.SetActive(false);
+            conversion.SetActive(true);
         }
         else
         {
-            energyBar.alphaCutoff = 1.0f;
-        }
+            // life bar
+            lifeBar.transform.parent.gameObject.SetActive(true);
+            lifeBar.alphaCutoff = 1.0f - Mathf.Clamp((float)playerController.hp / playerController.maxHp, 0.0f, 1.0f);
 
-        //  standard ammo bar
-        crossedAmmoBar.enabled = (playerController.equipement.weapon == null);
-        if (playerController.equipement.weapon != null)
-        {
-            ammoBar.alphaCutoff = 1.0f - (float)playerController.equipement.weapon.load / playerController.equipement.weapon.capacity;
-        }
-        else
-        {
-            ammoBar.alphaCutoff = 0.0f;
+            // energy bar
+            energyBar.transform.parent.gameObject.SetActive(playerController.equipement.secondaryWeapon != null);
+            crossedEnergyBar.enabled = (playerController.equipement.secondaryWeapon != null && playerController.equipement.secondaryWeapon.overheat);
+            if (playerController.equipement.secondaryWeapon != null)
+            {
+                energyBar.alphaCutoff = 1.0f - (float)playerController.equipement.secondaryWeapon.load / playerController.equipement.secondaryWeapon.capacity;
+            }
+            else
+            {
+                energyBar.alphaCutoff = 1.0f;
+            }
+
+            //  standard ammo bar
+            ammoBar.transform.parent.gameObject.SetActive(playerController.equipement.weapon != null);
+            crossedAmmoBar.enabled = (playerController.equipement.weapon != null && playerController.equipement.weapon.overheat);
+            if (playerController.equipement.weapon != null)
+            {
+                ammoBar.alphaCutoff = 1.0f - (float)playerController.equipement.weapon.load / playerController.equipement.weapon.capacity;
+            }
+            else
+            {
+                ammoBar.alphaCutoff = 0.0f;
+            }
         }
     }
 }

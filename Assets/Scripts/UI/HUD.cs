@@ -67,7 +67,6 @@ public class HUD : MonoBehaviour
                 ammoBar.shadow.gameObject.SetActive(false);
                 ammoBar.foreground.gameObject.SetActive(false);
             }
-            shieldIcon.gameObject.SetActive(playerController.equipement.shield != null);
 
             // algnment
             if (playerController.hoveredObject != null)

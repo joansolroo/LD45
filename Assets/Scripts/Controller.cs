@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public PickableObject hoveredObject = null;
     public bool grounded;
     public bool alive = true;
+    public bool moving;
 
     public delegate void ControllerEventInt(int num);
     public delegate void ControllerEventt();
@@ -50,10 +51,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         // movement
         if (speed > 0 || !grounded)
         {
-
             if (moveDirection.sqrMagnitude > 0.1f)
             {
-
                 body.transform.rotation = Quaternion.RotateTowards(body.transform.rotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime * 360 * 2);
             }
             /*else
@@ -86,10 +85,19 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             {
                 equipement.SetSecondaryWeapon(((SecondaryWeapon)hoveredObject.toPick).type);
             }
+            else if (hoveredObject.toPick.GetType() == typeof(Passive))
+            {
+                equipement.SetPassive(((Passive)hoveredObject.toPick).type);
+            }
 
             hoveredObject.GotPicked();
         }
+
+        float alpha = 0.7f;
+        smoothedVelocity = (1.0f - alpha) * smoothedVelocity + alpha * new Vector2(characterController.velocity.x, characterController.velocity.z);
+        moving = smoothedVelocity.magnitude > 0.9f;
     }
+    private Vector2 smoothedVelocity;
 
     public void Move(Vector3 direction)
     {

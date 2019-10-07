@@ -14,11 +14,12 @@ public class Game : MonoBehaviour
     private GameObject instanciatedPlayer;
 
     public bool initialized = false;
-    public bool death;
+    public bool death, conversion;
 
     protected virtual void Start()
     {
         death = false;
+        conversion = false;
         if (introduction != null)
             introduction.SetActive(true);
         resetables.SetActive(false);
