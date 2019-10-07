@@ -8,6 +8,7 @@ public class CameraEffects : MonoBehaviour
     [SerializeField] Kino.DigitalGlitch digital;
     [SerializeField] AnimationCurve flashCurve;
 
+    [SerializeField] AudioSource glitchSound;
     public delegate void EffectEvent();
     public EffectEvent OnEffectStart;
     public EffectEvent OnEffectDone;
@@ -106,15 +107,23 @@ public class CameraEffects : MonoBehaviour
            // Color currentColor = initialColor;
             //Color targetColor = color;
             float t = 0;
+
+            float volume = glitchSound.volume;
+            glitchSound.pitch = Random.Range(0.5f, 0.8f);
+            glitchSound.Play();
+            float curve;
             while (animating && t < time)
             {
                 float nTime = t / time;
-                analog.colorDrift = flashCurve.Evaluate(nTime)*intensity;
-                digital.intensity = flashCurve.Evaluate(nTime) * intensity/4;
+                curve = flashCurve.Evaluate(nTime);
+                glitchSound.volume = curve * volume;
+                analog.colorDrift = curve*intensity;
+                digital.intensity = curve * intensity/4;
                 //renderer.color = currentColor;
                 yield return new WaitForEndOfFrame();
                 t += Time.deltaTime;
             }
+            glitchSound.volume = volume;
             //renderer.color = initialColor;
             animating = false;
             analog.colorDrift = 0;
