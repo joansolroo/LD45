@@ -25,6 +25,8 @@ public class ParticleEmitter : MonoBehaviour
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 velocityNoise;
     [SerializeField] [Range(0.0f, 0.9f)] public float durationDeviation;
+
+    [SerializeField] AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -116,12 +118,15 @@ public class ParticleEmitter : MonoBehaviour
         current = (current + 1) % count;
         GameObject particle = particleGOs[current];
 
-
         particlePos[current] = local ? Vector3.zero : this.transform.position;
         particle.SetActive(true);
         particleTTL[current] = duration * Random.Range(1 - durationDeviation, 1 + durationDeviation);
         particle.transform.position = this.transform.position;
 
+        if(audioSource)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
         if (currentCount < count)
         {
             ++currentCount;
