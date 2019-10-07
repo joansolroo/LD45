@@ -979,6 +979,11 @@ PrefabInstance:
       propertyPath: bulletsPerShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5685589519418875831, guid: c67ac01fa021c07479ae90855317ba51,
+        type: 3}
+      propertyPath: clipReload
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e385a51fb92118459b703c5e79c5e7f, type: 3}
     - target: {fileID: 3851446006005825620, guid: c67ac01fa021c07479ae90855317ba51,
         type: 3}
       propertyPath: m_LocalPosition.z

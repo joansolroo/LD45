@@ -257,7 +257,7 @@ MonoBehaviour:
   audioSource: {fileID: 3942324874968257064}
   clipFire: {fileID: 8300000, guid: 4eec19ab8eb5f2641b5391a20387fb3d, type: 3}
   clipEmpty: {fileID: 8300000, guid: 7eb2300695a708541973264e91ee8100, type: 3}
-  clipReload: {fileID: 8300000, guid: 933944d838694c041bc46ab602be5631, type: 3}
+  clipReload: {fileID: 8300000, guid: 8e385a51fb92118459b703c5e79c5e7f, type: 3}
   hand: 0
   reloading: 0
 --- !u!82 &3942324874968257064

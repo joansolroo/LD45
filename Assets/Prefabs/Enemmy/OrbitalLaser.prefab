@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 10
   life: 0
-  clipExplosion: {fileID: 8300000, guid: 0d9362183d3aef64682e20a3378bd6ca, type: 3}
+  clipExplosion: {fileID: 8300000, guid: 29f81caf7e7cdd0449c7061d94f794f7, type: 3}
   particleCount: 50
   particlePrefab: {fileID: 5740513801856691543}
   ejectSpeed: 100

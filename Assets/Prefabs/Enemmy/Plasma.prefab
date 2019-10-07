@@ -58,7 +58,7 @@ MonoBehaviour:
     type: 3}
   bulletsPerShot: 1
   spread: 3
-  cooldown: 0.5
+  cooldown: 0.3
   cost: 1
   overheat: 0
   firing: 0
