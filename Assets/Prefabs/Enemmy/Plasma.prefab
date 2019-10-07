@@ -58,7 +58,7 @@ MonoBehaviour:
     type: 3}
   bulletsPerShot: 1
   spread: 3
-  cooldown: 0.5
+  cooldown: 0.3
   cost: 1
   overheat: 0
   firing: 0
@@ -248,6 +248,8 @@ MonoBehaviour:
   radius: 0
   guided: 0
   targetPosition: {x: 0, y: 0, z: 0}
+  nuke: 0
+  explosion: {fileID: 0}
 --- !u!136 &5779573754251037403
 CapsuleCollider:
   m_ObjectHideFlags: 0
