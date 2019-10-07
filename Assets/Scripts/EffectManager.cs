@@ -43,8 +43,8 @@ public class EffectManager : MonoBehaviour
     }
     public void Nuke(Vector3 position)
     {
-        StartCoroutine(Emit(nukeSystem, position, 3));
-        StartCoroutine(Emit(smokeSystem, position, 30));
+        StartCoroutine(Emit(nukeSystem, position+Vector3.up, 3));
+        StartCoroutine(Emit(smokeSystem, position, 10));
     }
     public void Decal(Vector3 pos, Vector3 normal)
     {
