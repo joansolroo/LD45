@@ -308,7 +308,7 @@ MonoBehaviour:
   mesh: {fileID: 1457807126132472362}
   rb: {fileID: 8957014440111466102}
   velocity: 20
-  damage: 50
+  damage: 100
   ttl: 60
   target:
     serializedVersion: 2
