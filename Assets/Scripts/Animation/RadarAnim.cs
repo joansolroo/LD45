@@ -8,6 +8,8 @@ public class RadarAnim : MonoBehaviour
     [SerializeField] public Transform pivot2;
     [SerializeField] [Range(3, 20)] public float idleTime;
     [SerializeField] [Range(1, 100)] public float speed;
+    private AudioSource audioSource;
+    public AudioClip clipAudio;
 
     public float time, nextTime;
     private float u, v;
@@ -16,6 +18,7 @@ public class RadarAnim : MonoBehaviour
         time = 0;
         nextTime = 1;
         u = 0; v = 0;
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -26,6 +29,8 @@ public class RadarAnim : MonoBehaviour
             nextTime = Random.Range(0, idleTime) + 3;
             u = Random.Range(0,360);
             v = Random.Range(0, 40);
+            if (Random.Range(0, 1.0f) < 0.3f)
+                audioSource.PlayOneShot(clipAudio);
         }
 
         pivot1.localEulerAngles = Vector3.MoveTowards(pivot1.localEulerAngles, new Vector3(0, u, 0), speed * Time.deltaTime);

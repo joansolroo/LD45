@@ -50,6 +50,7 @@ MonoBehaviour:
   pivot2: {fileID: 25013590754847421}
   idleTime: 5
   speed: 90.7
+  clipAudio: {fileID: 8300000, guid: b2920b350f5229043b42653672c25ced, type: 3}
   time: 0
   nextTime: 0
 --- !u!114 &6006446010627856415

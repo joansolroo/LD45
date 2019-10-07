@@ -108,6 +108,8 @@ MonoBehaviour:
   radius: 0
   guided: 0
   targetPosition: {x: 0, y: 0, z: 0}
+  nuke: 0
+  explosion: {fileID: 0}
 --- !u!136 &4446097535603288055
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -404,6 +406,7 @@ MonoBehaviour:
   offset: 0.3
   time: 0
   nextTime: 0
+  clipAudio: {fileID: 8300000, guid: b2920b350f5229043b42653672c25ced, type: 3}
 --- !u!135 &6068705582697816235
 SphereCollider:
   m_ObjectHideFlags: 0

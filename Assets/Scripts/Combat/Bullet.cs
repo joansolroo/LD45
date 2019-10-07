@@ -21,8 +21,7 @@ public class Bullet : MonoBehaviour
     public Vector3 targetPosition;
     public bool nuke = false;
 
-    [SerializeField] AudioSource audiosource;
-    [SerializeField] AudioClip clipExplode;
+    public GameObject explosion;
 
     public void Start()
     {
@@ -134,8 +133,14 @@ public class Bullet : MonoBehaviour
 
     IEnumerator DoDie()
     {
-        if (audiosource != null && clipExplode != null)
-            audiosource.PlayOneShot(clipExplode);
+        if(explosion != null)
+        {
+            GameObject e = Instantiate(explosion);
+            e.transform.position = transform.position;
+            e.transform.parent = null;
+            e.SetActive(true);
+            e.GetComponent<Explosion>().Init();
+        }
 
         rb.isKinematic = true;
         this.enabled = false;
