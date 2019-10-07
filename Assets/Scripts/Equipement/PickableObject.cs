@@ -40,7 +40,7 @@ public class PickableObject : MonoBehaviour
 
     private void HandleTrigger(Collider other, bool end)
     {
-        if (!triggered)
+        //if (!triggered)
         {
             triggered = true;
             if (other.gameObject.tag == "Player")
