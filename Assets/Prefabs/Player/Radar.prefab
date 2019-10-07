@@ -48,6 +48,9 @@ MonoBehaviour:
   pivot1: {fileID: 1158082206978107593}
   pivot2: {fileID: 25013590754847421}
   idleTime: 5
+  speed: 90.7
+  time: 0
+  nextTime: 0
 --- !u!1 &2938109949990712284
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,16 +89,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25013590754847421}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 71dd1442dea8473418a4a34752dcbe70,
-        type: 3}
-      propertyPath: m_Name
-      value: Radar2
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 71dd1442dea8473418a4a34752dcbe70,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 71dd1442dea8473418a4a34752dcbe70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -151,6 +144,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 71dd1442dea8473418a4a34752dcbe70,
+        type: 3}
+      propertyPath: m_Name
+      value: Radar2
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 71dd1442dea8473418a4a34752dcbe70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71dd1442dea8473418a4a34752dcbe70, type: 3}
 --- !u!4 &7965112269717840229 stripped
@@ -166,16 +169,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1158082206978107593}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 345366543f7c4af49a13c279136fbf04,
-        type: 3}
-      propertyPath: m_Name
-      value: Radar1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 345366543f7c4af49a13c279136fbf04,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 345366543f7c4af49a13c279136fbf04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,6 +223,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 345366543f7c4af49a13c279136fbf04,
+        type: 3}
+      propertyPath: m_Name
+      value: Radar1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 345366543f7c4af49a13c279136fbf04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 345366543f7c4af49a13c279136fbf04, type: 3}

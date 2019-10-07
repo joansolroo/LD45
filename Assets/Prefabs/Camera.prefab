@@ -524,10 +524,10 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 7.55
-  m_Depth: 5
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
