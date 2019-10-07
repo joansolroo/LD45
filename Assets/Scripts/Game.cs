@@ -19,6 +19,9 @@ public class Game : MonoBehaviour
     private GameObject instanciatedPlayer;
 
     public GameObject BSOD;
+    public AudioClip explode;
+    public AudioSource AS;
+
 
     public bool initialized = false;
     public bool death, conversion, won;
@@ -99,6 +102,7 @@ public class Game : MonoBehaviour
 
     protected IEnumerator Die()
     {
+        AS.PlayOneShot(explode);
         death = true;
         BSOD.SetActive(true);
         yield return new WaitForSeconds(gameOverDuration);
