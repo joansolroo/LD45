@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     public float gameOverDuration;
     public GameObject respawn;
     public Controller playerController;
+    public AutoGun playerAutogun;
     public GameObject resetables;
     public Controller boss;
     public BossTrigger bosstriger;
@@ -67,6 +68,16 @@ public class Game : MonoBehaviour
         {
             bossLife.SetActive(true);
             bossLifeBar.value = (float)boss.hp / boss.maxHp;
+
+            if(playerController.equipement.GetAlignment() >= 3)
+            {
+                conversion = true;
+                playerController.gameObject.GetComponent<PlayerController>().enabled = false;
+                playerController.gameObject.GetComponent<EnemyController>().enabled = true;
+                playerController.gameObject.layer = 10;
+                playerAutogun.aimRange = 0;
+                playerAutogun.shootRange = 0;
+            }
         }
     }
 

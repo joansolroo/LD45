@@ -124,13 +124,18 @@ public class Weapon : MonoBehaviour
         {
             firing = true;
             lastFireFrame = Time.frameCount;
+
             
-            if (reloading && reloadInterruptSupported)
+
+            if (reloading && reloadInterruptSupported && !overheat)
             {
                 CancelReload();
             }
-            if (!reloading)
+            else if (!reloading)
             {
+                audioSource.loop = false;
+                audioSource.volume = 1;
+                audioSource.PlayOneShot(clipFire);
 
                 for (int c = 0; c < bulletsPerShot; ++c)
                 {
@@ -148,16 +153,11 @@ public class Weapon : MonoBehaviour
                     currentNossle = (currentNossle + 1) % nossles.Length;
                 }
 
-                load -= cost;
+                load -= cost;                
+                currentCooldown = cooldown;
                 if (load < cost)
                 {
                     overheat = true;
-                }
-
-                PlaySound(clipFire);
-                currentCooldown = cooldown;
-                if (load == 0)
-                {
                     Reload();
                 }
             }
@@ -168,11 +168,13 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         StartCoroutine(DoReload());
+        
     }
     void CancelReload()
     {
         StopCoroutine(DoReload());
         reloading = false;
+        
     }
     public bool reloading = false;
 
@@ -180,18 +182,32 @@ public class Weapon : MonoBehaviour
     {
         if (!reloading)
         {
+            if (!overheat)
+            {
+                audioSource.clip = clipReload;
+            }
+            else
+            {
+                audioSource.clip = clipEmpty;
+            }
+            audioSource.loop = true;
+            audioSource.Play();
+
             reloading = true;
             while (load < capacity && reloading)
             {
+                audioSource.volume = Mathf.Min(5*(1.0f - (float)load / capacity), 1.0f);
                 if (reloading)
                 {
-                    PlaySound(clipReload);
                     load++;
                     yield return new WaitForSeconds(loadTime);
                 }
             }
             reloading = false;
             overheat = false;
+            audioSource.loop = false;
+            audioSource.Stop();
+            audioSource.volume = 1;
         }
     }
 
