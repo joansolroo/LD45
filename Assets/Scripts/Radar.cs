@@ -9,6 +9,7 @@ public class Radar : MonoBehaviour
     [SerializeField] int maxSight;
     [SerializeField] RadarArrow ArrowPrefab;
     RadarArrow[] arrows;
+    [SerializeField] Transform swipe;
 
     [SerializeField] float minDistance = 0;
     [SerializeField] float maxDistance = 5;
@@ -47,5 +48,6 @@ public class Radar : MonoBehaviour
         {
             arrows[c].gameObject.SetActive(false);
         }
+        swipe.Rotate(0, 0,60 * Time.deltaTime);
     }
 }
