@@ -87,10 +87,12 @@ public class Bullet : MonoBehaviour
         rb.isKinematic = true;
         this.enabled = false;
         mesh.SetActive(false);
+       
         float t = 1;
         float startWidth = trail.startWidth;
         float endWidth = trail.endWidth;
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        
         while (t >= 0 && trail != null)
         {
             t -= Time.deltaTime * 1;

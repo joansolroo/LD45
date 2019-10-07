@@ -975,12 +975,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1423864563}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &268998126 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43,
-    type: 3}
-  m_PrefabInstance: {fileID: 2107034652}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &320308712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2738,12 +2732,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e030c1979d5b404ea6f254783aa6473, type: 3}
---- !u!198 &663219694 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198435890141970726, guid: 8333d50130027574ca8b4e0268fdd047,
-    type: 3}
-  m_PrefabInstance: {fileID: 697557823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &677802696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3048,68 +3036,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 694786642}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &697557823
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 904549521}
-    m_Modifications:
-    - target: {fileID: 1058325498707994, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_Name
-      value: Electricity
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409308058060270, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198435890141970726, guid: 8333d50130027574ca8b4e0268fdd047,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
 --- !u!4 &698359952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6479776258919175219, guid: 69242a9ea3c319647a4c9e631b4b6c95,
@@ -4185,12 +4111,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1661677725209356100, guid: 3cc5aafe92d44c742888861a657e933b,
     type: 3}
   m_PrefabInstance: {fileID: 944987593}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &904549521 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 926227757394030832, guid: 05ce114c918b580448044dc093db4c1f,
-    type: 3}
-  m_PrefabInstance: {fileID: 926227757073540193}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &927298267
 PrefabInstance:
@@ -6869,9 +6789,14 @@ MonoBehaviour:
   respawn: {fileID: 686367793}
   playerController: {fileID: 5271712358777908157}
   resetables: {fileID: 1757892612}
+  boss: {fileID: 0}
+  bosstriger: {fileID: 0}
+  bossLife: {fileID: 0}
+  bossLifeBar: {fileID: 0}
   initialized: 0
   death: 0
   conversion: 0
+  won: 0
 --- !u!4 &1372642982
 Transform:
   m_ObjectHideFlags: 0
@@ -10014,68 +9939,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69242a9ea3c319647a4c9e631b4b6c95, type: 3}
---- !u!1001 &2107034652
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 904549521}
-    m_Modifications:
-    - target: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_Name
-      value: Sparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
 --- !u!1001 &808726148220034593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10216,26 +10079,6 @@ PrefabInstance:
     - target: {fileID: 926227757394030832, guid: 05ce114c918b580448044dc093db4c1f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926227757394030835, guid: 05ce114c918b580448044dc093db4c1f,
-        type: 3}
-      propertyPath: sparkSystem
-      value: 
-      objectReference: {fileID: 268998126}
-    - target: {fileID: 926227757394030835, guid: 05ce114c918b580448044dc093db4c1f,
-        type: 3}
-      propertyPath: electricitySystem
-      value: 
-      objectReference: {fileID: 663219694}
-    - target: {fileID: 1016325282067590134, guid: 05ce114c918b580448044dc093db4c1f,
-        type: 3}
-      propertyPath: EmissionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1016325282067590134, guid: 05ce114c918b580448044dc093db4c1f,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
