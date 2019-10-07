@@ -39,6 +39,42 @@ public class Bullet : MonoBehaviour
             DestroyBullet();
         }
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        GameObject go = other.collider.attachedRigidbody ? other.collider.attachedRigidbody.gameObject : other.gameObject;
+        if (!ignore.Contains(other.gameObject.layer) /*&& this.tag != go.tag */&& target.Contains(go.layer))
+        {
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            if (radius == 0)
+            {
+                if (damageable != null)
+                {
+                    damageable.Damage(damage);
+                }
+            }
+            else
+            {
+                Collider[] hits = Physics.OverlapSphere(this.transform.position, radius, target);
+                HashSet<GameObject> hitted = new HashSet<GameObject>();
+                foreach (Collider hit in hits)
+                {
+                    GameObject go2 = hit.attachedRigidbody ? hit.attachedRigidbody.gameObject : hit.gameObject;
+                    {
+                        if (!hitted.Contains(go2))
+                        {
+                            hitted.Add(go2);
+                            IDamageable damageable2 = go2.GetComponent<IDamageable>();
+                            if (damageable2 != null)
+                            {
+                                damageable2.Damage(damage);
+                            }
+                        }
+                    }
+                }
+            }
+            DestroyBullet();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;

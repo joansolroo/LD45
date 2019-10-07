@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour, IDamageable, IPerceptible
 {
+    public bool isPlayer = false;
     [Header("links")]
     public CharacterController characterController;
     public Equipement equipement;
@@ -13,7 +14,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     [Header("Status")]
     public int maxHp;
     public int maxEnergy;
-
+    public bool verticalAim = false;
     [Header("Movement")]
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -35,7 +36,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public delegate void ControllerEventInt(int num);
     public delegate void ControllerEventt();
     public ControllerEventInt OnDamage;
-
+    
     AudioSource audioSource;
     void Start()
     {
@@ -49,6 +50,8 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         Reset();
     }
 
+    public bool firedLeft = false;
+    public bool firedRight = false;
     void Update()
     {
         grounded = characterController.isGrounded;
@@ -114,12 +117,12 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public void AimAt(Vector3 position)
     {
         aimDirection = position - this.transform.position;
-        aimDirection.y = 0;
+        if(!verticalAim)aimDirection.y = 0;
     }
     public void AimRotate(Vector3 angle)
     {
         aimDirection = Quaternion.Euler(angle) * turret.forward;
-        aimDirection.y = 0;
+        if (!verticalAim) aimDirection.y = 0;
     }
 
     public void Fire1()
@@ -128,6 +131,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         {
             //Debug.Log("Fire 1");
             equipement.weapon.Fire();
+            firedLeft = true;
         }
     }
 
@@ -137,6 +141,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         {
             //Debug.Log("Fire 2");
             equipement.secondaryWeapon.Fire();
+            firedRight = true;
         }
     }
 
@@ -174,6 +179,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public bool OnPickObject(PickableObject canPick, bool end)
     {
+        if(!isPlayer)
+        {
+            return false;
+        }
         bool result = false;
         if (!canPick.instant)
         {

@@ -170,6 +170,7 @@ MonoBehaviour:
   radius: 0
   guided: 0
   targetPosition: {x: 0, y: 0, z: 0}
+  nuke: 0
 --- !u!136 &7226182976524064052
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -240,7 +241,10 @@ MonoBehaviour:
   bulletsPerShot: 1
   spread: 3
   cooldown: 0.25
+  cost: 1
+  overheat: 0
   firing: 0
+  flame: 0
   bulletPefab: {fileID: 7853659790137265256}
   nossles:
   - {fileID: 5193348689403165733}
@@ -944,23 +948,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8352e308014e9c9458018467b0e5f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   characterController: {fileID: 8080990077576922645}
   equipement: {fileID: 8080990077576922646}
   turret: {fileID: 8080990078088251378}
   body: {fileID: 0}
   maxHp: 10
   maxEnergy: 0
+  verticalAim: 1
   speed: 0
   jumpSpeed: 0
   gravity: 0
   invincible: 0
+  canPickObj: 0
   hp: 0
   energy: 0
+  points: 0
   moveDirection: {x: 0, y: 0, z: 0}
   aimDirection: {x: 0, y: 0, z: 0}
   hoveredObject: {fileID: 0}
   grounded: 0
   alive: 1
+  moving: 0
 --- !u!114 &8080990077576922646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,17 +984,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 8834621146350059608}
   secondaryWeapon: {fileID: 0}
-  shield: {fileID: 0}
-  scan: {fileID: 0}
   passive: {fileID: 0}
   weaponList:
   - {fileID: 8834621146350059608}
   secondaryWeaponList: []
-  shieldList: []
-  scanList: []
   passiveList: []
   pickablePrefab: {fileID: 0}
   pickablePrefabSW: {fileID: 0}
+  pickablePrefabPassive: {fileID: 0}
   pushAmplitude: 0
 --- !u!114 &34562369
 MonoBehaviour:
@@ -1005,6 +1011,7 @@ MonoBehaviour:
   aggressivity: 0.5
   aimRange: 6
   shootRange: 6
+  preferClosestTarget: 0
   lastKnownPosition: {x: 0, y: 0, z: 0}
   currentPosition: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
@@ -1331,7 +1338,10 @@ MonoBehaviour:
   bulletsPerShot: 1
   spread: 0
   cooldown: 0.5
+  cost: 1
+  overheat: 0
   firing: 0
+  flame: 0
   bulletPefab: {fileID: 6255151355592671712, guid: c5513151e3853444bbc204a7562d3724,
     type: 3}
   nossles:
@@ -1429,6 +1439,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4660386015174672673}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 201894d44710e9048bb6163a3171ee92,
+        type: 3}
+      propertyPath: m_Name
+      value: PlasmaGun (1)
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 201894d44710e9048bb6163a3171ee92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1484,11 +1499,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 201894d44710e9048bb6163a3171ee92,
-        type: 3}
-      propertyPath: m_Name
-      value: PlasmaGun (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201894d44710e9048bb6163a3171ee92, type: 3}
 --- !u!4 &2605122177868867171 stripped
@@ -1504,6 +1514,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4660386015174672673}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 201894d44710e9048bb6163a3171ee92,
+        type: 3}
+      propertyPath: m_Name
+      value: PlasmaGun
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 201894d44710e9048bb6163a3171ee92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1559,11 +1574,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 201894d44710e9048bb6163a3171ee92,
-        type: 3}
-      propertyPath: m_Name
-      value: PlasmaGun
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201894d44710e9048bb6163a3171ee92, type: 3}
 --- !u!4 &2854380922745399084 stripped
@@ -1585,6 +1595,11 @@ PrefabInstance:
       value: bullet
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: a2825962b6c169d47a2a92ec6dd31454,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: a2825962b6c169d47a2a92ec6dd31454,
         type: 3}
       propertyPath: m_Layer
       value: 11
@@ -1658,11 +1673,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534866581884222612, guid: a2825962b6c169d47a2a92ec6dd31454,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -2416733968201007103, guid: a2825962b6c169d47a2a92ec6dd31454,
         type: 3}

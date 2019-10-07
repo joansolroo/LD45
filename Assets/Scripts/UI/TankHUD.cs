@@ -26,6 +26,14 @@ public class TankHUD : MonoBehaviour
     [SerializeField] GameObject alignmentChangeUp;
     [SerializeField] GameObject alignmentChangeDown;
 
+    [SerializeField] GameObject helpLeft;
+    [SerializeField] GameObject helpRight;
+
+    private void Start()
+    {
+        helpLeft.SetActive(true);
+        helpRight.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -108,6 +116,15 @@ public class TankHUD : MonoBehaviour
             if (alignmentChange!= 0 || alignmentValue > 0)
             {
                 alignment.Count = alignmentValue;
+            }
+
+            if (helpLeft.activeSelf && playerController.firedLeft)
+            {
+                helpLeft.SetActive(false);
+            }
+            if (helpRight.activeSelf && playerController.firedRight)
+            {
+                helpRight.SetActive(false);
             }
         }
     }

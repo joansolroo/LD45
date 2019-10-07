@@ -59,13 +59,13 @@ public class DestructableObject : MonoBehaviour,IDamageable {
     {
         if (drop != null)
         {
-
             PickableObject newDrop = GameObject.Instantiate<PickableObject>(drop);
             newDrop.transform.position = this.transform.position;
             newDrop.gameObject.SetActive(true);
             newDrop.transform.parent = drop.transform.parent;
             newDrop.transform.localScale = drop.transform.localScale;
         }
+        EffectManager.main.Explode(this.transform.position);
         Destroy(this.gameObject);
     }
 }
