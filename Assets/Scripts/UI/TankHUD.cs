@@ -16,6 +16,7 @@ public class TankHUD : MonoBehaviour
     [SerializeField] public SpriteRenderer crossedAmmoBar;
     [SerializeField] public GameObject death;
     [SerializeField] public GameObject conversion;
+    [SerializeField] public GameObject won;
     [SerializeField] GameObject passive;
     [SerializeField] Radar radar;
 
@@ -35,6 +36,7 @@ public class TankHUD : MonoBehaviour
             ammoBar.transform.parent.gameObject.SetActive(false);
             lifeBar.transform.parent.gameObject.SetActive(false);
             death.SetActive(true);
+            won.SetActive(false);
         }
         else if (game.conversion)
         {
@@ -43,6 +45,11 @@ public class TankHUD : MonoBehaviour
             ammoBar.transform.parent.gameObject.SetActive(false);
             lifeBar.transform.parent.gameObject.SetActive(false);
             conversion.SetActive(true);
+            won.SetActive(false);
+        }
+        else if(game.won)
+        {
+            won.SetActive(true);
         }
         else
         {

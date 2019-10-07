@@ -22,6 +22,7 @@ public class ParticleEmitter : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] float rateTime = 1;
     [SerializeField] float rateDistance = 1;
+    [SerializeField] bool usePhysics = false;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 velocityNoise;
     [SerializeField] [Range(0.0f, 0.9f)] public float durationDeviation;
@@ -32,7 +33,7 @@ public class ParticleEmitter : MonoBehaviour
     {
         prevPosition = this.transform.position;
         t = Random.Range(0, 1.0f);
-        
+
         if (local)
         {
             initScale = prefab.transform.localScale;
@@ -44,15 +45,22 @@ public class ParticleEmitter : MonoBehaviour
         }
         particleGOs = new GameObject[count];
         particleTTL = new float[count];
-        particleMats = new Material[count];
+        if (prefab.GetComponent<Renderer>() != null)
+            particleMats = new Material[count];
         particlePos = new Vector3[count];
         for (int p = 0; p < count; ++p)
         {
             GameObject particle = Instantiate(prefab);
             particleGOs[p] = particle;
             particle.SetActive(false);
-            particle.transform.parent = this.transform;
-            particleMats[p] = particle.GetComponent<Renderer>().material;
+            if (local)
+            {
+                particle.transform.parent = this.transform;
+            }
+            if (particleMats != null)
+            {
+                particleMats[p] = particle.GetComponent<Renderer>().material;
+            }
             particleTTL[p] = duration;
         }
     }
@@ -72,13 +80,15 @@ public class ParticleEmitter : MonoBehaviour
             Emit();
         }
 
-        movement += Vector3.Distance(prevPosition, this.transform.position)*rateDistance;
-        for (int mp = (int)(movement-1); mp >=0; --mp)
+        movement += Vector3.Distance(prevPosition, this.transform.position) * rateDistance;
+        for (int mp = (int)(movement - 1); mp >= 0; --mp)
         {
             Emit();
             --movement;
         }
         prevPosition = this.transform.position;
+
+
 
         for (int p = 0; p < currentCount; ++p)
         {
@@ -86,34 +96,39 @@ public class ParticleEmitter : MonoBehaviour
             if (particle.activeSelf)
             {
                 float normalizedTTL = particleTTL[p] / duration;
-                Vector3 noise = new Vector3(Random.Range(-velocityNoise.x, velocityNoise.x), Random.Range(-velocityNoise.y, velocityNoise.y), Random.Range(-velocityNoise.z, velocityNoise.z));
-
-                if (local)
+                if (!usePhysics)
                 {
-                    particle.transform.localPosition += (velocity + noise) * Time.deltaTime;
-                }
-                else
-                {
-                    particlePos[p] += (velocity + noise) * Time.deltaTime;
-                    particle.transform.position = particlePos[p];
-                    particle.transform.rotation = Quaternion.identity;
+                    Vector3 noise = new Vector3(Random.Range(-velocityNoise.x, velocityNoise.x), Random.Range(-velocityNoise.y, velocityNoise.y), Random.Range(-velocityNoise.z, velocityNoise.z));
 
-                }
-                particle.transform.localScale = initScale* size.Evaluate(1 - normalizedTTL);
+                    if (local)
+                    {
+                        particle.transform.localPosition += (velocity + noise) * Time.deltaTime;
+                    }
+                    else
+                    {
+                        particlePos[p] += (velocity + noise) * Time.deltaTime;
+                        particle.transform.position = particlePos[p];
+                        particle.transform.rotation = Quaternion.identity;
 
+                    }
+                    particle.transform.localScale = initScale * size.Evaluate(1 - normalizedTTL);
+                }
                 particleTTL[p] -= dt;
 
-                particleMats[p].color = color.Evaluate(1 - normalizedTTL);
+                if (particleMats != null)
+                    particleMats[p].color = color.Evaluate(1 - normalizedTTL);
                 if (particleTTL[p] <= 0)
                 {
                     particle.SetActive(false);
                 }
+
+
             }
 
         }
     }
 
-    void Emit()
+    public void Emit()
     {
         current = (current + 1) % count;
         GameObject particle = particleGOs[current];
@@ -121,9 +136,16 @@ public class ParticleEmitter : MonoBehaviour
         particlePos[current] = local ? Vector3.zero : this.transform.position;
         particle.SetActive(true);
         particleTTL[current] = duration * Random.Range(1 - durationDeviation, 1 + durationDeviation);
+
         particle.transform.position = this.transform.position;
 
-        if(audioSource)
+
+        if (usePhysics)
+        {
+            Rigidbody rb = particle.GetComponent<Rigidbody>();
+            rb.velocity = this.transform.TransformDirection(velocity);
+        }
+        if (audioSource)
         {
             audioSource.pitch = Random.Range(0.4f, 0.5f);
             audioSource.PlayOneShot(audioSource.clip);
