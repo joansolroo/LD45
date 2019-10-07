@@ -9,7 +9,7 @@
 
 			ZWrite Off
 			Lighting Off
-			Fog { Mode Off }
+			//Fog { Mode On }
 
 			Blend SrcAlpha OneMinusSrcAlpha
 
