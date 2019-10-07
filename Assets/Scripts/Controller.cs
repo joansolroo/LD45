@@ -157,6 +157,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     void Die()
     {
+        EffectManager.main.Explode(this.transform.position+Vector3.up*0.5f);
         alive = false;
         this.gameObject.SetActive(false);
     }
