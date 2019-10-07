@@ -125,8 +125,10 @@ public class ParticleEmitter : MonoBehaviour
 
         if(audioSource)
         {
+            audioSource.pitch = Random.Range(0.4f, 0.5f);
             audioSource.PlayOneShot(audioSource.clip);
         }
+
         if (currentCount < count)
         {
             ++currentCount;
