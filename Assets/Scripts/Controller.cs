@@ -228,6 +228,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                     if (equipement.secondaryWeapon.load < equipement.secondaryWeapon.capacity)
                     {
                         equipement.secondaryWeapon.load = equipement.secondaryWeapon.capacity;
+                        equipement.secondaryWeapon.overheat = false;
                         result = true;
                     }
                 }
