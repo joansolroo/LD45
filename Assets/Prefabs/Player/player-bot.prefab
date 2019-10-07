@@ -178,8 +178,8 @@ MonoBehaviour:
   equipement: {fileID: 9118642743428115548}
   turret: {fileID: 5427703657517961449}
   body: {fileID: 4155214502460071233}
-  maxHp: 50
-  maxEnergy: 10
+  maxHp: 5
+  maxEnergy: 0
   verticalAim: 0
   speed: 2
   jumpSpeed: 8
@@ -1335,11 +1335,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8049259658172277439}
     m_Modifications:
-    - target: {fileID: 2762467061490564528, guid: 7cab218adbb54784ebc46dbaeee4479c,
-        type: 3}
-      propertyPath: m_Name
-      value: PickableEmptyPassive
-      objectReference: {fileID: 0}
     - target: {fileID: 2762467061490564541, guid: 7cab218adbb54784ebc46dbaeee4479c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1394,6 +1389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762467061490564528, guid: 7cab218adbb54784ebc46dbaeee4479c,
+        type: 3}
+      propertyPath: m_Name
+      value: PickableEmptyPassive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cab218adbb54784ebc46dbaeee4479c, type: 3}
