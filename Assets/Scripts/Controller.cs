@@ -223,7 +223,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                     }
 
                 }
-                else if (restore.pickableType == PickableRestore.Type.Energy)
+                else if (equipement.secondaryWeapon != null && restore.pickableType == PickableRestore.Type.Energy)
                 {
                     if (equipement.secondaryWeapon.load < equipement.secondaryWeapon.capacity)
                     {
