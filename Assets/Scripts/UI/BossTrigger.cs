@@ -11,6 +11,6 @@ public class BossTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trigger = (player.position - transform.position).magnitude >= detectionRange;
+        trigger = (player.position - transform.position).magnitude <= detectionRange;
     }
 }
