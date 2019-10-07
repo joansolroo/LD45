@@ -173,6 +173,7 @@ MonoBehaviour:
   radius: 3
   guided: 0
   targetPosition: {x: 0, y: 0, z: 0}
+  nuke: 1
 --- !u!1 &629378992138110925
 GameObject:
   m_ObjectHideFlags: 0

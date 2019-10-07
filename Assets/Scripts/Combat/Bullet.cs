@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     public bool guided = false;
     public Vector3 targetPosition;
-
+    public bool nuke = false;
     public void Start()
     {
         //ttl *= Random.Range(0.95f, 1.05f);
@@ -79,7 +79,16 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        EffectManager.main.Hit(this.transform.position);
+        if (nuke)
+        {
+
+            EffectManager.main.Nuke(this.transform.position);
+        }
+        else
+        {
+            EffectManager.main.Hit(this.transform.position);
+        }
+      
         StartCoroutine(DoDie());
     }
 
