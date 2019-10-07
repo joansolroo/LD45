@@ -14,6 +14,7 @@ public class PickableRestore : MonoBehaviour
 
     private void Update()
     {
-        render.transform.Rotate(0, 60 * Time.deltaTime, 0,Space.World);
+        if(render)
+            render.transform.Rotate(0, 60 * Time.deltaTime, 0,Space.World);
     }
 }

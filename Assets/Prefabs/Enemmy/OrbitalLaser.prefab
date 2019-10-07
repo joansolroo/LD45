@@ -505,7 +505,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4560405483004686847}
+  - {fileID: 1871037910726102715}
   - {fileID: 2741461689972208212}
   - {fileID: 2903691913256470413}
   - {fileID: 6302026220225854451}
@@ -530,8 +530,8 @@ MonoBehaviour:
     type: 3}
   capacity: 100
   load: 100
-  loadTime: 0
-  reloadInterruptSupported: 0
+  loadTime: 0.4
+  reloadInterruptSupported: 1
   guiding: {fileID: 6861417349550696508}
   cooldown: 3
   cost: 30
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  pivot: {fileID: 4560405483004686847}
+  pivot: {fileID: 1871037910726102715}
   speed: 100
   amplitude: 10
 --- !u!114 &6861417349550696508
@@ -1119,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89ac202a94e7e441a36fd51962311ca, type: 3}
---- !u!4 &4560405483004686847 stripped
+--- !u!4 &1871037910726102715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2791831060871298562, guid: b89ac202a94e7e441a36fd51962311ca,
     type: 3}
