@@ -1634,6 +1634,11 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 4847271891904153157}
+    - target: {fileID: 3136733630974915141, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
+        type: 3}
+      propertyPath: bulletsPerShot
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8668716727377122327, guid: 00b6a20fd50ec014b8dd5bd9a59b2a6f,
         type: 3}
       propertyPath: ttl

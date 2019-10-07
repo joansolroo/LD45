@@ -24,6 +24,11 @@ public class MinigunAnim : MonoBehaviour
         lastIndexRight = Random.Range(0, flamesRight.Length);
         lastIndexLeft = Random.Range(0, flamesLeft.Length);
     }
+
+    public void BulletShot()
+    {
+
+    }
     void Update()
     {
         //  rotate cannons
