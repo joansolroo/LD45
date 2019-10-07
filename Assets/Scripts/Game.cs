@@ -18,6 +18,8 @@ public class Game : MonoBehaviour
     private GameObject instanciatedScene;
     private GameObject instanciatedPlayer;
 
+    public GameObject BSOD;
+
     public bool initialized = false;
     public bool death, conversion, won;
 
@@ -98,6 +100,7 @@ public class Game : MonoBehaviour
     protected IEnumerator Die()
     {
         death = true;
+        BSOD.SetActive(true);
         yield return new WaitForSeconds(gameOverDuration);
         
         DestroyImmediate(instanciatedScene);
@@ -107,6 +110,7 @@ public class Game : MonoBehaviour
         playerController.Reset();
         playerController.gameObject.SetActive(true);
 
+        BSOD.SetActive(false);
         death = false;
     }
 }
