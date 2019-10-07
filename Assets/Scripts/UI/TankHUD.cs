@@ -16,7 +16,8 @@ public class TankHUD : MonoBehaviour
     [SerializeField] public SpriteRenderer crossedAmmoBar;
     [SerializeField] public GameObject death;
     [SerializeField] public GameObject conversion;
-
+    [SerializeField] GameObject passive;
+    [SerializeField] Radar radar;
 
     // Update is called once per frame
     void Update()
@@ -66,6 +67,8 @@ public class TankHUD : MonoBehaviour
             {
                 ammoBar.alphaCutoff = 0.0f;
             }
+            passive.gameObject.SetActive(playerController.equipement.passive != null);
+            radar.gameObject.SetActive((playerController.equipement.passive != null && playerController.equipement.passive.type == Passive.Type.Radar));
         }
     }
 }
