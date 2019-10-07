@@ -21,6 +21,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     [Header("Debug values")]
     public bool invincible = false;
+    public bool canPickObj = false;
     public int hp;
     public int energy;
     [SerializeField] Vector3 moveDirection = Vector3.zero;
@@ -75,7 +76,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                 turret.transform.LookAt(turret.transform.position + aimDirection);
             }
         }
-        if (hoveredObject && Input.GetKeyDown(KeyCode.Space))
+        if (canPickObj && hoveredObject && Input.GetKeyDown(KeyCode.Space))
         {
             if (hoveredObject.toPick.GetType() == typeof(Weapon))
             {
@@ -138,13 +139,12 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public void Damage(int amount)
     {
-
         this.hp -= amount;
         if (OnDamage != null)
         {
             OnDamage(amount);
         }
-        if (this.hp <= 0)
+        if (this.hp <= 0 && !invincible)
         {
             this.hp = 0;
             Die();

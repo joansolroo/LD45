@@ -75,6 +75,11 @@ public class Sense : MonoBehaviour
         float distance = float.MaxValue;
         foreach(GameObject option in perceived.Keys)
         {
+            if (option == null)
+            {
+                perceived.Remove(option);
+                continue;
+            }
             float newDistance = (position - option.transform.position).sqrMagnitude;
             if (newDistance < distance)
             {

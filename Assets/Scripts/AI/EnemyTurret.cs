@@ -12,6 +12,7 @@ public class EnemyTurret : MonoBehaviour, IIndividual
     [SerializeField] float aggressivity = 0.5f;
     [SerializeField] float aimRange = 5f;
     [SerializeField] float shootRange = 4f;
+    public bool preferClosestTarget = false;
 
 
     float t;
@@ -35,11 +36,27 @@ public class EnemyTurret : MonoBehaviour, IIndividual
 
     public void Sense()
     {
+        if (preferClosestTarget)
+        {
+            GameObject go = sight.GetClosest(transform.position);
+            if(go != null)
+                target = go.transform;
+        }
+
         if (target == null || !sight.IsVisible(target.gameObject))
         {
             if (sight.perceived.Count > 0)
             {
-                target = sight.GetRandom().transform;
+                if (preferClosestTarget)
+                {
+                    GameObject go = sight.GetClosest(transform.position);
+                    if (go != null)
+                        target = go.transform;
+                }
+                else
+                {
+                    target = sight.GetRandom().transform;
+                }
             }
             else
             {

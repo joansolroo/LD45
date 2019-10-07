@@ -2034,6 +2034,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   invincible: 0
+  canPickObj: 1
   hp: 0
   energy: 0
   moveDirection: {x: 0, y: 0, z: 0}
