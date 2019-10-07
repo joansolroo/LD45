@@ -24,6 +24,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public bool canPickObj = false;
     public int hp;
     public int energy;
+    public int points = 0;
     [SerializeField] Vector3 moveDirection = Vector3.zero;
     [SerializeField] Vector3 aimDirection = Vector3.zero;
     public PickableObject hoveredObject = null;
@@ -35,8 +36,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     public delegate void ControllerEventt();
     public ControllerEventInt OnDamage;
 
+    AudioSource audioSource;
     void Start()
     {
+        audioSource = this.gameObject.AddComponent<AudioSource>();
         if (!body)
         {
             body = this.transform;
@@ -170,18 +173,19 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public bool OnPickObject(PickableObject canPick, bool end)
     {
+        bool result = false;
         if (!canPick.instant)
         {
             if (end)
             {
                 hoveredObject = null;
-                return false;
+                result = false;
             }
             else
             {
 
                 hoveredObject = canPick;
-                return false;
+                result = false;
             }
         }
         else if (!end)
@@ -196,7 +200,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                         if (equipement.weapon.load < equipement.weapon.capacity)
                         {
                             equipement.weapon.load = equipement.weapon.capacity;
-                            return true;
+                            result = true;
                         }
                     }
                 }
@@ -205,7 +209,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                     if (hp < maxHp)
                     {
                         hp = maxHp;
-                        return true;
+                        result = true;
                     }
 
                 }
@@ -214,15 +218,25 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
                     if (energy < maxEnergy)
                     {
                         energy = maxEnergy;
-                        return true;
+                        result = true;
                     }
                 }
                 else if (restore.pickableType == PickableRestore.Type.Data)
                 {
-                    Debug.LogWarning("Picked Data");
+                    points++;
+                    result = true;
+                }
+                
+                if(result)
+                {
+                    if(restore.audioclip!=null)
+                    {
+                        this.audioSource.PlayOneShot(restore.audioclip);
+                    }
                 }
             }
+            
         }
-        return false;
+        return result;
     }
 }

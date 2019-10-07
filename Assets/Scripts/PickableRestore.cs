@@ -10,6 +10,7 @@ public class PickableRestore : MonoBehaviour
     }
     public Type pickableType;
     public GameObject renderer;
+    public AudioClip audioclip;
 
     private void Update()
     {

@@ -19,6 +19,8 @@ public class TankHUD : MonoBehaviour
     [SerializeField] GameObject passive;
     [SerializeField] Radar radar;
 
+    [SerializeField] Counter bonus;
+    [SerializeField] Counter alignment;
     // Update is called once per frame
     void Update()
     {
@@ -46,7 +48,7 @@ public class TankHUD : MonoBehaviour
 
             // energy bar
             energyBar.transform.parent.gameObject.SetActive(playerController.equipement.secondaryWeapon != null);
-            crossedEnergyBar.enabled = (playerController.equipement.secondaryWeapon != null && playerController.equipement.secondaryWeapon.overheat);
+            crossedEnergyBar.gameObject.SetActive((playerController.equipement.secondaryWeapon != null && playerController.equipement.secondaryWeapon.overheat));
             if (playerController.equipement.secondaryWeapon != null)
             {
                 energyBar.alphaCutoff = 1.0f - (float)playerController.equipement.secondaryWeapon.load / playerController.equipement.secondaryWeapon.capacity;
@@ -58,7 +60,7 @@ public class TankHUD : MonoBehaviour
 
             //  standard ammo bar
             ammoBar.transform.parent.gameObject.SetActive(playerController.equipement.weapon != null);
-            crossedAmmoBar.enabled = (playerController.equipement.weapon != null && playerController.equipement.weapon.overheat);
+            crossedAmmoBar.gameObject.SetActive((playerController.equipement.weapon != null && playerController.equipement.weapon.overheat));
             if (playerController.equipement.weapon != null)
             {
                 ammoBar.alphaCutoff = 1.0f - (float)playerController.equipement.weapon.load / playerController.equipement.weapon.capacity;
@@ -69,6 +71,19 @@ public class TankHUD : MonoBehaviour
             }
             passive.gameObject.SetActive(playerController.equipement.passive != null);
             radar.gameObject.SetActive((playerController.equipement.passive != null && playerController.equipement.passive.type == Passive.Type.Radar));
+
+            bonus.gameObject.SetActive(playerController.points > 0);
+            if (playerController.points > 0)
+            {
+                bonus.Count = playerController.points;
+            }
+
+            int alignmentValue = playerController.equipement.GetAlignment();
+            alignment.gameObject.SetActive(alignmentValue > 0);
+            if (alignmentValue > 0)
+            {
+                alignment.Count = alignmentValue;
+            }
         }
     }
 }
