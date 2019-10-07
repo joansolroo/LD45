@@ -40,7 +40,12 @@ public class Game : MonoBehaviour
         if (introduction != null)
         {
             introduction.SetActive(true);
-            yield return new WaitForSeconds(introductionDuration);
+            yield return new WaitForSeconds(introductionDuration-1);
+            if(!initialized)
+            {
+                Initialize();
+            }
+            yield return new WaitForSeconds(1);
             introduction.SetActive(false);
         }
     }
@@ -95,9 +100,12 @@ public class Game : MonoBehaviour
 
     private void Initialize()
     {
-        instanciatedScene = Instantiate(resetables);
-        instanciatedScene.SetActive(true);
-        initialized = true;
+        if (!initialized)
+        {
+            instanciatedScene = Instantiate(resetables);
+            instanciatedScene.SetActive(true);
+            initialized = true;
+        }
     }
 
     protected IEnumerator Die()
