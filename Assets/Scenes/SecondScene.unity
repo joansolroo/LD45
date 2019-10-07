@@ -7079,6 +7079,11 @@ PrefabInstance:
       propertyPath: targetDisplay
       value: 
       objectReference: {fileID: 1572432371}
+    - target: {fileID: 8793207178386789925, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
+        type: 3}
+      propertyPath: invincible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5005404048963275003, guid: 79bb651db7c1e4c45bef8a0a75a1185e,
         type: 3}
       propertyPath: game
