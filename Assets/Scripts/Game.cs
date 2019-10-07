@@ -35,6 +35,7 @@ public class Game : MonoBehaviour
         resetables.SetActive(false);
         playerController.gameObject.SetActive(true);
     }
+
     IEnumerator RunIntroduction()
     {
         if (introduction != null)
