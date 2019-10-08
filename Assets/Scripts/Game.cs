@@ -87,7 +87,7 @@ public class Game : MonoBehaviour
             bossLife.SetActive(true);
             bossLifeBar.value = (float)boss.hp / boss.maxHp;
 
-            if(playerController.equipement.GetAlignment() >= 3)
+            /*if(playerController.equipement.GetAlignment() >= 3)
             {
                 conversion = true;
                 playerController.gameObject.GetComponent<PlayerController>().enabled = false;
@@ -95,7 +95,7 @@ public class Game : MonoBehaviour
                 playerController.gameObject.layer = 10;
                 playerAutogun.aimRange = 0;
                 playerAutogun.shootRange = 0;
-            }
+            }*/
         }
     }
 
