@@ -13,8 +13,6 @@ public class AutoGun : MonoBehaviour
     public float shootRange = 4f;
     [Range(3, 20)] public float idleTime;
     [Range(1, 100)] public float speed;
-    [Range(0, 1)] public float laserNoise;
-    [Range(0, 1)] public float laserMin;
 
     [Header("debug")]
     public Transform target;
@@ -22,6 +20,7 @@ public class AutoGun : MonoBehaviour
     private Vector3 direction;
     private Vector3 position;
     public float time, nextTime;
+    public float lasertime, lasernextTime;
     private float u, v, w;
 
     private AudioSource audioSource;
@@ -29,8 +28,8 @@ public class AutoGun : MonoBehaviour
 
     void Start()
     {
-        time = 0;
-        nextTime = 1;
+        time = 0; lasertime = 0;
+        nextTime = 1; lasernextTime = 1;
         weapon = GetComponent<Weapon>();
         sight = GetComponent<Sense>();
         audioSource = GetComponent<AudioSource>();
@@ -53,8 +52,7 @@ public class AutoGun : MonoBehaviour
         }
 
         // act
-        w = (1 - laserNoise) * w + laserNoise * Random.Range(laserMin, 1.0f);
-        laser.enabled = w > 0.6f;
+        laser.enabled = true;
         if (target)
         {
             if (direction.magnitude < aimRange)
@@ -70,6 +68,7 @@ public class AutoGun : MonoBehaviour
         else
         {
             time += Time.deltaTime;
+            lasertime += Time.deltaTime;
             if (time > nextTime)
             {
                 time = 0;
@@ -79,7 +78,14 @@ public class AutoGun : MonoBehaviour
                 if (Random.Range(0, 1.0f) < 0.3f)
                     audioSource.PlayOneShot(clipAudio);
             }
+            if(lasertime > lasernextTime)
+            {
+                lasertime = 0;
+                lasernextTime = Random.Range(0, idleTime/4) + 0.3f;
+                w = Random.Range(1.2f, 1.8f);
+            }
             pivot.localRotation = Quaternion.RotateTowards(pivot.localRotation, Quaternion.Euler(new Vector3(-v, u, 0)), speed * Time.deltaTime);
+            laser.SetPosition(1, Vector3.MoveTowards(laser.GetPosition(1), new Vector3(0, 0, w), Time.deltaTime));
         }
     }
 }

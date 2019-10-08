@@ -151,7 +151,7 @@ public class Weapon : MonoBehaviour
                     b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
 
                     b.rb.velocity = b.transform.forward * b.velocity;
-                    Debug.DrawRay(b.transform.position, b.rb.velocity);
+                    //Debug.DrawRay(b.transform.position, b.rb.velocity);
                     currentNossle = (currentNossle + 1) % nossles.Length;
 
                     if (OnBulletShot != null)

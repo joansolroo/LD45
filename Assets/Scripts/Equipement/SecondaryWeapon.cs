@@ -139,7 +139,7 @@ public class SecondaryWeapon : MonoBehaviour
                 b.transform.position = nossle.position;
                 b.transform.rotation = nossle.rotation;
                 b.rb.velocity = b.transform.forward * b.velocity;
-                Debug.DrawRay(b.transform.position, b.rb.velocity);
+                //Debug.DrawRay(b.transform.position, b.rb.velocity);
                 
                 load -= cost;
                 if (load < cost)
