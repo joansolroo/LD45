@@ -236,7 +236,7 @@ MonoBehaviour:
   load: 100
   loadTime: 0
   reloadInterruptSupported: 0
-  type: 4
+  type: 1
   alignment: 3
   iconPrefab: {fileID: 4632237054629721483, guid: 9ed58d29bf807c340a77b5460148ab10,
     type: 3}
@@ -247,7 +247,7 @@ MonoBehaviour:
   overheat: 0
   firing: 0
   flame: 0
-  bulletPefab: {fileID: 7853659790137265256}
+  bulletPoolName: PlasmaBulletPool
   nossles:
   - {fileID: 5193348689403165733}
   - {fileID: 6313810293223985916}
@@ -1437,7 +1437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8080990078806152398
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,8 +1478,7 @@ MonoBehaviour:
   overheat: 0
   firing: 0
   flame: 0
-  bulletPefab: {fileID: 6255151355592671712, guid: c5513151e3853444bbc204a7562d3724,
-    type: 3}
+  bulletPoolName: PlasmaBulletPool
   nossles:
   - {fileID: 0}
   - {fileID: 0}

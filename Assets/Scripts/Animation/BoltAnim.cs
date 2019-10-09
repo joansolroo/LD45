@@ -11,7 +11,12 @@ public class BoltAnim : MonoBehaviour
 
     [Header("Debug")]
     public float life;
-    
+    private float startLife;
+
+    private void Start()
+    {
+        startLife = life;
+    }
     public void Init()
     {
         life = lifeTime;
@@ -22,7 +27,11 @@ public class BoltAnim : MonoBehaviour
         life -= Time.deltaTime;
         if(render != null)
             render.material.color = color.Evaluate(1 - life / lifeTime);
-        if (life <= 0)
-            Destroy(gameObject);
+        if(life <= 0)
+            gameObject.SetActive(false);
+    }
+    private void Reset()
+    {
+        life = startLife;
     }
 }

@@ -571,7 +571,7 @@ MonoBehaviour:
   load: 0
   loadTime: 0
   reloadInterruptSupported: 0
-  type: 2
+  type: 0
   alignment: -3
   iconPrefab: {fileID: 0}
   bulletsPerShot: 1
@@ -581,7 +581,7 @@ MonoBehaviour:
   overheat: 0
   firing: 0
   flame: 0
-  bulletPefab: {fileID: 0}
+  bulletPoolName: MinigunBulletPool
   nossles: []
   owner: {fileID: 0}
   audioSource: {fileID: 0}

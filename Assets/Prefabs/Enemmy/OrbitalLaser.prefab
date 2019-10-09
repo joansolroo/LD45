@@ -51,8 +51,9 @@ MonoBehaviour:
   life: 0
   clipExplosion: {fileID: 8300000, guid: 29f81caf7e7cdd0449c7061d94f794f7, type: 3}
   particleCount: 50
-  particlePrefab: {fileID: 5740513801856691543}
-  ejectSpeed: 100
+  particlePoolName: ExplosionParticlePool
+  ejectSpeed: 5.9
+  dispertion: 0.2
   boltToInit:
   - {fileID: 8785495426845719575}
 --- !u!82 &1205805109139213660
@@ -304,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff6428ae95b82a4c88176a2a8fdaacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooled: 1
   trail: {fileID: 5242747312561584415}
   mesh: {fileID: 1457807126132472362}
   rb: {fileID: 8957014440111466102}
@@ -505,7 +507,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1871037910726102715}
+  - {fileID: 1871037910726102699}
   - {fileID: 2741461689972208212}
   - {fileID: 2903691913256470413}
   - {fileID: 6302026220225854451}
@@ -558,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  pivot: {fileID: 1871037910726102715}
+  pivot: {fileID: 1871037910726102699}
   speed: 100
   amplitude: 10
 --- !u!114 &6861417349550696508
@@ -1119,7 +1121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89ac202a94e7e441a36fd51962311ca, type: 3}
---- !u!4 &1871037910726102715 stripped
+--- !u!4 &1871037910726102699 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2791831060871298562, guid: b89ac202a94e7e441a36fd51962311ca,
     type: 3}
