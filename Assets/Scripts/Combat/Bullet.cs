@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    public bool pooled = true;
     public TrailRenderer trail;
     public GameObject mesh;
     public Rigidbody rb;
@@ -22,10 +23,12 @@ public class Bullet : MonoBehaviour
     public bool nuke = false;
 
     public GameObject explosion;
+    private float startTTL;
+    private bool destroyedCalled = false;
 
     public void Start()
     {
-        //ttl *= Random.Range(0.95f, 1.05f);
+        startTTL = ttl;
     }
     private void Update()
     {
@@ -53,6 +56,7 @@ public class Bullet : MonoBehaviour
                 if (damageable != null)
                 {
                     damageable.Damage(damage);
+                    Debug.Log("toto");
                 }
             }
             else
@@ -113,22 +117,25 @@ public class Bullet : MonoBehaviour
             }
             DestroyBullet();
         }
-
     }
 
     void DestroyBullet()
     {
-        if (nuke)
+        if(!destroyedCalled)
         {
+            if (nuke)
+            {
 
-            EffectManager.main.Nuke(this.transform.position);
+                EffectManager.main.Nuke(this.transform.position);
+            }
+            else
+            {
+                EffectManager.main.Hit(this.transform.position);
+            }
+
+            StartCoroutine(DoDie());
         }
-        else
-        {
-            EffectManager.main.Hit(this.transform.position);
-        }
-      
-        StartCoroutine(DoDie());
+        destroyedCalled = true;
     }
 
     IEnumerator DoDie()
@@ -160,7 +167,10 @@ public class Bullet : MonoBehaviour
             yield return wait;
         }
 
-        Destroy(this.gameObject);
+        if(pooled)
+            gameObject.SetActive(false);
+        else
+            Destroy(this.gameObject);
     }
     private void OnDrawGizmos()
     {
@@ -168,5 +178,18 @@ public class Bullet : MonoBehaviour
         {
             Gizmos.DrawWireSphere(this.transform.position, radius);
         }
+    }
+
+    public void Reset()
+    {
+        ttl = 10;
+        rb.isKinematic = false;
+        enabled = true;
+        if (mesh != null)
+            mesh.SetActive(true);
+        trail.Clear();
+        trail.startWidth = 0.1f;
+        trail.time = 1;
+        destroyedCalled = false;
     }
 }

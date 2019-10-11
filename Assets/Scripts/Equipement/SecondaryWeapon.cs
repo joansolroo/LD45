@@ -119,7 +119,7 @@ public class SecondaryWeapon : MonoBehaviour
             firing = true;
             lastFireFrame = Time.frameCount;
 
-            if (reloading && reloadInterruptSupported)
+            if (reloading && reloadInterruptSupported && !overheat)
             {
                 CancelReload();
             }
@@ -139,19 +139,12 @@ public class SecondaryWeapon : MonoBehaviour
                 b.transform.position = nossle.position;
                 b.transform.rotation = nossle.rotation;
                 b.rb.velocity = b.transform.forward * b.velocity;
-                //Debug.DrawRay(b.transform.position, b.rb.velocity);
-                
+
                 load -= cost;
+                currentCooldown = cooldown;
                 if (load < cost)
                 {
                     overheat = true;
-                }
-
-                PlaySound(clipFire);
-                currentCooldown = cooldown;
-
-                if (load == 0)
-                {
                     Reload();
                 }
             }

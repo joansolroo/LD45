@@ -650,7 +650,7 @@ MonoBehaviour:
   load: 100
   loadTime: 0
   reloadInterruptSupported: 0
-  type: 4
+  type: 1
   alignment: 3
   iconPrefab: {fileID: 0}
   bulletsPerShot: 1
@@ -660,7 +660,7 @@ MonoBehaviour:
   overheat: 0
   firing: 0
   flame: 0
-  bulletPefab: {fileID: 0}
+  bulletPoolName: PlasmaBulletPool
   nossles: []
   owner: {fileID: 0}
   audioSource: {fileID: 0}

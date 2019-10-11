@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour, IIndividual
     Vector3 currentDirection;
     float distance;
 
-    void Start ()
+    /*void Start ()
     {
         target = PlayerController.main.transform;
     }
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour, IIndividual
         Sense();
         Think();
         Act();
-    }
+    }*/
 
     public void Sense()
     {
@@ -68,12 +68,7 @@ public class EnemyController : MonoBehaviour, IIndividual
             }
         }
     }
-
-    public void Think()
-    {
-       
-    }
-
+    
     public void Act()
     {
         currentDirection = Vector3.MoveTowards(currentDirection, direction, Time.deltaTime);
@@ -111,12 +106,7 @@ public class EnemyController : MonoBehaviour, IIndividual
             controller.Move(currentDirection);
         }
     }
-
-    public void Display()
-    {
-        
-    }
-
+    
     public GameObject GetGameObject()
     {
         return gameObject;

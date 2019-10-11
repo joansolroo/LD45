@@ -8,7 +8,5 @@ public interface IIndividual
 
     bool Alive();
     void Sense();
-    void Think();
     void Act();
-    void Display();
 }

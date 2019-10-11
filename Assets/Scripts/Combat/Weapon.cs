@@ -32,7 +32,8 @@ public class Weapon : MonoBehaviour
     private int lastFireFrame;
 
     [Header("Links")]
-    [SerializeField] Bullet bulletPefab;
+    [SerializeField] string bulletPoolName = "unknown";
+    private ParticlePool bulletPool;
     [SerializeField] Transform[] nossles;
     [SerializeField] GameObject owner;
 
@@ -46,6 +47,7 @@ public class Weapon : MonoBehaviour
 
     public delegate void WeaponEvent();
     public WeaponEvent OnBulletShot;
+    
     // Use this for initialization
     void Start()
     {
@@ -53,6 +55,14 @@ public class Weapon : MonoBehaviour
         firing = false;
         overheat = false;
         lastFireFrame = 0;
+
+        GameObject bp = GameObject.Find(bulletPoolName);
+        if (bp != null)
+        {
+            bulletPool = bp.GetComponent<ParticlePool>();
+            if(bulletPool == null) Debug.LogError("Object " + bulletPoolName + " has no component BulletPool");
+        }
+        else Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
     }
 
     // Update is called once per frame
@@ -126,9 +136,7 @@ public class Weapon : MonoBehaviour
         {
             firing = true;
             lastFireFrame = Time.frameCount;
-
             
-
             if (reloading && reloadInterruptSupported && !overheat)
             {
                 CancelReload();
@@ -139,24 +147,26 @@ public class Weapon : MonoBehaviour
                 audioSource.volume = 1;
                 audioSource.PlayOneShot(clipFire);
 
-                for (int c = 0; c < bulletsPerShot; ++c)
-                {
+                if(bulletPool != null)
+                    for (int c = 0; c < bulletsPerShot; ++c)
+                    {
+                        Bullet b = bulletPool.Get().GetComponent<Bullet>();
+                        b.tag = owner.tag;
 
-                    Bullet b = GameObject.Instantiate<Bullet>(bulletPefab);
-                    b.tag = owner.tag;
-                    b.gameObject.SetActive(true);
-                    Transform nossle = nossles[currentNossle];
-                    b.transform.position = nossle.position;
-                    b.transform.rotation = nossle.rotation;
-                    b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
+                        Transform nossle = nossles[currentNossle];
+                        b.transform.position = nossle.position;
+                        b.transform.rotation = nossle.rotation;
+                        b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
+                        b.rb.velocity = b.transform.forward * b.velocity;
 
-                    b.rb.velocity = b.transform.forward * b.velocity;
-                    //Debug.DrawRay(b.transform.position, b.rb.velocity);
-                    currentNossle = (currentNossle + 1) % nossles.Length;
+                        b.Reset();
+                        b.gameObject.SetActive(true);
+                        
+                        currentNossle = (currentNossle + 1) % nossles.Length;
 
-                    if (OnBulletShot != null)
-                        OnBulletShot();
-                }
+                        if (OnBulletShot != null)
+                            OnBulletShot();
+                    }
 
                 load -= cost;                
                 currentCooldown = cooldown;

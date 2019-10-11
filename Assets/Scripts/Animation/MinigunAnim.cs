@@ -13,9 +13,11 @@ public class MinigunAnim : MonoBehaviour
     [SerializeField] public LineRenderer[] cannonLeft;
     [SerializeField] public Transform ejectRight;
     [SerializeField] public Transform ejectLeft;
-    [SerializeField] public GameObject boltPrefab;
+    public string bulletPoolName = "unknown";
+    private ParticlePool bulletPool;
     [SerializeField] [Range(500, 1000)] public float speed;
     [SerializeField] [Range(0, 10)] public float ejectSpeed;
+
 
     private int lastIndexRight, lastIndexLeft;
 
@@ -23,6 +25,13 @@ public class MinigunAnim : MonoBehaviour
     {
         lastIndexRight = Random.Range(0, flamesRight.Length);
         lastIndexLeft = Random.Range(0, flamesLeft.Length);
+        GameObject bp = GameObject.Find(bulletPoolName);
+        if (bp != null)
+        {
+            bulletPool = bp.GetComponent<ParticlePool>();
+            if (bulletPool == null) Debug.LogError("Object " + bulletPoolName + " has no component BulletPool");
+        }
+        else Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
     }
 
     public void BulletShot()
@@ -59,7 +68,7 @@ public class MinigunAnim : MonoBehaviour
             flamesRight[lastIndexLeft].enabled = true;
             cannonRight[lastIndexLeft].enabled = true;
 
-            GameObject b1 = Instantiate(boltPrefab);
+            GameObject b1 = bulletPool.Get();
             b1.GetComponent<BoltAnim>().Init();
             b1.SetActive(true);
             b1.transform.position = ejectLeft.position;
@@ -67,7 +76,7 @@ public class MinigunAnim : MonoBehaviour
             b1.transform.localScale = 0.05f * Vector3.one;
             b1.GetComponent<Rigidbody>().velocity = ejectSpeed * ejectLeft.transform.right;
 
-            GameObject b2 = Instantiate(boltPrefab);
+            GameObject b2 = bulletPool.Get();
             b2.GetComponent<BoltAnim>().Init();
             b2.SetActive(true);
             b2.transform.position = ejectRight.position;

@@ -30,7 +30,7 @@ public class DamagingObject : MonoBehaviour
             if (controller != null)
             {
                 controller.Damage(damage);
-                controller.Push(-(this.transform.position - controller.transform.position));
+                //controller.Push(-(this.transform.position - controller.transform.position));
             }
         }
     }
@@ -49,7 +49,7 @@ public class DamagingObject : MonoBehaviour
                 {
                     t -= tickTime;
                     controller.Damage(damage);
-                    controller.Push(-(this.transform.position - controller.transform.position));
+                    //controller.Push(-(this.transform.position - controller.transform.position));
                 }
             }
         }

@@ -45,7 +45,6 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         {
             body = this.transform;
         }
-        //equipement.SetWeapon(Weapon.Type.None);
         characterController = GetComponent<CharacterController>();
         Reset();
     }
@@ -55,6 +54,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     void Update()
     {
         grounded = characterController.isGrounded;
+
         // movement
         if (speed > 0 || !grounded)
         {
@@ -62,10 +62,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             {
                 body.transform.rotation = Quaternion.RotateTowards(body.transform.rotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime * 360 * 2);
             }
-            /*else
-            {
-                this.transform.LookAt(this.transform.position + this.transform.forward);
-            }*/
+
             moveDirection *= speed;
             if (!grounded)
             {
@@ -129,17 +126,14 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
     {
         if (equipement.weapon != null)
         {
-            //Debug.Log("Fire 1");
             equipement.weapon.Fire();
             firedLeft = true;
         }
     }
-
     public void Fire2()
     {
         if (equipement.secondaryWeapon != null)
         {
-            //Debug.Log("Fire 2");
             equipement.secondaryWeapon.Fire();
             firedRight = true;
         }
@@ -147,29 +141,21 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
 
     public void Damage(int amount)
     {
-        this.hp -= amount;
-        if (OnDamage != null)
+        hp -= amount;
+        OnDamage?.Invoke(amount);
+        if (hp <= 0 && !invincible)
         {
-            OnDamage(amount);
-        }
-        if (this.hp <= 0 && !invincible)
-        {
-            this.hp = 0;
+            hp = 0;
             Die();
         }
-        //Debug.Log("Damaged");
     }
-
     void Die()
     {
-        EffectManager.main.Explode(this.transform.position+Vector3.up*0.5f);
+        EffectManager.main.Explode(transform.position+Vector3.up*0.5f);
         alive = false;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
-    public void Push(Vector3 force)
-    {
-        
-    }
+    
     public void Reset()
     {
         hp = maxHp;
