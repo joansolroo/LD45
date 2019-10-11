@@ -116,8 +116,10 @@ public class Game : MonoBehaviour
         BSOD.SetActive(true);
         yield return new WaitForSeconds(gameOverDuration);
         
-        DestroyImmediate(instanciatedScene); initialized = false;
+        DestroyImmediate(instanciatedScene);
+        initialized = false;
         Initialize();
+
         playerController.transform.position = respawn.transform.position;
         playerController.Reset();
         playerController.gameObject.SetActive(true);

@@ -24,10 +24,11 @@ public class IndividualGroup : MonoBehaviour
                 individuals.RemoveAt(c);
             }
         }
+        bool b = (player.position - transform.position).magnitude < activationRadius;
         foreach (IIndividual person in individuals)
         {
-            person.GetGameObject().SetActive((player.position - transform.position).magnitude < activationRadius);
-            if (person.GetGameObject().activeSelf)
+            person.GetGameObject().SetActive(b);
+            if (b)
             {
                 person.Sense();
                 person.Act();
