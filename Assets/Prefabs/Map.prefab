@@ -26720,11 +26720,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -26784,6 +26779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -28085,11 +28085,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -28149,6 +28144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -28596,15 +28596,30 @@ PrefabInstance:
       propertyPath: maxHp
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 4717304927263177729, guid: 15e30084fbfeb244e898d202fd0afdc5,
+        type: 3}
+      propertyPath: moveDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717304927263177729, guid: 15e30084fbfeb244e898d202fd0afdc5,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7295340270861787884, guid: 15e30084fbfeb244e898d202fd0afdc5,
         type: 3}
       propertyPath: m_Size.x
-      value: 5
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 7295340270861787884, guid: 15e30084fbfeb244e898d202fd0afdc5,
         type: 3}
       propertyPath: m_Size.z
-      value: 5
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295340270861787884, guid: 15e30084fbfeb244e898d202fd0afdc5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e30084fbfeb244e898d202fd0afdc5, type: 3}
@@ -30086,11 +30101,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -30150,6 +30160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -31929,11 +31944,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -31993,6 +32003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -33537,11 +33552,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -33601,6 +33611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
@@ -33762,11 +33777,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4449982073472128891, guid: 45137376a5e1f76418cf677d843707c1,
         type: 3}
       propertyPath: count
@@ -33826,6 +33836,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity.x
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449982073454235896, guid: 45137376a5e1f76418cf677d843707c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45137376a5e1f76418cf677d843707c1, type: 3}
