@@ -25,7 +25,12 @@ public class Bullet : MonoBehaviour
     public GameObject explosion;
     private float life;
     private bool destroyedCalled = false;
-    
+
+    private void Start()
+    {
+        ResetBullet();
+    }
+
     private void Update()
     {
         life -= Time.deltaTime;

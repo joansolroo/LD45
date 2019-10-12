@@ -3473,8 +3473,39 @@ MonoBehaviour:
   maxSight: 32
   ArrowPrefab: {fileID: 8590322352862520684}
   swipe: {fileID: 2455511602539373546}
-  minDistance: 3
-  maxDistance: 5
+  visibility:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.065652
+      outSlope: -0.065652
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.13579829
+    - serializedVersion: 3
+      time: 0.4589547
+      value: 0.6102785
+      inSlope: 1.8487072
+      outSlope: 1.8487072
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06123216
+      outWeight: 0.05598438
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.016509335
+      outSlope: -0.016509335
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4285714
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8590322353655281305
 GameObject:
   m_ObjectHideFlags: 0

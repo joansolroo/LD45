@@ -31,6 +31,11 @@ public class Sense : MonoBehaviour
             yield return values[Random.Range(0,size)];
         }
     }
+    void OnEnable()
+    {
+        perceived.Clear();
+        perceivedCount = 0;
+    }
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
@@ -40,8 +45,8 @@ public class Sense : MonoBehaviour
             //Debug.Log("sensed " + other.name);
             perceived[go] = go.GetComponent<IPerceptible>();
             perceivedCount = perceived.Count;
+            CleanDeadObjects();
         }
-
     }
     private void OnTriggerExit(Collider other)
     {
@@ -62,8 +67,22 @@ public class Sense : MonoBehaviour
                 perceived.Remove(go);
                 perceivedCount = perceived.Count;
             }
+            CleanDeadObjects();
         }
     }
+    void CleanDeadObjects()
+    {
+        List<GameObject> keys = Enumerable.ToList(perceived.Keys);
+        foreach (GameObject go in keys)
+        {
+            if (keys == null)
+            {
+                perceived.Remove(null);
+                perceivedCount--;
+            }
+        }
+    }
+
     Random rand = new Random();
     public GameObject GetRandom()
     {

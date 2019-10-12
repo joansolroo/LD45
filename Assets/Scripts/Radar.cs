@@ -11,8 +11,11 @@ public class Radar : MonoBehaviour
     RadarArrow[] arrows;
     [SerializeField] Transform swipe;
 
-    [SerializeField] float minDistance = 0;
-    [SerializeField] float maxDistance = 5;
+   /* [SerializeField] float minDistance = 0;
+    [SerializeField] float maxDistance = 5;*/
+    [SerializeField] AnimationCurve visibility;
+    private float colliderSize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,7 @@ public class Radar : MonoBehaviour
             arrow.transform.parent = this.transform;
             arrow.transform.localPosition = Vector3.zero;
         }
+        colliderSize = sense.GetComponent<SphereCollider>().radius;
     }
 
     // Update is called once per frame
@@ -39,7 +43,7 @@ public class Radar : MonoBehaviour
                     arrows[c].gameObject.SetActive(true);
                     arrows[c].transform.LookAt(p.transform);
                     float d = Vector3.Distance(this.transform.position, p.transform.position);
-                    arrows[c].SetVisibility(1-(d/2 - minDistance) / (maxDistance - minDistance));
+                    arrows[c].SetVisibility(visibility.Evaluate(1.0f - d / colliderSize));
                     ++c;
                 }
             }
