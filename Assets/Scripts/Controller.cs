@@ -72,6 +72,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             {
                 moveDirection.y = 0;
             }
+
             characterController.Move(moveDirection * Time.deltaTime);
 
             if (aimDirection != Vector3.zero)
@@ -235,5 +236,19 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             
         }
         return result;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (body)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(body.transform.position, body.transform.position + body.transform.forward);
+        }
+        if (turret)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(turret.transform.position, turret.transform.position + turret.transform.forward);
+        }
     }
 }

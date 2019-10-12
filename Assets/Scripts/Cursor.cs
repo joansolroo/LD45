@@ -8,7 +8,11 @@ public class Cursor : MonoBehaviour
     public Vector3 orientation;
     public static Cursor main;
 
-    
+
+    [SerializeField] public Transform centerTransform;
+    [SerializeField] public Transform localAim;
+    [SerializeField] public Transform worldAim;
+    [SerializeField] public Transform aoeAim;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -18,8 +22,10 @@ public class Cursor : MonoBehaviour
     void LateUpdate()
     {
        
-        this.transform.position = targetPosition;
-        this.transform.up = orientation;
+        //this.transform.position = targetPosition;
+        //this.transform.up = orientation;
+        
+
         /*
         float cursorSpeedFactor = 10;
         float stretchiness = 0.1f;

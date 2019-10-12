@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
-    [SerializeField] Cursor cursor;
-    public LayerMask pointLayer;
     public static PlayerController main;
 
     private void Awake()
@@ -41,28 +39,14 @@ public class PlayerController : MonoBehaviour
         {
             controller.MoveSubjetive(Vector3.zero);
         }
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 cursorPosition = new Vector3(0.5f, 0.5f, 10);
+        Ray ray = Camera.main.ViewportPointToRay(cursorPosition);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         {
-            hitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10);
+            hitPoint = Camera.main.ViewportToWorldPoint(cursorPosition + Vector3.forward * 10);
             controller.AimAt(hitPoint);
 
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000,pointLayer))
-            {
-                if(hit.point.y>0.5f)
-                {
-                    cursor.targetPosition = hit.point;
-                    cursor.targetPosition.y = 0.5f;
-                }
-                else
-                {
-                    cursor.targetPosition = hit.point;
-                }
-                
-                cursor.orientation = hit.normal;
-            }
-
+            
            /* hitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 5);
             controller.AimAt(hitPoint);
             cursor.targetPosition = hitPoint;*/

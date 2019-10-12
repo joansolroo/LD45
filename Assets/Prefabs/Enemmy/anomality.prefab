@@ -2617,7 +2617,7 @@ MonoBehaviour:
   maxHp: 20
   maxEnergy: 0
   verticalAim: 0
-  speed: 1
+  speed: 3
   jumpSpeed: 8
   gravity: 20
   invincible: 0
@@ -2840,14 +2840,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 182704548690154900}
     m_Modifications:
-    - target: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_Name
-      value: Sparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2903,6 +2895,14 @@ PrefabInstance:
     - target: {fileID: 4637813376089536, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.31266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
+      propertyPath: m_Name
+      value: Sparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 198437972640931972, guid: 85ab2ba31682fca4e9c1e40ea154ee43,
         type: 3}
