@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 30
   damage: 1
-  range: 10
+  range: 1
   target:
     serializedVersion: 2
     m_Bits: 1024
