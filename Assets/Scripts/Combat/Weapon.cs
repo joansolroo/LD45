@@ -57,13 +57,12 @@ public class Weapon : MonoBehaviour
         overheat = false;
         lastFireFrame = 0;
 
-        GameObject bp = GameObject.Find(bulletPoolName);
-        if (bp != null)
+        //GameObject bp = GameObject.Find(bulletPoolName);
+        bulletPool = ParticlePool.pools[bulletPoolName];
+        if (bulletPool == null)
         {
-            bulletPool = bp.GetComponent<ParticlePool>();
-            if(bulletPool == null) Debug.LogError("Object " + bulletPoolName + " has no component BulletPool");
+            Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
         }
-        else Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
     }
 
     // Update is called once per frame

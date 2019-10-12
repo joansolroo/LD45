@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class ParticlePool : MonoBehaviour
 {
+    public static Dictionary<string, ParticlePool> pools = new Dictionary<string, ParticlePool>();
     public GameObject prefab;
     public int maxInstance = 5;
 
     private List<GameObject> pool = new List<GameObject>();
     public int lastInstanceIndex;
 
+    private void OnEnable()
+    {
+        pools[this.name] = this;
+    }
+    private void OnDisable()
+    {
+        pools.Remove(this.name);
+    }
     void Start()
     {
         lastInstanceIndex = 0;
