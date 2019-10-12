@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Inventory
+namespace Equipment
 {
-    public class RangeWeapon : InventoryController<RangeWeaponData>
+    public class RangeWeapon : InventoryElementController<RangeWeaponData>
     {
         #region Links
         [Header("Links")]
