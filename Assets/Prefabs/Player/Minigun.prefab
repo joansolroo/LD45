@@ -1045,6 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a964c364bc9b149aa0656b2730040b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Minigun
   capacity: 100
   load: 100
   loadTime: 0

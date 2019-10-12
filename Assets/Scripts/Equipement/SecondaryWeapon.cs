@@ -12,6 +12,7 @@ public class SecondaryWeapon : MonoBehaviour
 
     // Attributes
     [Header("SecondaryWeapon")]
+    [SerializeField] public string weaponName = "unknown";
     [SerializeField] public Type type;
     [SerializeField] public int alignment;
     [SerializeField] public GameObject iconPrefab;

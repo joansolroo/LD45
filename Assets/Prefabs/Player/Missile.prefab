@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa89f24fc9b62b42876b9e24e126541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: rocket launcher
   type: 0
   alignment: -3
   iconPrefab: {fileID: 7241330146156997766, guid: 312441f011e5cc046bcf794e2a777950,

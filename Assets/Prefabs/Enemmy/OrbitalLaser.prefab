@@ -311,7 +311,7 @@ MonoBehaviour:
   rb: {fileID: 8957014440111466102}
   velocity: 20
   damage: 100
-  ttl: 60
+  range: 10
   target:
     serializedVersion: 2
     m_Bits: 5120
@@ -507,7 +507,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1871037910726102699}
+  - {fileID: 4560405483004686847}
   - {fileID: 2741461689972208212}
   - {fileID: 2903691913256470413}
   - {fileID: 6302026220225854451}
@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa89f24fc9b62b42876b9e24e126541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: orbital laser
   type: 1
   alignment: 5
   iconPrefab: {fileID: 5080122278843011679, guid: b89ac202a94e7e441a36fd51962311ca,
@@ -560,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  pivot: {fileID: 1871037910726102699}
+  pivot: {fileID: 4560405483004686847}
   speed: 100
   amplitude: 10
 --- !u!114 &6861417349550696508
@@ -1121,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89ac202a94e7e441a36fd51962311ca, type: 3}
---- !u!4 &1871037910726102699 stripped
+--- !u!4 &4560405483004686847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2791831060871298562, guid: b89ac202a94e7e441a36fd51962311ca,
     type: 3}

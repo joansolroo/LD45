@@ -12,6 +12,7 @@ public class Passive : MonoBehaviour
 
     // Attributes
     [Header("Passive")]
+    [SerializeField] public string passiveName = "unknown";
     [SerializeField] public Type type;
     [SerializeField] public int alignment;
     [SerializeField] public GameObject iconPrefab;
@@ -25,3 +26,9 @@ public class Passive : MonoBehaviour
         }
     }
 }
+
+
+/*
+green 255 194 71  ;
+orange 99 255 88  ;
+*/

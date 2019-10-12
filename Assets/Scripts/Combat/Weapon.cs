@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
 
     // Attributes
     [Header("Weapon")]
+    [SerializeField] public string weaponName = "unknown";
     [SerializeField] public int capacity;
     [SerializeField] public int load;
     [SerializeField] public float loadTime;

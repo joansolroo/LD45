@@ -133,6 +133,14 @@ public class Equipement : MonoBehaviour
             icon.transform.localRotation = Quaternion.identity;
             icon.transform.localScale = new Vector3(1, 1, 1);
         }
+
+        try
+        {
+            TextMesh tm = PickableEmpty.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
+            tm.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.text = w.weaponName;
+        }
+        catch (System.Exception e) { }
     }
     private void DropSecondaryWeapon(SecondaryWeapon w)
     {
@@ -140,6 +148,7 @@ public class Equipement : MonoBehaviour
 
         GameObject drop = GameObject.Instantiate(pickablePrefabSW);
         drop.transform.position = transform.position + Vector3.up;
+        drop.transform.parent = GameObject.Find("Resetables(Clone)").transform;
         drop.SetActive(true);
         Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
         drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
@@ -157,6 +166,14 @@ public class Equipement : MonoBehaviour
             icon.transform.localRotation = Quaternion.identity;
             icon.transform.localScale = new Vector3(1, 1, 1);
         }
+
+        try
+        {
+            TextMesh tm = PickableEmptySW.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
+            tm.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.text = w.weaponName;
+        }
+        catch (System.Exception e) { }
     }
     private void DropPassive(Passive p)
     {
@@ -164,6 +181,7 @@ public class Equipement : MonoBehaviour
 
         GameObject drop = GameObject.Instantiate(pickablePrefabPassive);
         drop.transform.position = transform.position + Vector3.up;
+        drop.transform.parent = GameObject.Find("Resetables(Clone)").transform;
         drop.SetActive(true);
         Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
         drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;
@@ -181,5 +199,13 @@ public class Equipement : MonoBehaviour
             icon.transform.localRotation = Quaternion.identity;
             icon.transform.localScale = new Vector3(1, 1, 1);
         }
+
+        try
+        {
+            TextMesh tm = PickableEmptyPassive.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
+            tm.color = (p.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.text = p.passiveName;
+        }
+        catch (System.Exception e) { }
     }
 }

@@ -598,10 +598,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -7.150497
       objectReference: {fileID: 0}
+    - target: {fileID: 6335393813274297227, guid: cbb5e6d716a9f2047aab8d26becc35a3,
+        type: 3}
+      propertyPath: weaponName
+      value: rocket launcher
+      objectReference: {fileID: 0}
     - target: {fileID: 4844040515790160987, guid: cbb5e6d716a9f2047aab8d26becc35a3,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844040515790160987, guid: cbb5e6d716a9f2047aab8d26becc35a3,
+        type: 3}
+      propertyPath: weaponName
+      value: orbital laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886680463103945776, guid: cbb5e6d716a9f2047aab8d26becc35a3,
+        type: 3}
+      propertyPath: passiveName
+      value: autogun
       objectReference: {fileID: 0}
     - target: {fileID: 6856466518876914591, guid: cbb5e6d716a9f2047aab8d26becc35a3,
         type: 3}
