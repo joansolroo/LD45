@@ -71,6 +71,8 @@ public class Follower : MonoBehaviour
         }
         cursor.worldAim.position = cursor.targetPosition;
         cursor.worldAim.forward = cursor.orientation;
+        cursor.aoeAim.position = cursor.targetPosition;
+        cursor.aoeAim.forward = cursor.orientation;
 
 
     }
