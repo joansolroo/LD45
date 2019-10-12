@@ -115,6 +115,7 @@ public class Equipement : MonoBehaviour
 
         GameObject drop = GameObject.Instantiate(pickablePrefab);
         drop.transform.position = transform.position + Vector3.up;
+        drop.transform.parent = GameObject.Find("Resetables(Clone)").transform;
         drop.SetActive(true);
         Vector2 u = pushAmplitude * new Vector2(Random.Range(-pushAmplitude, pushAmplitude), Random.Range(-pushAmplitude, pushAmplitude)).normalized;
         drop.GetComponent<Rigidbody>().velocity = Vector3.up + u.x * Vector3.left + u.y * Vector3.right;

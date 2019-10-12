@@ -161,7 +161,7 @@ MonoBehaviour:
   rb: {fileID: 6224399763829130107}
   velocity: 30
   damage: 1
-  ttl: 10
+  range: 10
   target:
     serializedVersion: 2
     m_Bits: 4352
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   equipement: {fileID: 8080990077576922646}
   turret: {fileID: 8080990078088251378}
   body: {fileID: 0}
-  maxHp: 10
+  maxHp: 20
   maxEnergy: 0
   verticalAim: 1
   speed: 0

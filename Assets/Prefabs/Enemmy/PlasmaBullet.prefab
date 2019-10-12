@@ -67,9 +67,9 @@ MonoBehaviour:
   trail: {fileID: 6384382570727335224}
   mesh: {fileID: 3253839797967018588}
   rb: {fileID: 8678354556517979877}
-  velocity: 30
-  damage: 1
-  ttl: 10
+  velocity: 20
+  damage: 5
+  range: 1
   target:
     serializedVersion: 2
     m_Bits: 4352

@@ -8,7 +8,7 @@ public class DroppingPackage : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            child.parent = null;
+            child.parent = transform.parent;
             child.GetComponent<PickableObject>().Init();
         }
         Destroy(gameObject);
