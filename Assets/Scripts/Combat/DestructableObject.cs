@@ -33,7 +33,7 @@ public class DestructableObject : MonoBehaviour,IDamageable {
             }
         }
     }
-    void Damage(int amount)
+    bool Damage(int amount)
     {
 
         if (!triggered)
@@ -48,11 +48,13 @@ public class DestructableObject : MonoBehaviour,IDamageable {
             {
                 Destroy();
             }
+            return true;
         }
+        return false;
     }
-    void IDamageable.Damage(int amount)
+    bool IDamageable.Damage(int amount)
     {
-        Damage(amount);
+        return Damage(amount);
     }
 
     void Destroy()

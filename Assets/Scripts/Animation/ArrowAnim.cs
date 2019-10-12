@@ -8,7 +8,10 @@ public class ArrowAnim : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(target.transform.position);
-        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+        if (target)
+        {
+            transform.LookAt(target.transform.position);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);      
+        }
     }
 }

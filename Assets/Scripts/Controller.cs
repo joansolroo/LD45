@@ -140,7 +140,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         }
     }
 
-    public void Damage(int amount)
+    public bool Damage(int amount)
     {
         hp -= amount;
         OnDamage?.Invoke(amount);
@@ -149,6 +149,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             hp = 0;
             Die();
         }
+        return true;
     }
     void Die()
     {

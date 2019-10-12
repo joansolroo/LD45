@@ -137,7 +137,7 @@ public class Equipement : MonoBehaviour
         try
         {
             TextMesh tm = PickableEmpty.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
-            tm.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.GetComponent<Renderer>().material.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
             tm.text = w.weaponName;
         }
         catch (System.Exception e) { }
@@ -170,7 +170,7 @@ public class Equipement : MonoBehaviour
         try
         {
             TextMesh tm = PickableEmptySW.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
-            tm.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.GetComponent<Renderer>().material.color = (w.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
             tm.text = w.weaponName;
         }
         catch (System.Exception e) { }
@@ -203,7 +203,7 @@ public class Equipement : MonoBehaviour
         try
         {
             TextMesh tm = PickableEmptyPassive.transform.Find("Icon").Find("Billboard-icon").Find("Name").GetComponent<TextMesh>();
-            tm.color = (p.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
+            tm.GetComponent<Renderer>().material.color = (p.alignment < 0 ? new Color32(255, 194, 71, 255) : new Color32(99, 255, 88, 255));
             tm.text = p.passiveName;
         }
         catch (System.Exception e) { }
