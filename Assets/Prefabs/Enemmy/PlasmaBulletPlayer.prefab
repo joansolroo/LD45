@@ -216,12 +216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff6428ae95b82a4c88176a2a8fdaacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooled: 1
   trail: {fileID: 1850290476567875883}
   mesh: {fileID: 7787736901408157263}
   rb: {fileID: 4133136779217576694}
-  velocity: 30
-  damage: 1
-  ttl: 10
+  velocity: 20
+  damage: 5
+  range: 1
   target:
     serializedVersion: 2
     m_Bits: 5120

@@ -162,6 +162,10 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         hp = maxHp;
         energy = maxEnergy;
         alive = true;
+        if (equipement.weapon != null)
+            equipement.weapon.Reset();
+        if (equipement.secondaryWeapon != null)
+            equipement.secondaryWeapon.Reset();
     }
 
     public bool OnPickObject(PickableObject canPick, bool end)

@@ -159,7 +159,7 @@ public class Weapon : MonoBehaviour
                         b.transform.RotateAround(nossle.position, Vector3.up, Random.Range(-spread, spread));
                         b.rb.velocity = b.transform.forward * b.velocity;
 
-                        b.Reset();
+                        b.ResetBullet();
                         b.gameObject.SetActive(true);
                         
                         currentNossle = (currentNossle + 1) % nossles.Length;
@@ -183,7 +183,6 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         StartCoroutine(DoReload());
-        
     }
     void CancelReload()
     {
@@ -232,5 +231,12 @@ public class Weapon : MonoBehaviour
         {
             audioSource.PlayOneShot(clip);
         }
+    }
+    public void Reset()
+    {
+        StopCoroutine(DoReload());
+        reloading = false;
+        overheat = false;
+        load = capacity;
     }
 }

@@ -188,4 +188,11 @@ public class SecondaryWeapon : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
+    public void Reset()
+    {
+        StopCoroutine(DoReload());
+        reloading = false;
+        overheat = false;
+        load = capacity;
+    }
 }

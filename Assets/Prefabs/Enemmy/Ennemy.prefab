@@ -283,7 +283,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5710768696123973563}
+  - {fileID: 7637588548245348590}
   m_Father: {fileID: 7046638650974136301}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -823,7 +823,7 @@ MonoBehaviour:
   equipement: {fileID: 3353710223930546351}
   turret: {fileID: 6479776258919175219}
   body: {fileID: 0}
-  maxHp: 10
+  maxHp: 30
   maxEnergy: 10
   verticalAim: 1
   speed: 4
@@ -1613,7 +1613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89ac202a94e7e441a36fd51962311ca, type: 3}
---- !u!4 &5710768696123973563 stripped
+--- !u!4 &7637588548245348590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2791831060871298562, guid: b89ac202a94e7e441a36fd51962311ca,
     type: 3}

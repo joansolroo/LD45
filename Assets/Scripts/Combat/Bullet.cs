@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     public int velocity = 1;
     public int damage = 1;
-    public float ttl = 10;
+    public float range = 10;
     public LayerMask target;
     public LayerMask ignore;
 
@@ -23,16 +23,12 @@ public class Bullet : MonoBehaviour
     public bool nuke = false;
 
     public GameObject explosion;
-    private float startTTL;
+    private float life;
     private bool destroyedCalled = false;
-
-    public void Start()
-    {
-        startTTL = ttl;
-    }
+    
     private void Update()
     {
-        ttl -= Time.deltaTime;
+        life -= Time.deltaTime;
         this.transform.forward = rb.velocity.normalized;
         if (guided)
         {
@@ -40,7 +36,7 @@ public class Bullet : MonoBehaviour
             v.y *= 4;
             rb.velocity += v;
         }
-        if (ttl <= 0)
+        if (life <= 0)
         {
             DestroyBullet();
         }
@@ -180,9 +176,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void ResetBullet()
     {
-        ttl = 10;
+        life = range;
         rb.isKinematic = false;
         enabled = true;
         if (mesh != null)
