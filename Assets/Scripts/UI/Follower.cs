@@ -16,6 +16,18 @@ public class Follower : MonoBehaviour
     [SerializeField] LayerMask pointLayer;
     [SerializeField] Vector3 cursorPosition = new Vector3(0.5f, 0.5f, 10);
     [SerializeField] Vector2 aimVelocity = new Vector2(60,0.1f);
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked; // keep confined in the game window
+        }
+        else
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.None; // keep confined in the game window
+        }
+    }
     private void Update()
     {
         LateUpdate();
