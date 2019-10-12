@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1818dd8a3929294090cef0f2217fc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passiveName: radar
   type: 0
   alignment: -3
   iconPrefab: {fileID: 3479849879340831913, guid: 3701bc42abc4e814d90ec9cf057bf1fd,
