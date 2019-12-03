@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Game : MonoBehaviour
+public class Game : GameController
 {
     public GameObject introduction;
     public float introductionDuration = 16;
     public float gameOverDuration;
     public GameObject respawn;
-    public Controller playerController;
+    public Controller player;
     public AutoGun playerAutogun;
     public GameObject resetables;
     public Controller boss;
@@ -28,28 +28,31 @@ public class Game : MonoBehaviour
 
     protected virtual void Start()
     {
+        ResetFlags();
+        StartCoroutine(RunIntroduction());
+        resetables.SetActive(false);
+        player.gameObject.SetActive(true);
+    }
+    private void ResetFlags()
+    {
         death = false;
         conversion = false;
         won = false;
-        StartCoroutine(RunIntroduction());
-        resetables.SetActive(false);
-        playerController.gameObject.SetActive(true);
     }
-
-    IEnumerator RunIntroduction()
-    {
-        if (introduction != null)
-        {
-            introduction.SetActive(true);
-            yield return new WaitForSeconds(introductionDuration-1);
-            if(!initialized)
-            {
-                Initialize();
-            }
-            yield return new WaitForSeconds(1);
-            introduction.SetActive(false);
-        }
-    }
+    /*IEnumerator RunIntroduction()
+     {
+         if (introduction != null)
+         {
+             introduction.SetActive(true);
+             yield return new WaitForSeconds(introductionDuration-1);
+             if(!initialized)
+             {
+                 Initialize();
+             }
+             yield return new WaitForSeconds(1);
+             introduction.SetActive(false);
+         }
+     }*/
     protected virtual void LateUpdate()
     {
         // keep intro running if we have an intro, launch game if not or key pressed
@@ -69,7 +72,7 @@ public class Game : MonoBehaviour
         // standard game update
         if (introduction == null || !introduction.activeSelf)
         {
-            if (!death && !playerController.alive && !playerController.invincible)
+            if (!death && !player.alive && !player.invincible)
             {
                 StartCoroutine(Die());
             }
@@ -78,7 +81,7 @@ public class Game : MonoBehaviour
         if(!boss.alive)
         {
             won = true;
-            playerController.invincible = true;
+            player.invincible = true;
         }
 
         bossLife.SetActive(false);
@@ -109,6 +112,17 @@ public class Game : MonoBehaviour
         }
     }
 
+    public virtual void ResetLevel()
+    {
+        if (instanciatedScene)
+        {
+            DestroyImmediate(instanciatedScene);
+        }
+        instanciatedScene = Instantiate(resetables);
+        instanciatedScene.SetActive(true);
+    }
+
+
     protected IEnumerator Die()
     {
         AS.PlayOneShot(explode);
@@ -120,9 +134,9 @@ public class Game : MonoBehaviour
         initialized = false;
         Initialize();
 
-        playerController.transform.position = respawn.transform.position;
-        playerController.Reset();
-        playerController.gameObject.SetActive(true);
+        player.transform.position = respawn.transform.position;
+        player.ResetChanges();
+        player.gameObject.SetActive(true);
 
         BSOD.SetActive(false);
         death = false;

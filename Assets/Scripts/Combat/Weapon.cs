@@ -150,7 +150,7 @@ public class Weapon : MonoBehaviour
                 if(bulletPool != null)
                     for (int c = 0; c < bulletsPerShot; ++c)
                     {
-                        Bullet b = bulletPool.Get().GetComponent<Bullet>();
+                        Bullet b = bulletPool.Take().GetComponent<Bullet>();
                         b.tag = owner.tag;
 
                         Transform nossle = nossles[currentNossle];

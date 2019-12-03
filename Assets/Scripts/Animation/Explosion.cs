@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
     private ParticlePool particlePool;
     [Range(0, 100)] public float ejectSpeed;
     [Range(0, 0.5f)] public float dispertion;
-    public BoltAnim[] boltToInit;
+   // public BoltAnim[] boltToInit;
 
     void Start()
     {
@@ -35,17 +35,17 @@ public class Explosion : MonoBehaviour
 
         for(int i=0; i<particleCount; i++)
         {
-            GameObject b2 = particlePool.Get();
+            GameObject b2 = particlePool.Take();
             b2.GetComponent<BoltAnim>().lifeTime = lifeTime;
-            b2.GetComponent<BoltAnim>().Init();
+            b2.GetComponent<BoltAnim>().ResetParticle();
             b2.transform.position = transform.position + 0.7f * Vector3.up + new Vector3(Random.Range(-dispertion, dispertion), Random.Range(-dispertion, dispertion), Random.Range(-dispertion, dispertion));
             b2.transform.localEulerAngles = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
             b2.transform.localScale = 0.1f * Random.Range(1.0f, 2) * Vector3.one;
             b2.GetComponent<Rigidbody>().velocity = ejectSpeed * Random.Range(1.0f, 1.1f) * Vector3.up;
             b2.SetActive(true);
         }
-        foreach (BoltAnim b in boltToInit)
-            b.Init();
+        //foreach (BoltAnim b in boltToInit)
+        //    b.Init();
     }
     void Update()
     {

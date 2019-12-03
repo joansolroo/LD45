@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Equipment;
+
 public class Equipement : MonoBehaviour
 {
     // Attributes
@@ -94,7 +96,7 @@ public class Equipement : MonoBehaviour
         }
         return alignment;
     }
-    public int GetAlignmentChange(Component change)
+    public int GetAlignmentChange(IPickable change)
     {
         if (change != null)
         {

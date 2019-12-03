@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinigunAnim : MonoBehaviour
+using Equipment;
+
+public class MinigunRenderer : WeaponRenderer
 {
-    [SerializeField] public Weapon weapon;
+    [SerializeField] public RangeWeapon weapon;
     [SerializeField] public Transform pivot1;
     [SerializeField] public Transform pivot2;
     [SerializeField] public LineRenderer[] flamesRight;
@@ -14,7 +16,7 @@ public class MinigunAnim : MonoBehaviour
     [SerializeField] public Transform ejectRight;
     [SerializeField] public Transform ejectLeft;
     public string bulletPoolName = "unknown";
-    private ParticlePool particlePool;
+    private ParticlePool bulletPool;
     [SerializeField] [Range(500, 1000)] public float speed;
     [SerializeField] [Range(0, 10)] public float ejectSpeed;
 
@@ -25,30 +27,26 @@ public class MinigunAnim : MonoBehaviour
     {
         lastIndexRight = Random.Range(0, flamesRight.Length);
         lastIndexLeft = Random.Range(0, flamesLeft.Length);
-        GameObject bp = GameObject.Find(bulletPoolName);
-        if (bp != null)
-        {
-            particlePool = bp.GetComponent<ParticlePool>();
-            if (particlePool == null) Debug.LogError("Object " + bulletPoolName + " has no component BulletPool");
+
+        bulletPool = ParticlePool.pools[bulletPoolName];
+        if (bulletPool == null)
+        { 
+            Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
         }
-        else Debug.LogError("ParticlePool of name : " + bulletPoolName + ", not found");
+
+        weapon.OnShotTick += OnShot; 
     }
 
-    public void BulletShot()
-    {
-
-    }
-    void Update()
+    void OnShot()
     {
         //  rotate cannons
-        if(weapon.firing && !weapon.overheat && !weapon.reloading)
+        //if (weapon.firing && !weapon.overheat && !weapon.reloading)
         {
-            pivot1.localEulerAngles += new Vector3(0, 0,  speed * Time.deltaTime);
+            pivot1.localEulerAngles += new Vector3(0, 0, speed * Time.deltaTime);
             pivot2.localEulerAngles += new Vector3(0, 0, -speed * Time.deltaTime);
         }
-
         //  flames
-        foreach(LineRenderer f in flamesRight)
+        foreach (LineRenderer f in flamesRight)
             f.enabled = false;
         foreach (LineRenderer f in flamesLeft)
             f.enabled = false;
@@ -56,7 +54,7 @@ public class MinigunAnim : MonoBehaviour
             f.enabled = false;
         foreach (LineRenderer f in cannonLeft)
             f.enabled = false;
-        if (weapon.firing && weapon.flame)
+        //if (weapon.firing && weapon.flame)
         {
             lastIndexRight += Random.Range(0, flamesLeft.Length - 1);
             lastIndexRight %= flamesLeft.Length;
@@ -68,7 +66,7 @@ public class MinigunAnim : MonoBehaviour
             flamesRight[lastIndexLeft].enabled = true;
             cannonRight[lastIndexLeft].enabled = true;
 
-            GameObject b1 = particlePool.Take();
+            GameObject b1 = bulletPool.Take();
             //b1.GetComponent<BoltAnim>().Init();
             b1.SetActive(true);
             b1.transform.position = ejectLeft.position;
@@ -76,8 +74,8 @@ public class MinigunAnim : MonoBehaviour
             b1.transform.localScale = 0.05f * Vector3.one;
             b1.GetComponent<Rigidbody>().velocity = ejectSpeed * ejectLeft.transform.right;
 
-            GameObject b2 = particlePool.Take();
-            //b2.GetComponent<BoltAnim>().Init();
+            GameObject b2 = bulletPool.Take();
+           // b2.GetComponent<BoltAnim>().Init();
             b2.SetActive(true);
             b2.transform.position = ejectRight.position;
             b2.transform.localEulerAngles = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));

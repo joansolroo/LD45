@@ -46,7 +46,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
             body = this.transform;
         }
         characterController = GetComponent<CharacterController>();
-        Reset();
+        ResetChanges();
     }
 
     public bool firedLeft = false;
@@ -158,7 +158,7 @@ public class Controller : MonoBehaviour, IDamageable, IPerceptible
         gameObject.SetActive(false);
     }
     
-    public void Reset()
+    public void ResetChanges()
     {
         hp = maxHp;
         energy = maxEnergy;

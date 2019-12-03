@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Equipment;
 public class PickableObject : MonoBehaviour
 {
 
-    [SerializeField] public Component toPick;
+    [SerializeField] public IPickable toPick;
     [SerializeField] public bool instant = false;
     Vector3 position;
     float randomStartWiggling;
